@@ -1,0 +1,78 @@
+@import "../../colors.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.sideBarMainContainer {
+  outline: 2px solid blue;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.logo {
+  width: 250px;
+}
+
+.homeIconContainer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 15px;
+
+  .homeIcon {
+    width: 25px;
+  }
+
+  .homeIconText {
+    margin-top: 2px;
+    font-weight: 500;
+    font-size: 19px;
+    color: $neutral-800;
+  }
+}
+
+.archiveIconContainer {
+  @extend .homeIconContainer;
+  margin-bottom: 0;
+
+  .archiveIcon {
+    @extend .homeIcon;
+  }
+
+  .archiveIconText {
+    @extend .homeIconText;
+  }
+}
+
+.tagsHeader {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: $neutral-900;
+}
+
+.tagsNav {
+  flex-grow: 1;
+}
+
+.ulTags {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .liTags {
+    list-style: none;
+    display: flex;
+    // gap: 10px;
+  }
+
+  .tagsCount {
+    margin-left: auto;
+  }
+
+}

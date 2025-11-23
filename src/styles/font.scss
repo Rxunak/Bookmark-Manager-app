@@ -1,0 +1,28 @@
+// fonts.scss
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/Manrope/static/Manrope-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/Manrope/static/Manrope-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/Manrope/static/Manrope-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+// Or if you want to use the variable font
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/Manrope/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800; // Variable weight range
+}

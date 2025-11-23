@@ -1,0 +1,35 @@
+@import "../colors.scss";
+
+body {
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 5px;
+  height: 100vh;
+}
+
+.grid {
+  outline: 2px solid black;
+}
+
+.gridOne {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  grid-row: 1 / span 2;
+  outline: none;
+}
+
+.gridTwo {
+  height: 100px;
+  grid-column: 2 / span 1;
+}
+
+.gridThree {
+  height: 750px;
+  width: 100%;
+  grid-column: 2 / span 1;
+}

@@ -1,0 +1,60 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.sideBarMainContainer {
+  outline: 2px solid blue;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.logo {
+  width: 250px;
+}
+
+.homeIconContainer, .archiveIconContainer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainer .archiveIcon {
+  width: 25px;
+}
+.homeIconContainer .homeIconText, .archiveIconContainer .homeIconText, .archiveIconContainer .archiveIconText {
+  margin-top: 2px;
+  font-weight: 500;
+  font-size: 19px;
+  color: #4c5c59;
+}
+
+.archiveIconContainer {
+  margin-bottom: 0;
+}
+.tagsHeader {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #001913;
+}
+
+.tagsNav {
+  flex-grow: 1;
+}
+
+.ulTags {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ulTags .liTags {
+  list-style: none;
+  display: flex;
+}
+.ulTags .tagsCount {
+  margin-left: auto;
+}/*# sourceMappingURL=sideBarStyles.css.map */
