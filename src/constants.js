@@ -15,28 +15,4 @@ export const tagsArray = [
   "Reference",
   "Tips",
   "Tools",
-  "Tutorials",
-  "Tutorials",
-  "Tutorials",
-  "Tutorials",
-];
-
-export const tags = [
-  "AI",
-  "Community",
-  "Compatibility",
-  "CSS",
-  "Design",
-  "Framework",
-  "Git",
-  "HTML",
-  "JavaScript",
-  "Layout",
-  "Learning",
-  "Performance",
-  "Practice",
-  "Reference",
-  "Tips",
-  "Tools",
-  "Tutorials",
 ];
