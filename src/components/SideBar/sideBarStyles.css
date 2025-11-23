@@ -4,12 +4,12 @@
 }
 
 .sideBarMainContainer {
-  outline: 2px solid blue;
   height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 1.5rem;
+  gap: 1.9rem;
+  background-color: #ffffff;
 }
 
 .logo {
@@ -19,24 +19,24 @@
 .homeIconContainer, .archiveIconContainer {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 10px;
   margin-bottom: 15px;
 }
 .homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainer .archiveIcon {
-  width: 25px;
+  width: 21px;
 }
 .homeIconContainer .homeIconText, .archiveIconContainer .homeIconText, .archiveIconContainer .archiveIconText {
   margin-top: 2px;
-  font-weight: 500;
-  font-size: 19px;
-  color: #4c5c59;
+  font-weight: 400;
+  font-size: 18px;
+  color: #001f1f;
 }
 
 .archiveIconContainer {
   margin-bottom: 0;
 }
 .tagsHeader {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   margin-bottom: 15px;
   color: #001913;
@@ -54,7 +54,68 @@
 .ulTags .liTags {
   list-style: none;
   display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.ulTags .tagsLabel {
+  font-size: 17px;
+  font-weight: 400;
+  color: #001f1f;
 }
 .ulTags .tagsCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: #e8f0ef;
+}
+.ulTags .tagsCountText {
+  font-size: 14px;
+  color: #001f1f;
+}
+
+input[type=checkbox] {
+  position: relative;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: 2px solid #8b8492;
+}
+
+input[type=checkbox]::after {
+  content: "";
+  display: none;
+  width: 17px;
+  height: 17px;
+  background-image: url("../../assets/Images/icon-check.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input[type=checkbox]:checked {
+  background-color: #ffffff;
+}
+
+input[type=checkbox]:checked::after {
+  display: block;
+}
+
+.tagsMainContainer {
+  overflow: scroll;
+  height: 620px;
+  padding: 2px 10px 2px 2px;
+  width: 270px;
 }/*# sourceMappingURL=sideBarStyles.css.map */

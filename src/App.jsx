@@ -1,5 +1,6 @@
 import "././styles/styles.scss";
 import SideBar from "./components/SideBar/SideBar";
+import HeaderSearchBar from "./components/headerSearchBar/headerSearchBar";
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
         <aside className="grid gridOne">
           <SideBar />
         </aside>
-        <header className="grid gridTwo"></header>
+        <header className="grid gridTwo">
+          <HeaderSearchBar />
+        </header>
         <main className="grid gridThree"></main>
       </div>
     </>

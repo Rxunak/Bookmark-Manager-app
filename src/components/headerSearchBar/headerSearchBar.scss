@@ -1,0 +1,64 @@
+@import '../../colors.scss';
+
+.headerMainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    height: 100%;
+    width: auto;
+
+}
+
+.searchBar {
+    height: 50px;
+    width: 350px;
+    border-radius: 10px;
+    padding-left: 41px;
+    background-image: url('../../assets/Images/icon-search.svg');
+    background-repeat: no-repeat;
+    background-position: 10px 13px;
+    background-size: 23px;
+    border: 3px solid $neutral-100;
+
+    &::placeholder {
+        font-size: 16px;
+        color: $neutral-800-dark;
+    }
+}
+
+.profileContainer {
+    // outline: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 260px;
+    align-items: center;
+}
+
+.bookmarkButton {
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: $neutral-800-dark;
+    color: $neutral-0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 300;
+}
+
+.addIcon {
+    filter: brightness(0) invert(1);
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+
+    .profileImage {
+        width: 45px;
+    }
+}
