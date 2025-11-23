@@ -25,7 +25,7 @@ function SideBar() {
 
       <div className="tagsNav">
         <h3 className="tagsHeader">TAGS</h3>
-        <div>
+        <div className="tagsMainContainer">
           <ul className="ulTags">
             {tagsArray.map((item, index) => (
               <li key={index} className="liTags">
@@ -33,7 +33,9 @@ function SideBar() {
                 <label htmlFor="" className="tagsLabel">
                   {item}
                 </label>
-                <span className="tagsCount">1</span>
+                <span className="tagsCount">
+                  <p className="tagsCountText">6</p>
+                </span>
               </li>
             ))}
           </ul>

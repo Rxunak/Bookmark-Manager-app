@@ -2,17 +2,14 @@
 
 body {
   height: 100vh;
+  background-color: $neutral-100;
 }
 
 .container {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: 5px;
+  gap: 2px;
   height: 100vh;
-}
-
-.grid {
-  outline: 2px solid black;
 }
 
 .gridOne {
@@ -26,6 +23,8 @@ body {
 .gridTwo {
   height: 100px;
   grid-column: 2 / span 1;
+  background-color: $neutral-0;
+
 }
 
 .gridThree {

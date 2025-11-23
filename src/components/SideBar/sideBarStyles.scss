@@ -6,12 +6,12 @@
 }
 
 .sideBarMainContainer {
-  outline: 2px solid blue;
   height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 1.5rem;
+  gap: 1.9rem;
+  background-color: $neutral-0;
 }
 
 .logo {
@@ -21,18 +21,18 @@
 .homeIconContainer {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 10px;
   margin-bottom: 15px;
 
   .homeIcon {
-    width: 25px;
+    width: 21px;
   }
 
   .homeIconText {
     margin-top: 2px;
-    font-weight: 500;
-    font-size: 19px;
-    color: $neutral-800;
+    font-weight: 400;
+    font-size: 18px;
+    color: $neutral-800-dark;
   }
 }
 
@@ -50,7 +50,7 @@
 }
 
 .tagsHeader {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   margin-bottom: 15px;
   color: $neutral-900;
@@ -65,14 +65,78 @@
   flex-direction: column;
   gap: 20px;
 
+
   .liTags {
     list-style: none;
     display: flex;
-    // gap: 10px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .tagsLabel {
+    font-size: 17px;
+    font-weight: 400;
+    color: $neutral-800-dark;
   }
 
   .tagsCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: $neutral-100;
   }
 
+  .tagsCountText {
+    font-size: 12px;
+    color: $neutral-800-dark;
+  }
+
+}
+
+
+input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: $neutral-0;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: 2px solid $neutral-500;
+}
+
+input[type="checkbox"]::after {
+  content: "";
+  display: none;
+  width: 17px;
+  height: 17px;
+  background-image: url("../../assets/Images/icon-check.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+input[type="checkbox"]:checked {
+  background-color: $neutral-0;
+}
+
+input[type="checkbox"]:checked::after {
+  display: block;
+}
+
+.tagsMainContainer {
+  overflow: scroll;
+  height: 620px;
+  padding: 2px 10px 2px 2px;
+  width: 270px;
 }

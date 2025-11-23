@@ -16,6 +16,9 @@ export const tagsArray = [
   "Tips",
   "Tools",
   "Tutorials",
+  "Tutorials",
+  "Tutorials",
+  "Tutorials",
 ];
 
 export const tags = [
