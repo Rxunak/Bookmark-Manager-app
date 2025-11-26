@@ -1,3 +1,5 @@
+import BookmarkPage from "./components/Bookmark/BookmarkPage";
+
 export const tagsArray = [
   "AI",
   "Community",
@@ -16,3 +18,24 @@ export const tagsArray = [
   "Tips",
   "Tools",
 ];
+
+export const getDate = (date) => {
+  const dates = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const d = new Date(date);
+
+  return d.getDate() + " " + dates[d.getMonth()];
+};

@@ -1,7 +1,7 @@
 import React from "react";
-import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
-import homeIcon from "../../assets/Images/icon-home.svg";
-import archiveIcon from "../../assets/Images/icon-archive.svg";
+import bookMarkImage from "../../../public/Images/logo-light-theme.svg";
+import homeIcon from "../../../public/Images/icon-home.svg";
+import archiveIcon from "../../../public/Images/icon-archive.svg";
 import { tagsArray } from "../../constants";
 import "../SideBar/sideBarStyles.scss";
 

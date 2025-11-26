@@ -1,7 +1,7 @@
 import React from "react";
 import "../headerSearchBar/headerSearchBar.scss";
-import profileImage from "../../assets/Images/image-avatar.webp";
-import addIcon from "../../assets/Images/icon-add.svg";
+import profileImage from "../../../public/Images/image-avatar.webp";
+import addIcon from "../../../public/Images/icon-add.svg";
 
 function HeaderSearchBar() {
   return (

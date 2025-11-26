@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Bookmark/bookmarkPage.scss";
-import sortIcon from "../../assets/Images/icon-sort.svg";
-import testImage from "../../assets/Images/favicon-claude.png";
-import menuBookmark from "../../assets/Images/icon-menu-bookmark.svg";
-import eye from "../../assets/Images/icon-visit-count.svg";
-import clock from "../../assets/Images/icon-last-visited.svg";
-import calender from "../../assets/Images/icon-created.svg";
-import pin from "../../assets/Images/icon-pin.svg";
+import sortIcon from "../../../public/Images/icon-sort.svg";
+import menuBookmark from "../../../public/Images/icon-menu-bookmark.svg";
+import eye from "../../../public/Images/icon-visit-count.svg";
+import clock from "../../../public/Images/icon-last-visited.svg";
+import calender from "../../../public/Images/icon-created.svg";
+import pin from "../../../public/Images/icon-pin.svg";
+import gitHub from "../../../public/Images/icon-pin.svg";
+import { getDate } from "../../constants";
 
 function BookmarkPage() {
-  const titles = ["helo", "helo", "helo", "helo"];
+  const [data, setData] = useState([]);
+  const [img, setImg] = useState("../../assets/images/favicon-github.png");
+
+  const getData = (url) => {
+    fetch("src/data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        setData(myJson.bookmarks);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="bookmarkMainContainer">
       <div className="bookmarkHeader">
@@ -21,15 +42,17 @@ function BookmarkPage() {
       </div>
 
       <div className="articles">
-        {titles.map((item, index) => (
+        {data.map((item, index) => (
           <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="articleHeader">
-              <img src={testImage} alt="" className="articleHeaderImage" />
+              <img
+                src={`/Images/${item.favicon}`}
+                alt=""
+                className="articleHeaderImage"
+              />
               <span>
-                <h1 className="articleHeaderText">Frontend Mentor</h1>
-                <span className="articleHeaderTextSecondary">
-                  frontendmentor.io
-                </span>
+                <h1 className="articleHeaderText">{item.title}</h1>
+                <span className="articleHeaderTextSecondary">{item.url}</span>
               </span>
 
               <button className="articleBookmark">
@@ -37,35 +60,34 @@ function BookmarkPage() {
               </button>
             </div>
             <div className="articleBody">
-              <p className="articleBodyText">
-                Improve your front-end coding skills by building real projects.
-                Solve real world HTML, CSS and JavaScript challenges whilst
-                working to professional designs.{" "}
-              </p>
+              <p className="articleBodyText">{item.description}</p>
               <div className="articleBodyTags">
-                <span className="tagOne">Practice</span>
-                <span className="tagOne">Learning</span>
-                <span className="tagOne">Community</span>
+                {item.tags.map((tag) => (
+                  <span className="tagOne">{tag}</span>
+                ))}
               </div>
             </div>
             <div className="articleFooter">
               <span className="footerIconContainer special">
                 <img src={eye} alt="" className="footerIcon" />
-                <span className="footerText">47</span>
+                <span className="footerText">{item.visitCount}</span>
               </span>
               <span className="footerIconContainer">
                 {" "}
                 <img src={clock} alt="" className="footerIcon" />
-                <span className="footerText">23 Sep</span>
+                <span className="footerText">{getDate(item.createdAt)}</span>
               </span>
               <span className="footerIconContainer">
                 {" "}
                 <img src={calender} alt="" className="footerIcon" />
-                <span className="footerText">15 Jan</span>
+                <span className="footerText">{getDate(item.lastVisited)}</span>
               </span>
-              <img src={pin} alt="" className="footerPin" />
+              {item.pinned ? (
+                <img src={pin} alt="" className="footerPin" />
+              ) : (
+                ""
+              )}
             </div>
-            {/* {item} */}
           </div>
         ))}
       </div>
