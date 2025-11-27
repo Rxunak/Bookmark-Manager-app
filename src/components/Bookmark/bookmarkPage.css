@@ -1,5 +1,6 @@
 .bookmarkMainContainer {
   height: 100%;
+  overflow: scroll;
 }
 
 .bookmarkHeader {
@@ -39,13 +40,21 @@
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 40px;
+  padding-bottom: 50px;
 }
 
 .gridArticles {
-  height: 290px;
+  height: 320px;
   width: 360px;
   border-radius: 10px;
   background-color: #ffffff;
+}
+
+.mainArticle {
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .articleHeader {
@@ -94,6 +103,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 150px;
+}
+.articleBody .articleTextBodyScroll {
+  height: 100px;
+  overflow: scroll;
 }
 .articleBody .articleBodyText {
   color: #4c5c59;
@@ -118,23 +132,28 @@
   border-top: 2px solid #e8f0ef;
   gap: 20px;
   margin-top: 20px;
+  margin: auto;
+  margin-right: 0px;
+  margin-left: 0px;
+  height: 20px;
+  align-items: center;
 }
 .articleFooter .footerPin {
   margin: auto;
-  margin-top: 15px;
+  margin-top: 12px;
   margin-right: 20px;
+  width: 17px;
 }
 .articleFooter .footerIconContainer {
   display: flex;
   gap: 7px;
   align-items: center;
-  margin-top: 15px;
 }
 .articleFooter .footerIcon {
-  width: 18px;
+  width: 14px;
 }
 .articleFooter .footerText {
-  font-size: 14px;
+  font-size: 13px;
   color: #001f1f;
 }
 .articleFooter .special {

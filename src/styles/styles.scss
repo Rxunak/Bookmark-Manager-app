@@ -9,6 +9,7 @@ body {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2px;
+  row-gap: 0px;
   height: 100vh;
 }
 
@@ -21,6 +22,7 @@ body {
 }
 
 .gridTwo {
+  // outline: 2px solid black;
   height: 85px;
   grid-column: 2 / span 1;
   background-color: $neutral-0;
@@ -28,7 +30,8 @@ body {
 }
 
 .gridThree {
-  height: 750px;
+  height: 772px;
   width: 100%;
   grid-column: 2 / span 1;
+  // outline: 2px solid black;
 }
