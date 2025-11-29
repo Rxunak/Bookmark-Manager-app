@@ -5,7 +5,7 @@ import archiveIcon from "../../assets/Images/icon-archive.svg";
 import { tagsArray } from "../../constants";
 import "../SideBar/sideBarStyles.scss";
 
-function SideBar() {
+function SideBar({ updateToggle, currentToggle }) {
   return (
     <div className="sideBarMainContainer">
       <div>
@@ -13,11 +13,25 @@ function SideBar() {
       </div>
 
       <div>
-        <a className="homeIconContainer">
+        <a
+          className={`${
+            currentToggle === 1
+              ? "homeIconContainerActive"
+              : "homeIconContainer"
+          }`}
+          onClick={() => updateToggle(1)}
+        >
           <img src={homeIcon} alt="homeIcon" className="homeIcon" />
           <span className="homeIconText">Home</span>
         </a>
-        <a className="archiveIconContainer">
+        <a
+          className={`${
+            currentToggle === 2
+              ? "archiveIconContainerActive"
+              : "archiveIconContainer"
+          }`}
+          onClick={() => updateToggle(2)}
+        >
           <img src={archiveIcon} alt="archiveIcon" className="archiveIcon" />
           <span className="archiveIconText">Archived</span>
         </a>

@@ -16,25 +16,37 @@
   width: 250px;
 }
 
-.homeIconContainer, .archiveIconContainer {
+.homeIconContainer, .archiveIconContainer, .archiveIconContainerActive, .homeIconContainerActive {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 15px;
+  cursor: pointer;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 10px;
 }
-.homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainer .archiveIcon {
+.homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainerActive .homeIcon, .archiveIconContainer .archiveIcon, .archiveIconContainerActive .archiveIcon, .homeIconContainerActive .homeIcon {
   width: 21px;
 }
-.homeIconContainer .homeIconText, .archiveIconContainer .homeIconText, .archiveIconContainer .archiveIconText {
+.homeIconContainer .homeIconText, .archiveIconContainer .homeIconText, .archiveIconContainerActive .homeIconText, .archiveIconContainer .archiveIconText, .archiveIconContainerActive .archiveIconText, .homeIconContainerActive .homeIconText {
   margin-top: 2px;
   font-weight: 400;
   font-size: 18px;
   color: #001f1f;
 }
 
-.archiveIconContainer {
+.homeIconContainerActive {
+  background-color: #e8f0ef;
+}
+
+.archiveIconContainer, .archiveIconContainerActive {
   margin-bottom: 0;
 }
+.archiveIconContainerActive {
+  background-color: #e8f0ef;
+}
+
 .tagsHeader {
   font-size: 14px;
   font-weight: 500;

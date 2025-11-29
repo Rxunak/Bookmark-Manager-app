@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import "../Bookmark/bookmarkPage.scss";
 import sortIcon from "../../assets/Images/icon-sort.svg";
 import menuBookmark from "../../assets/Images/icon-menu-bookmark.svg";
@@ -8,10 +8,11 @@ import calender from "../../assets/Images/icon-created.svg";
 import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
 
-function BookmarkPage() {
+function BookmarkPage(props) {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  const getData = (url) => {
+  const getData = () => {
     fetch("src/data.json", {
       headers: {
         "Content-Type": "application/json",
@@ -23,16 +24,30 @@ function BookmarkPage() {
       })
       .then(function (myJson) {
         setData(myJson.bookmarks);
+        setFilteredData(myJson.bookmarks);
       });
   };
+
+  useEffect(() => {
+    if (props.toggleButton === 2) {
+      const newItems = data.filter((newVal) => newVal.isArchived === true);
+      setFilteredData(newItems);
+    } else {
+      setFilteredData(data);
+    }
+  }, [props.toggleButton]);
 
   useEffect(() => {
     getData();
   }, []);
   return (
     <div className="bookmarkMainContainer">
-      <div className="bookmarkHeader">
-        <span className="bookmarkTitle">All bookmarks</span>
+      <div className="bookmarkHeader ">
+        <span className="bookmarkTitle">
+          {props.toggleButton === 1 || props.toggleButton === "1"
+            ? "All Bookmarks"
+            : "Archived Bookmarks"}
+        </span>
         <button className="sortByButton">
           <img src={sortIcon} alt="sortIcon" className="sortIcon" />
           <span className="sortText">Sort By</span>
@@ -40,7 +55,7 @@ function BookmarkPage() {
       </div>
 
       <div className="articles">
-        {data.map((item, index) => (
+        {filteredData.map((item, index) => (
           <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">
               <div className="articleHeader">

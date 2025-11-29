@@ -23,6 +23,10 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 15px;
+  cursor: pointer;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 10px;
 
   .homeIcon {
     width: 21px;
@@ -36,6 +40,11 @@
   }
 }
 
+.homeIconContainerActive {
+  @extend .homeIconContainer;
+  background-color: $neutral-100
+}
+
 .archiveIconContainer {
   @extend .homeIconContainer;
   margin-bottom: 0;
@@ -47,6 +56,11 @@
   .archiveIconText {
     @extend .homeIconText;
   }
+}
+
+.archiveIconContainerActive {
+  @extend .archiveIconContainer;
+  background-color: $neutral-100
 }
 
 .tagsHeader {
