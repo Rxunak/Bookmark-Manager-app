@@ -9,37 +9,20 @@ import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
 
 function BookmarkPage(props) {
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-
-  const getData = () => {
-    fetch("src/data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        setData(myJson.bookmarks);
-        setFilteredData(myJson.bookmarks);
-      });
-  };
+  const [formData, setFormData] = useState([]);
+  const [formFilteredData, setFormFilteredData] = useState([]);
 
   useEffect(() => {
     if (props.toggleButton === 2) {
-      const newItems = data.filter((newVal) => newVal.isArchived === true);
-      setFilteredData(newItems);
+      const newItems = props.bkData.filter(
+        (newVal) => newVal.isArchived === true
+      );
+      setFormFilteredData(newItems);
     } else {
-      setFilteredData(data);
+      setFormFilteredData(props.bkData);
     }
-  }, [props.toggleButton]);
+  }, [props.toggleButton, props.bkData, props.filterData]);
 
-  useEffect(() => {
-    getData();
-  }, []);
   return (
     <div className="bookmarkMainContainer">
       <div className="bookmarkHeader ">
@@ -55,7 +38,7 @@ function BookmarkPage(props) {
       </div>
 
       <div className="articles">
-        {filteredData.map((item, index) => (
+        {formFilteredData.map((item, index) => (
           <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">
               <div className="articleHeader">
@@ -78,8 +61,10 @@ function BookmarkPage(props) {
                   <p className="articleBodyText">{item.description}</p>
                 </div>
                 <div className="articleBodyTags">
-                  {item.tags.map((tag) => (
-                    <span className="tagOne">{tag}</span>
+                  {item.tags.map((tag, index) => (
+                    <span className="tagOne" key={index}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
