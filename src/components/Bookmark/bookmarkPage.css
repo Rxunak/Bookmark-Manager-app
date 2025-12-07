@@ -10,10 +10,25 @@
   padding: 0px 30px 0px 30px;
   align-items: center;
 }
-.bookmarkHeader .bookmarkTitle {
+.bookmarkHeader .bookmarkTitle, .bookmarkHeader .searchInputShow, .bookmarkHeader .bookmarkShow {
   color: #001f1f;
   font-size: 26px;
   font-weight: 600;
+}
+.bookmarkHeader .bookmarkTitleHide {
+  display: none;
+}
+.bookmarkHeader .bookmarkShowHide {
+  display: none;
+}
+.bookmarkHeader .searchInputShowHide {
+  display: none;
+}
+.bookmarkHeader .inputText {
+  color: #065a41;
+}
+.bookmarkHeader .tag-item {
+  color: #065a41;
 }
 .bookmarkHeader .sortByButton {
   display: flex;

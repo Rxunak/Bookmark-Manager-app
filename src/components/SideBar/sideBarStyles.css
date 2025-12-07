@@ -118,7 +118,7 @@ input[type=checkbox]::after {
 }
 
 input[type=checkbox]:checked {
-  background-color: #ffffff;
+  background-color: #cdcfcc;
 }
 
 input[type=checkbox]:checked::after {

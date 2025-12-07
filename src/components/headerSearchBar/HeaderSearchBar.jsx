@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../headerSearchBar/headerSearchBar.scss";
 import profileImage from "../../assets/Images/image-avatar.webp";
 import addIcon from "../../assets/Images/icon-add.svg";
 
-function HeaderSearchBar() {
+function HeaderSearchBar({ bkData, handleInput, input }) {
+  console.log(input);
+  console.log(bkData.filter((item) => item.title === input));
   return (
     <>
       <div className="headerMainContainer">
@@ -12,6 +14,8 @@ function HeaderSearchBar() {
             type="text"
             placeholder="Search by title..."
             className="searchBar"
+            value={input}
+            onChange={(e) => handleInput(e.target.value)}
           />
         </section>
         <div className="profileContainer">

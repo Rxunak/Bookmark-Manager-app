@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import homeIcon from "../../assets/Images/icon-home.svg";
 import archiveIcon from "../../assets/Images/icon-archive.svg";
@@ -12,7 +12,6 @@ function SideBar({
   handleSelect,
   checkedList,
   handleReset,
-  isChecked,
 }) {
   const [tagData, setTagData] = useState(tagsArray);
 

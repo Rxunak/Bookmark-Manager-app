@@ -20,6 +20,43 @@
         font-weight: 600;
     }
 
+    .bookmarkTitleHide {
+        display: none;
+    }
+
+    .bookmarkShow {
+        @extend .bookmarkTitle;
+
+    }
+
+    .bookmarkShowHide {
+        display: none;
+    }
+
+    .searchInputShow {
+        @extend .bookmarkTitle;
+
+    }
+
+    .searchInputShowHide {
+        display: none;
+    }
+
+    .inputText {
+        color: $neutral-500-dark;
+    }
+
+
+
+
+    .tag-item {
+        color: $neutral-500-dark;
+    }
+
+
+
+
+
     .sortByButton {
         display: flex;
         justify-content: center;

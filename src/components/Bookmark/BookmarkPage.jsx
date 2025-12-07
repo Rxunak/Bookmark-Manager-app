@@ -8,40 +8,69 @@ import calender from "../../assets/Images/icon-created.svg";
 import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
 
-function BookmarkPage({ toggleButton, bkData, filterData, checkedList }) {
+function BookmarkPage({
+  toggleButton,
+  bkData,
+  filterData,
+  checkedList,
+  input,
+}) {
+  const showTagFilter = checkedList.length > 0 && input.length === 0;
+  const showSearch = input.length > 0;
+  const showTitle = !showSearch;
+
+  const titleText = toggleButton == 1 ? "All Bookmarks" : "Archived Bookmarks";
+
   const [formFilteredData, setFormFilteredData] = useState([]);
 
   useEffect(() => {
     let filteredData = bkData;
+
+    if (input.length > 0) {
+      filteredData = filteredData.filter((item) => item.title.includes(input));
+    }
 
     if (toggleButton === 2) {
       filteredData = filteredData.filter((item) => item.isArchived === true);
     }
 
     if (checkedList.length > 0) {
-      toggleButton = 0;
       filteredData = filteredData.filter((item) =>
         item.tags.some((r) => checkedList.includes(r))
       );
     }
 
     setFormFilteredData(filteredData);
-  }, [toggleButton, bkData, filterData, checkedList]);
+  }, [toggleButton, bkData, filterData, checkedList, input]);
 
   return (
     <div className="bookmarkMainContainer">
       <div className="bookmarkHeader ">
-        {toggleButton > 0 ? (
-          <span className="bookmarkTitle">
-            {toggleButton === 1 || toggleButton === "1"
-              ? "All Bookmarks"
-              : "Archived Bookmarks"}
+        <>
+          {showTitle && (
+            <span
+              className={showTagFilter ? "bookmarkTitleHide" : "bookmarkTitle"}
+            >
+              {titleText}
+            </span>
+          )}
 
-            {checkedList.length > 0 ? "Hello" : ""}
+          <span className={showTagFilter ? "bookmarkShow" : "bookmarkShowHide"}>
+            Bookmarks tagged:{" "}
+            {checkedList.map((item, index) => (
+              <span key={index}>
+                <span className="tag-item">{item}</span>
+                {index < checkedList.length - 1 && ", "}
+              </span>
+            ))}
           </span>
-        ) : (
-          ""
-        )}
+
+          <span
+            className={showSearch ? "searchInputShow" : "searchInputShowHide"}
+          >
+            Results for: <span className="inputText">{`"${input}"`}</span>
+          </span>
+        </>
 
         <button className="sortByButton">
           <img src={sortIcon} alt="sortIcon" className="sortIcon" />

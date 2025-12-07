@@ -10,6 +10,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
   const [checked, setChecked] = useState(false);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     const getData = () => {
@@ -39,6 +40,10 @@ function App() {
     setCheckedList([]);
   };
 
+  const setToggleData = () => {
+    setToggle(0);
+  };
+
   const handleSelect = (event) => {
     const value = event.target.value;
     const isChecked = event.target.checked;
@@ -52,10 +57,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    console.log(checkedList);
-    console.log(checked);
-  });
+  const handleInput = (e) => {
+    setInput(e);
+  };
 
   return (
     <>
@@ -72,15 +76,21 @@ function App() {
           />
         </aside>
         <header className="grid gridTwo">
-          <HeaderSearchBar />
+          <HeaderSearchBar
+            bkData={data}
+            input={input}
+            handleInput={handleInput}
+          />
         </header>
         <main className="grid gridThree">
           <BookmarkPage
+            setToggleData={setToggleData}
             toggleButton={toggle}
             bkData={data}
             filterData={filteredData}
             checkedList={checkedList}
             isChecked={checked}
+            input={input}
           />
         </main>
       </div>
