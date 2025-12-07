@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import homeIcon from "../../assets/Images/icon-home.svg";
 import archiveIcon from "../../assets/Images/icon-archive.svg";
 import { tagsArray } from "../../constants";
 import "../SideBar/sideBarStyles.scss";
 
-function SideBar({ updateToggle, currentToggle, bkData }) {
+function SideBar({
+  updateToggle,
+  currentToggle,
+  bkData,
+  handleSelect,
+  checkedList,
+  handleReset,
+  isChecked,
+}) {
   const [tagData, setTagData] = useState(tagsArray);
 
   useEffect(() => {
@@ -16,8 +24,8 @@ function SideBar({ updateToggle, currentToggle, bkData }) {
     bkData.forEach((item) => {
       if (item?.tags) {
         newTagData.forEach((tag) => {
-          if (item.tags.includes(tag.name)) {
-            tag.value++;
+          if (item.tags.includes(tag.value)) {
+            tag.tagNumber++;
           }
         });
       }
@@ -58,7 +66,17 @@ function SideBar({ updateToggle, currentToggle, bkData }) {
       </div>
 
       <div className="tagsNav">
-        <h3 className="tagsHeader">TAGS</h3>
+        <div className="tagheaderCon">
+          <h3 className="tagsHeader">TAGS</h3>
+          {checkedList.length > 0 ? (
+            <button className="resetButton" onClick={handleReset}>
+              Reset
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+
         <div className="tagsMainContainer">
           <ul className="ulTags">
             {tagData.map((item) => (
@@ -68,12 +86,15 @@ function SideBar({ updateToggle, currentToggle, bkData }) {
                   className="tagsInput"
                   name="tags"
                   id={item.id}
+                  value={item.value}
+                  onChange={handleSelect}
+                  checked={checkedList.includes(item.value)}
                 />
                 <label htmlFor="" className="tagsLabel">
-                  {item.name}
+                  {item.value}
                 </label>
                 <span className="tagsCount">
-                  <p className="tagsCountText">{item.value}</p>
+                  <p className="tagsCountText">{item.tagNumber}</p>
                 </span>
               </li>
             ))}

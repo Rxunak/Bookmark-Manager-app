@@ -50,7 +50,7 @@
 .tagsHeader {
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #001913;
 }
 
@@ -130,4 +130,20 @@ input[type=checkbox]:checked::after {
   height: 620px;
   padding: 2px 10px 2px 2px;
   width: 270px;
+}
+
+.tagheaderCon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+}
+
+.resetButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+  font-size: 14px;
 }/*# sourceMappingURL=sideBarStyles.css.map */

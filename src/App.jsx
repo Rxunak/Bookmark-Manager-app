@@ -8,8 +8,9 @@ function App() {
   const [toggle, setToggle] = useState(1);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [checkedList, setCheckedList] = useState([]);
+  const [checked, setChecked] = useState(false);
 
-  console.log(data);
   useEffect(() => {
     const getData = () => {
       fetch("src/data.json", {
@@ -33,14 +34,41 @@ function App() {
   const updateToggle = (id) => {
     setToggle(id);
   };
+
+  const handleReset = () => {
+    setCheckedList([]);
+  };
+
+  const handleSelect = (event) => {
+    const value = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      setCheckedList([...checkedList, value]);
+      setChecked(isChecked);
+    } else {
+      const filteredItems = checkedList.filter((item) => item !== value);
+      setCheckedList(filteredItems);
+    }
+  };
+
+  useEffect(() => {
+    console.log(checkedList);
+    console.log(checked);
+  });
+
   return (
     <>
       <div className="container">
         <aside className="grid gridOne">
           <SideBar
             updateToggle={updateToggle}
+            handleSelect={handleSelect}
+            handleReset={handleReset}
             currentToggle={toggle}
             bkData={data}
+            checkedList={checkedList}
+            isChecked={checked}
           />
         </aside>
         <header className="grid gridTwo">
@@ -51,6 +79,8 @@ function App() {
             toggleButton={toggle}
             bkData={data}
             filterData={filteredData}
+            checkedList={checkedList}
+            isChecked={checked}
           />
         </main>
       </div>

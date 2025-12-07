@@ -8,29 +8,41 @@ import calender from "../../assets/Images/icon-created.svg";
 import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
 
-function BookmarkPage(props) {
-  const [formData, setFormData] = useState([]);
+function BookmarkPage({ toggleButton, bkData, filterData, checkedList }) {
   const [formFilteredData, setFormFilteredData] = useState([]);
 
   useEffect(() => {
-    if (props.toggleButton === 2) {
-      const newItems = props.bkData.filter(
-        (newVal) => newVal.isArchived === true
-      );
-      setFormFilteredData(newItems);
-    } else {
-      setFormFilteredData(props.bkData);
+    let filteredData = bkData;
+
+    if (toggleButton === 2) {
+      filteredData = filteredData.filter((item) => item.isArchived === true);
     }
-  }, [props.toggleButton, props.bkData, props.filterData]);
+
+    if (checkedList.length > 0) {
+      toggleButton = 0;
+      filteredData = filteredData.filter((item) =>
+        item.tags.some((r) => checkedList.includes(r))
+      );
+    }
+
+    setFormFilteredData(filteredData);
+  }, [toggleButton, bkData, filterData, checkedList]);
 
   return (
     <div className="bookmarkMainContainer">
       <div className="bookmarkHeader ">
-        <span className="bookmarkTitle">
-          {props.toggleButton === 1 || props.toggleButton === "1"
-            ? "All Bookmarks"
-            : "Archived Bookmarks"}
-        </span>
+        {toggleButton > 0 ? (
+          <span className="bookmarkTitle">
+            {toggleButton === 1 || toggleButton === "1"
+              ? "All Bookmarks"
+              : "Archived Bookmarks"}
+
+            {checkedList.length > 0 ? "Hello" : ""}
+          </span>
+        ) : (
+          ""
+        )}
+
         <button className="sortByButton">
           <img src={sortIcon} alt="sortIcon" className="sortIcon" />
           <span className="sortText">Sort By</span>

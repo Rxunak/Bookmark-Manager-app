@@ -1,22 +1,22 @@
 import BookmarkPage from "./components/Bookmark/BookmarkPage";
 
 export const tagsArray = [
-  { id: 1, name: "AI", value: "" },
-  { id: 2, name: "Community", value: "" },
-  { id: 3, name: "Compatibility", value: "" },
-  { id: 4, name: "CSS", value: "" },
-  { id: 5, name: "Design", value: "" },
-  { id: 6, name: "Framework", value: "" },
-  { id: 7, name: "Git", value: "" },
-  { id: 8, name: "HTML", value: "" },
-  { id: 9, name: "JavaScript", value: "" },
-  { id: 10, name: "Layout", value: "" },
-  { id: 11, name: "Learning", value: "" },
-  { id: 12, name: "Performance", value: "" },
-  { id: 13, name: "Practice", value: "" },
-  { id: 14, name: "Reference", value: "" },
-  { id: 15, name: "Tips", value: "" },
-  { id: 16, name: "Tools", value: "" },
+  { id: 1, value: "AI", tagNumber: "" },
+  { id: 2, value: "Community", tagNumber: "" },
+  { id: 3, value: "Compatibility", tagNumber: "" },
+  { id: 4, value: "CSS", tagNumber: "" },
+  { id: 5, value: "Design", tagNumber: "" },
+  { id: 6, value: "Framework", tagNumber: "" },
+  { id: 7, value: "Git", tagNumber: "" },
+  { id: 8, value: "HTML", tagNumber: "" },
+  { id: 9, value: "JavaScript", tagNumber: "" },
+  { id: 10, value: "Layout", tagNumber: "" },
+  { id: 11, value: "Learning", tagNumber: "" },
+  { id: 12, value: "Performance", tagNumber: "" },
+  { id: 13, value: "Practice", tagNumber: "" },
+  { id: 14, value: "Reference", tagNumber: "" },
+  { id: 15, value: "Tips", tagNumber: "" },
+  { id: 16, value: "Tools", tagNumber: "" },
 ];
 
 export const getDate = (date) => {
