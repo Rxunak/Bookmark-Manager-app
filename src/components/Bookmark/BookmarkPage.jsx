@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Bookmark/bookmarkPage.scss";
 import sortIcon from "../../assets/Images/icon-sort.svg";
 import menuBookmark from "../../assets/Images/icon-menu-bookmark.svg";

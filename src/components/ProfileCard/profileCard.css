@@ -1,0 +1,112 @@
+.profileCardMain {
+  height: auto;
+  width: 290px;
+  position: absolute;
+  left: 75rem;
+  top: 4.5rem;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c0cfcc;
+}
+.profileCardMain .profileC {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #c0cfcc;
+  padding-left: 1rem;
+  gap: 10px;
+}
+.profileCardMain .profileC .profileCardImage {
+  width: 50px;
+  height: 50px;
+}
+.profileCardMain .profileC .profileInfoCard {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.profileCardMain .profileC .profileInfoCard .profileName {
+  font-size: 18px;
+  font-weight: 500;
+}
+.profileCardMain .profileC .profileInfoCard .profileEmail {
+  color: #4c5c59;
+}
+.profileCardMain .theme {
+  height: 80px;
+  width: 100%;
+  border-bottom: 2px solid #c0cfcc;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  justify-content: space-around;
+}
+.profileCardMain .theme .themeTextContainer {
+  display: flex;
+  gap: 10px;
+}
+.profileCardMain .theme .themeTextContainer .themeText {
+  font-size: 18px;
+  color: #4c5c59;
+}
+.profileCardMain .theme .cardswitch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+}
+.profileCardMain .theme .cardswitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.profileCardMain .theme .cardslider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e8f0ef;
+  border: 2px solid #c0cfcc;
+  border-radius: 5px;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.profileCardMain .theme .themeIcon {
+  width: 18px;
+}
+.profileCardMain .theme .iconContainer, .profileCardMain .theme .iconContainerBackground {
+  width: 35px;
+  height: 32px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+.profileCardMain .theme .iconContainerBackground {
+  background-color: white;
+}
+.profileCardMain .theme input:checked + .cardslider:before {
+  transform: translateX(26px);
+}
+.profileCardMain .logout {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 1rem;
+}
+.profileCardMain .logout .logoutText {
+  font-size: 18px;
+  color: #4c5c59;
+}/*# sourceMappingURL=profileCard.css.map */

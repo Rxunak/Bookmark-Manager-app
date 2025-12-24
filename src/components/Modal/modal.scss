@@ -1,0 +1,184 @@
+@import '../../colors.scss';
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .mainModal {
+        height: 700px;
+        width: 500px;
+        position: absolute;
+        top: 6%;
+        left: 35%;
+        background-color: $neutral-0;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 2rem;
+        padding-top: 0;
+
+        .formHeader {
+            height: auto;
+
+            .formTitle {
+                font-size: 32px;
+                font-weight: 550;
+                letter-spacing: 1px;
+                margin-bottom: 10px;
+            }
+
+            .formInfo {
+                color: $neutral-800;
+                font-size: 17px;
+                line-height: 140%;
+            }
+        }
+
+        .formContainer {
+            height: 500px;
+
+            .modalForm {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 8px;
+
+                .formLabelContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+
+                    .errorHandler {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: baseline;
+
+                        .formLabel {
+                            font-size: 16px;
+                            font-weight: 600;
+
+                            .articks {
+                                font-size: 20px;
+                                color: $neutral-800;
+                            }
+                        }
+
+                        .formErrorText {
+                            color: $red-600;
+                            font-size: 13px;
+                        }
+
+                    }
+
+
+                    .formInput {
+                        height: 50px;
+                        border-radius: 10px;
+                        border: 2px solid $neutral-010;
+                        font-size: 17px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+
+
+                        &:focus {
+                            outline: 3px solid $neutral-100-dark;
+                            font-size: 17px;
+                        }
+                    }
+
+                    .formErrorInput {
+                        @extend .formInput;
+                        border: 2px solid $red-600;
+                    }
+
+
+
+                    #textarea {
+                        height: 120px;
+                        resize: none;
+
+                        &:focus {
+                            padding-top: 5px;
+
+                        }
+                    }
+
+                    .wordCount {
+                        font-size: 14px;
+                        color: $neutral-800;
+                        margin-left: 430px;
+                        height: 15px;
+                        width: 67px;
+                        text-align: end;
+
+                    }
+                }
+            }
+        }
+
+        .formControls {
+            height: 80px;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            gap: 20px;
+            align-items: center;
+
+            .cancelButton {
+                height: 45px;
+                width: 100px;
+                border-radius: 10px;
+                border: 2px solid $neutral-010;
+                background: none;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .formAddBookmark {
+                height: 45px;
+                width: 160px;
+                border-radius: 10px;
+                background-color: $neutral-800-dark;
+                color: $neutral-0;
+                font-size: 15px;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+
+        .closeIconImage {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 31.5rem;
+            bottom: 42rem;
+            border: 2px solid $neutral-010;
+            height: 30px;
+            width: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+
+            .closeImage {
+                height: 23px;
+                width: 23px;
+            }
+
+        }
+
+
+    }
+
+}

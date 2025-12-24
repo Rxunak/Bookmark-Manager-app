@@ -1,0 +1,143 @@
+@import '../../colors.scss';
+
+.profileCardMain {
+    height: auto;
+    width: 290px;
+    position: absolute;
+    left: 75rem;
+    top: 4.5rem;
+    background-color: $neutral-0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $neutral-010;
+
+
+    .profileC {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid $neutral-010;
+        padding-left: 1rem;
+        gap: 10px;
+
+        .profileCardImage {
+            width: 50px;
+            height: 50px;
+        }
+
+        .profileInfoCard {
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+
+            .profileName {
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            .profileEmail {
+                color: $neutral-800;
+            }
+
+        }
+    }
+
+    .theme {
+        height: 80px;
+        width: 100%;
+        border-bottom: 2px solid $neutral-010;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        justify-content: space-around;
+
+        .themeTextContainer {
+            display: flex;
+            gap: 10px;
+
+            .themeText {
+                font-size: 18px;
+                color: $neutral-800;
+            }
+        }
+
+        .cardswitch {
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .cardswitch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .cardslider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $neutral-100;
+            border: 2px solid $neutral-010;
+            border-radius: 5px;
+            -webkit-transition: .4s;
+            transition: .4s;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+
+        .themeIcon {
+            width: 18px;
+        }
+
+        .iconContainer {
+            width: 35px;
+            height: 32px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .iconContainerBackground {
+            @extend .iconContainer;
+            background-color: white;
+        }
+
+        input:checked+.cardslider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+    }
+
+
+    .logout {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 1rem;
+
+        .logoutText {
+            font-size: 18px;
+            color: $neutral-800;
+        }
+    }
+
+
+
+}

@@ -39,3 +39,14 @@ export const getDate = (date) => {
 
   return d.getDate() + " " + dates[d.getMonth()];
 };
+
+export const getRandomPastDate = () => {
+  const now = Date.now();
+  const oneYearAgo = now - 365 * 24 * 60 * 60 * 1000;
+
+  const randomTime = Math.floor(
+    Math.random() * (now - oneYearAgo) + oneYearAgo
+  );
+
+  return new Date(randomTime).toISOString();
+};

@@ -47,16 +47,25 @@
   justify-content: center;
   gap: 6px;
   font-weight: 300;
+  cursor: pointer;
+  border: none;
 }
 
 .addIcon {
   filter: brightness(0) invert(1);
 }
 
-.profile {
+.profile, .profileBorder {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
-.profile .profileImage {
+.profile .profileImage, .profileBorder .profileImage {
   width: 45px;
+}
+
+.profileBorder {
+  border: 2px solid #065a41;
+  border-radius: 50%;
+  padding: 2px;
 }/*# sourceMappingURL=headerSearchBar.css.map */

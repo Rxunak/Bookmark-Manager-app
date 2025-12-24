@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "././styles/styles.scss";
 import SideBar from "./components/SideBar/SideBar";
-import HeaderSearchBar from "./components/headerSearchBar/headerSearchBar";
+import HeaderSearchBar from "./components/headerSearchBar/HeaderSearchBar";
 import BookmarkPage from "./components/Bookmark/BookmarkPage";
+import Modal from "./components/Modal/Modal";
+import { getRandomPastDate } from "./constants";
+import { setItem, getItem } from "./utils/localStorage";
+import ProfileCard from "./components/ProfileCard/ProfileCard";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -11,6 +15,13 @@ function App() {
   const [checkedList, setCheckedList] = useState([]);
   const [checked, setChecked] = useState(false);
   const [input, setInput] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [addBookmark, setAddBookmark] = useState(() => {
+    return getItem("Bookmark") || [];
+  });
+  const [displayProfile, setDisplayProfile] = useState(false);
+
+  let menuRef = useRef();
 
   useEffect(() => {
     const getData = () => {
@@ -24,13 +35,16 @@ function App() {
           return response.json();
         })
         .then(function (myJson) {
-          setData(myJson.bookmarks);
-          setFilteredData(myJson.bookmarks);
+          const userBookmarks = getItem("Bookmark") || [];
+
+          const allBookmarks = [...myJson.bookmarks, ...userBookmarks];
+          setData(allBookmarks);
+          setFilteredData(allBookmarks);
         });
     };
 
     getData();
-  }, []);
+  }, [addBookmark]);
 
   const updateToggle = (id) => {
     setToggle(id);
@@ -61,6 +75,52 @@ function App() {
     setInput(e);
   };
 
+  const openModalPop = (val) => {
+    setOpenModal(val);
+  };
+
+  const closeModalPop = (val) => {
+    setOpenModal(val);
+  };
+
+  const handleSubmit = (newBookmarkInformation) => {
+    const newBookmark = {
+      id: Date.now(),
+      favicon: "favicon-flexbox-zombies.png",
+      createdAt: new Date().toISOString(),
+      lastVisited: getRandomPastDate(),
+      ...newBookmarkInformation,
+    };
+
+    setAddBookmark((prev) => [...prev, newBookmark]);
+  };
+
+  useEffect(() => {
+    setItem("Bookmark", addBookmark);
+  }, [addBookmark]);
+
+  const onMouseEnter = () => {
+    setDisplayProfile(!displayProfile);
+  };
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (menuRef) {
+        if (
+          !menuRef?.current?.contains(e?.target) &&
+          !e.target.classList.contains("profileImage")
+        ) {
+          setDisplayProfile(false);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [menuRef]);
   return (
     <>
       <div className="container">
@@ -80,6 +140,9 @@ function App() {
             bkData={data}
             input={input}
             handleInput={handleInput}
+            openModalPop={openModalPop}
+            onMouseEnter={onMouseEnter}
+            displayProfile={displayProfile}
           />
         </header>
         <main className="grid gridThree">
@@ -93,6 +156,12 @@ function App() {
             input={input}
           />
         </main>
+
+        {openModal && (
+          <Modal closeModalPop={closeModalPop} handleSubmit={handleSubmit} />
+        )}
+
+        {displayProfile && <ProfileCard menuRef={menuRef} />}
       </div>
     </>
   );

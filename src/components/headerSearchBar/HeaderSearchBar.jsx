@@ -3,9 +3,13 @@ import "../headerSearchBar/headerSearchBar.scss";
 import profileImage from "../../assets/Images/image-avatar.webp";
 import addIcon from "../../assets/Images/icon-add.svg";
 
-function HeaderSearchBar({ bkData, handleInput, input }) {
-  console.log(input);
-  console.log(bkData.filter((item) => item.title === input));
+function HeaderSearchBar({
+  handleInput,
+  input,
+  openModalPop,
+  onMouseEnter,
+  displayProfile,
+}) {
   return (
     <>
       <div className="headerMainContainer">
@@ -20,15 +24,21 @@ function HeaderSearchBar({ bkData, handleInput, input }) {
         </section>
         <div className="profileContainer">
           <section className="addBookmark">
-            <button className="bookmarkButton">
+            <button
+              className="bookmarkButton"
+              onClick={() => openModalPop(true)}
+            >
               <img src={addIcon} alt="" className="addIcon" /> Add Bookmark
             </button>
           </section>
-          <section className="profile">
+          <section
+            className={`${displayProfile ? "profileBorder" : "profile"}`}
+          >
             <img
               src={profileImage}
               alt="profileImage"
               className="profileImage"
+              onClick={onMouseEnter}
             />
           </section>
         </div>
