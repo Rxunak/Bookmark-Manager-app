@@ -3,6 +3,7 @@ import "../Modal/modal.scss";
 import closeIcon from "../../assets/Images/icon-close.svg";
 
 function Modal({ closeModalPop, handleSubmit }) {
+<<<<<<< HEAD
   const initialValues = {
     title: "",
     description: "",
@@ -14,6 +15,11 @@ function Modal({ closeModalPop, handleSubmit }) {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [textareaLength, setTextareaLength] = useState(0);
+=======
+  const [input, setInput] = useState({});
+
+  let length;
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -28,6 +34,7 @@ function Modal({ closeModalPop, handleSubmit }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setFormErrors(validateForm(input));
     setIsSubmit(true);
   };
@@ -70,6 +77,24 @@ function Modal({ closeModalPop, handleSubmit }) {
       setIsSubmit(false);
     }
   }, [formErrors, isSubmit]);
+=======
+
+    handleSubmit(input);
+
+    input.title = "";
+    input.description = "";
+    input.url = "";
+    input.tags = "";
+
+    closeModalPop(false);
+  };
+
+  if (input) {
+    length = input?.description?.length;
+  }
+
+  console.log(length);
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
 
   return (
     <div className="modal">
@@ -89,6 +114,7 @@ function Modal({ closeModalPop, handleSubmit }) {
         <div className="formContainer">
           <form onSubmit={onSubmit} className="modalForm">
             <div className="formLabelContainer">
+<<<<<<< HEAD
               <div className="errorHandler">
                 <label htmlFor="" className="formLabel">
                   Title <span className="articks">*</span>
@@ -103,10 +129,22 @@ function Modal({ closeModalPop, handleSubmit }) {
                 value={input.title}
                 onChange={handleChange}
                 maxLength={30}
+=======
+              <label htmlFor="" className="formLabel">
+                Title <span className="articks">*</span>
+              </label>
+              <input
+                type="text"
+                className="formInput"
+                name="title"
+                value={input.title || ""}
+                onChange={handleChange}
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
               />
             </div>
 
             <div className="formLabelContainer">
+<<<<<<< HEAD
               <div className="errorHandler">
                 <label htmlFor="" className="formLabel">
                   Description <span className="articks">*</span>
@@ -134,10 +172,25 @@ function Modal({ closeModalPop, handleSubmit }) {
               />
               <span className="wordCount">
                 {length !== undefined ? `${textareaLength} / 280` : "0 / 280"}
+=======
+              <label htmlFor="" className="formLabel">
+                Description <span className="articks">*</span>
+              </label>
+              <textarea
+                type="text"
+                className="formInput textarea"
+                name="description"
+                value={input.description || ""}
+                onChange={handleChange}
+              />
+              <span className="wordCount">
+                {length !== undefined ? `${length} / 280` : "0 / 280"}
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
               </span>
             </div>
 
             <div className="formLabelContainer">
+<<<<<<< HEAD
               <div className="errorHandler">
                 <label htmlFor="" className="formLabel">
                   Website URL <span className="articks">*</span>
@@ -150,11 +203,22 @@ function Modal({ closeModalPop, handleSubmit }) {
                 className={formErrors.url ? "formErrorInput" : "formInput"}
                 name="url"
                 value={input.url}
+=======
+              <label htmlFor="" className="formLabel">
+                Website URL <span className="articks">*</span>
+              </label>
+              <input
+                type="text"
+                className="formInput"
+                name="url"
+                value={input.url || ""}
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
                 onChange={handleChange}
               />
             </div>
 
             <div className="formLabelContainer">
+<<<<<<< HEAD
               <div className="errorHandler">
                 <label htmlFor="" className="formLabel">
                   Tags <span className="articks">*</span>
@@ -168,6 +232,17 @@ function Modal({ closeModalPop, handleSubmit }) {
                 placeholder="e.g. Design, Learning, Tools"
                 name="tags"
                 value={input.tags}
+=======
+              <label htmlFor="" className="formLabel">
+                Tags <span className="articks">*</span>
+              </label>
+              <input
+                type="text"
+                className="formInput"
+                placeholder="e.g. Design, Learning, Tools"
+                name="tags"
+                value={input.tags || ""}
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
                 onChange={handleChange}
               />
             </div>

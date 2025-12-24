@@ -42,16 +42,25 @@
   height: 500px;
 }
 .modal .mainModal .formContainer .modalForm {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
+=======
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
 }
 .modal .mainModal .formContainer .modalForm .formLabelContainer {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
+<<<<<<< HEAD
 .modal .mainModal .formContainer .modalForm .formLabelContainer .errorHandler {
   display: flex;
   justify-content: space-between;
@@ -70,6 +79,17 @@
   font-size: 13px;
 }
 .modal .mainModal .formContainer .modalForm .formLabelContainer .formInput, .modal .mainModal .formContainer .modalForm .formLabelContainer .formErrorInput {
+=======
+.modal .mainModal .formContainer .modalForm .formLabelContainer .formLabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+.modal .mainModal .formContainer .modalForm .formLabelContainer .formLabel .articks {
+  font-size: 20px;
+  color: #4c5c59;
+}
+.modal .mainModal .formContainer .modalForm .formLabelContainer .formInput {
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
   height: 50px;
   border-radius: 10px;
   border: 2px solid #c0cfcc;
@@ -77,6 +97,7 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+<<<<<<< HEAD
 .modal .mainModal .formContainer .modalForm .formLabelContainer .formInput:focus, .modal .mainModal .formContainer .modalForm .formLabelContainer .formErrorInput:focus {
   outline: 3px solid #61b999;
   font-size: 17px;
@@ -89,6 +110,17 @@
   resize: none;
 }
 .modal .mainModal .formContainer .modalForm .formLabelContainer #textarea:focus {
+=======
+.modal .mainModal .formContainer .modalForm .formLabelContainer .formInput:focus {
+  outline: 3px solid #61b999;
+  font-size: 17px;
+}
+.modal .mainModal .formContainer .modalForm .formLabelContainer .textarea {
+  height: 120px;
+  resize: none;
+}
+.modal .mainModal .formContainer .modalForm .formLabelContainer .textarea:focus {
+>>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
   padding-top: 5px;
 }
 .modal .mainModal .formContainer .modalForm .formLabelContainer .wordCount {
