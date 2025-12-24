@@ -47,25 +47,16 @@
             height: 500px;
 
             .modalForm {
-<<<<<<< HEAD
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 gap: 8px;
-=======
-                height: 300px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                gap: 20px;
->>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
 
                 .formLabelContainer {
                     display: flex;
                     flex-direction: column;
                     gap: 6px;
 
-<<<<<<< HEAD
                     .errorHandler {
                         display: flex;
                         justify-content: space-between;
@@ -89,18 +80,6 @@
                     }
 
 
-=======
-                    .formLabel {
-                        font-size: 16px;
-                        font-weight: 600;
-
-                        .articks {
-                            font-size: 20px;
-                            color: $neutral-800;
-                        }
-                    }
-
->>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
                     .formInput {
                         height: 50px;
                         border-radius: 10px;
@@ -116,7 +95,6 @@
                         }
                     }
 
-<<<<<<< HEAD
                     .formErrorInput {
                         @extend .formInput;
                         border: 2px solid $red-600;
@@ -125,11 +103,6 @@
 
 
                     #textarea {
-=======
-
-
-                    .textarea {
->>>>>>> 18646c44e29c8bacc6284c7e48804b41824dcd2b
                         height: 120px;
                         resize: none;
 

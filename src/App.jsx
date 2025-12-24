@@ -20,8 +20,11 @@ function App() {
     return getItem("Bookmark") || [];
   });
   const [displayProfile, setDisplayProfile] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState(false);
+  const [currentCardId, setCurrentCardId] = useState("");
 
   let menuRef = useRef();
+  let optionRef = useRef();
 
   useEffect(() => {
     const getData = () => {
@@ -103,6 +106,16 @@ function App() {
     setDisplayProfile(!displayProfile);
   };
 
+  const onMouseEnterOption = (id) => {
+    if (currentCardId === id) {
+      setDisplayOptions(false);
+      setCurrentCardId(null);
+    } else {
+      setCurrentCardId(id);
+      setDisplayOptions(true);
+    }
+  };
+
   useEffect(() => {
     const handler = (e) => {
       if (menuRef) {
@@ -121,6 +134,29 @@ function App() {
       document.removeEventListener("mousedown", handler);
     };
   }, [menuRef]);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (optionRef) {
+        if (
+          !optionRef?.current?.contains(e?.target) &&
+          !e.target.closest(".articleBookmark")
+        ) {
+          setDisplayOptions(false);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [optionRef]);
+
+  useEffect(() => {
+    console.log(displayOptions);
+  });
   return (
     <>
       <div className="container">
@@ -148,12 +184,16 @@ function App() {
         <main className="grid gridThree">
           <BookmarkPage
             setToggleData={setToggleData}
+            onMouseEnterOption={onMouseEnterOption}
             toggleButton={toggle}
             bkData={data}
             filterData={filteredData}
             checkedList={checkedList}
             isChecked={checked}
             input={input}
+            displayOptions={displayOptions}
+            currentCardId={currentCardId}
+            optionRef={optionRef}
           />
         </main>
 

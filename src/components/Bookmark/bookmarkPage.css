@@ -30,6 +30,9 @@
 .bookmarkHeader .tag-item {
   color: #065a41;
 }
+.bookmarkHeader .test {
+  z-index: 1;
+}
 .bookmarkHeader .sortByButton {
   display: flex;
   justify-content: center;
@@ -70,6 +73,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  position: relative;
 }
 
 .articleHeader {

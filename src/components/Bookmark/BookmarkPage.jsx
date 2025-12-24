@@ -7,6 +7,7 @@ import clock from "../../assets/Images/icon-last-visited.svg";
 import calender from "../../assets/Images/icon-created.svg";
 import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
+import OptionsPopup from "../optionsPopup/OptionsPopup";
 
 function BookmarkPage({
   toggleButton,
@@ -14,6 +15,10 @@ function BookmarkPage({
   filterData,
   checkedList,
   input,
+  onMouseEnterOption,
+  displayOptions,
+  currentCardId,
+  optionRef,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
   const showSearch = input.length > 0;
@@ -93,10 +98,21 @@ function BookmarkPage({
                   <span className="articleHeaderTextSecondary">{item.url}</span>
                 </span>
 
-                <button className="articleBookmark">
+                <button
+                  className="articleBookmark"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    console.log("Button clicked:", item.id);
+                    onMouseEnterOption(item.id);
+                  }}
+                >
                   <img src={menuBookmark} alt="" />
                 </button>
+                {currentCardId === item.id && displayOptions && (
+                  <OptionsPopup optionRef={optionRef} />
+                )}
               </div>
+
               <div className="articleBody">
                 <div className="articleTextBodyScroll">
                   <p className="articleBodyText">{item.description}</p>
@@ -133,6 +149,9 @@ function BookmarkPage({
                 )}
               </div>
             </div>
+            {/* <div className="test">
+              {currentCardId === item.id && displayOptions && <OptionsPopup />}
+            </div> */}
           </div>
         ))}
       </div>
