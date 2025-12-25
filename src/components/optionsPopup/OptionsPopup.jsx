@@ -4,11 +4,12 @@ import copyURL from "../../assets/Images/icon-copy.svg";
 import unpin from "../../assets/Images/icon-unpin.svg";
 import edit from "../../assets/Images/icon-edit.svg";
 import archive from "../../assets/Images/icon-archive.svg";
+import unarchive from "../../assets/Images/icon-unarchive.svg";
 import "../optionsPopup/optionPopup.scss";
 
-function OptionsPopup() {
+function OptionsPopup({ isArchived }) {
   return (
-    <div className="optionPopupMainContainer">
+    <div className={isArchived ? "opActive" : "optionPopupMainContainer"}>
       <span className="optionContents">
         <img src={visit} alt="" />
         <p className="optionContentsText">Visit</p>
@@ -17,18 +18,39 @@ function OptionsPopup() {
         <img src={copyURL} alt="" />
         <p className="optionContentsText">Copy URL</p>
       </span>
-      <span className="optionContents">
-        <img src={unpin} alt="" />
-        <p className="optionContentsText">Unpin</p>
-      </span>
-      <span className="optionContents">
-        <img src={edit} alt="" />
-        <p className="optionContentsText">Edit</p>
-      </span>
-      <span className="optionContents">
-        <img src={archive} alt="" />
-        <p className="optionContentsText">Archive</p>
-      </span>
+
+      {isArchived ? (
+        <span className="optionContents">
+          <img src={unarchive} alt="" />
+          <p className="optionContentsText">Unarchive</p>
+        </span>
+      ) : (
+        <span className="optionContents">
+          <img src={unpin} alt="" />
+          <p className="optionContentsText">Unpin</p>
+        </span>
+      )}
+
+      {isArchived ? (
+        <span className="optionContents">
+          <img src={edit} alt="" />
+          <p className="optionContentsText">Delete Permanently</p>
+        </span>
+      ) : (
+        <span className="optionContents">
+          <img src={edit} alt="" />
+          <p className="optionContentsText">Edit</p>
+        </span>
+      )}
+
+      {isArchived ? (
+        ""
+      ) : (
+        <span className="optionContents">
+          <img src={archive} alt="" />
+          <p className="optionContentsText">Archive</p>
+        </span>
+      )}
     </div>
   );
 }

@@ -1,0 +1,48 @@
+.sortMainContainer {
+  background-color: white;
+  position: absolute;
+  top: 9.5rem;
+  left: 78.6rem;
+  height: 180px;
+  width: 220px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 2px solid #c0cfcc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.sortMainContainer .sortInfoContainer {
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1rem;
+}
+.sortMainContainer .sortInfoContainer .sortInfoText {
+  font-size: 17px;
+  color: #4c5c59;
+  cursor: pointer;
+}
+.sortMainContainer .sortInfo {
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sortMainContainer .sortResetButton {
+  height: 30px;
+}
+.sortMainContainer .sortResetButton .sortInfoContainerButton, .sortMainContainer .sortResetButton .sortInfoContainerButtonActive {
+  width: 50px;
+  height: 100%;
+  background-color: #e8f0ef;
+  color: #c0cfcc;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10rem;
+  cursor: pointer;
+}
+.sortMainContainer .sortResetButton .sortInfoContainerButtonActive {
+  background-color: #001f1f;
+  color: white;
+}/*# sourceMappingURL=sortPopup.css.map */

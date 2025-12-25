@@ -7,6 +7,7 @@ import Modal from "./components/Modal/Modal";
 import { getRandomPastDate } from "./constants";
 import { setItem, getItem } from "./utils/localStorage";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
+import SortPopup from "./components/sortPopup/SortPopup";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -21,6 +22,8 @@ function App() {
   });
   const [displayProfile, setDisplayProfile] = useState(false);
   const [openCards, setOpenCardId] = useState([]);
+  const [displaySort, setDisplaySort] = useState(false);
+  const [sortCount, setSortCount] = useState(0);
 
   let menuRef = useRef();
 
@@ -114,6 +117,11 @@ function App() {
     }
   };
 
+  const onMouseEnterSort = () => {
+    console.log(displaySort);
+    setDisplaySort(!displaySort);
+  };
+
   useEffect(() => {
     const handler = (e) => {
       if (menuRef) {
@@ -132,6 +140,14 @@ function App() {
       document.removeEventListener("mousedown", handler);
     };
   }, [menuRef]);
+
+  const updateSortCount = (id) => {
+    setSortCount(id);
+  };
+
+  const handleSortReset = () => {
+    setSortCount(0);
+  };
 
   return (
     <>
@@ -161,6 +177,7 @@ function App() {
           <BookmarkPage
             setToggleData={setToggleData}
             onMouseEnterOption={onMouseEnterOption}
+            onMouseEnterSort={onMouseEnterSort}
             toggleButton={toggle}
             bkData={data}
             filterData={filteredData}
@@ -168,6 +185,7 @@ function App() {
             isChecked={checked}
             input={input}
             openCardId={openCards}
+            sortCount={sortCount}
           />
         </main>
 
@@ -176,6 +194,14 @@ function App() {
         )}
 
         {displayProfile && <ProfileCard menuRef={menuRef} />}
+
+        {displaySort && (
+          <SortPopup
+            updateSortCount={updateSortCount}
+            handleSortReset={handleSortReset}
+            sortCount={sortCount}
+          />
+        )}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-.optionPopupMainContainer {
+.optionPopupMainContainer, .opActive {
   position: absolute;
   top: 5rem;
   left: 7rem;
@@ -15,11 +15,15 @@
   z-index: 1;
   cursor: pointer;
 }
-.optionPopupMainContainer .optionContents {
+.optionPopupMainContainer .optionContents, .opActive .optionContents {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.optionPopupMainContainer .optionContents .optionContentsText {
+.optionPopupMainContainer .optionContents .optionContentsText, .opActive .optionContents .optionContentsText {
   color: #4c5c59;
+}
+
+.opActive {
+  height: 150px;
 }/*# sourceMappingURL=optionPopup.css.map */

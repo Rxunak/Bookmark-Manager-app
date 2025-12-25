@@ -1,0 +1,65 @@
+@import "../../colors.scss";
+
+.sortMainContainer {
+    background-color: white;
+    position: absolute;
+    top: 9.5rem;
+    left: 78.6rem;
+    height: 180px;
+    width: 220px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 2px solid #c0cfcc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .sortInfoContainer {
+        padding-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 1rem;
+
+
+        .sortInfoText {
+            font-size: 17px;
+            color: $neutral-800;
+            cursor: pointer;
+        }
+
+
+    }
+
+    .sortInfo {
+        height: 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .sortResetButton {
+        height: 30px;
+
+        .sortInfoContainerButton {
+            width: 50px;
+            height: 100%;
+            background-color: $neutral-100;
+            color: $neutral-010;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10rem;
+            cursor: pointer;
+        }
+
+        .sortInfoContainerButtonActive {
+            @extend .sortInfoContainerButton;
+            background-color: $neutral-800-dark;
+            color: white;
+        }
+
+
+
+    }
+
+
+}

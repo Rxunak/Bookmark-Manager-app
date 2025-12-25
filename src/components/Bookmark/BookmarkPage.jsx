@@ -16,8 +16,10 @@ function BookmarkPage({
   checkedList,
   input,
   onMouseEnterOption,
+  onMouseEnterSort,
   openCardId,
   optionRef,
+  sortCount,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
   const showSearch = input.length > 0;
@@ -28,7 +30,7 @@ function BookmarkPage({
   const [formFilteredData, setFormFilteredData] = useState([]);
 
   useEffect(() => {
-    let filteredData = bkData;
+    let filteredData = [...bkData];
 
     if (input.length > 0) {
       filteredData = filteredData.filter((item) => item.title.includes(input));
@@ -44,8 +46,25 @@ function BookmarkPage({
       );
     }
 
+    if (sortCount === 1) {
+      filteredData.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    }
+
+    if (sortCount === 2) {
+      filteredData.sort((a, b) => {
+        if (!a.lastVisited && !b.lastVisited) return 0;
+        if (!a.lastVisited) return 1;
+        if (!b.lastVisited) return -1;
+        return b.lastVisited.localeCompare(a.lastVisited);
+      });
+    }
+
+    if (sortCount === 3) {
+      filteredData.sort((a, b) => b.visitCount - a.visitCount);
+    }
+
     setFormFilteredData(filteredData);
-  }, [toggleButton, bkData, filterData, checkedList, input]);
+  }, [toggleButton, bkData, filterData, checkedList, input, sortCount]);
 
   return (
     <div className="bookmarkMainContainer">
@@ -76,7 +95,7 @@ function BookmarkPage({
           </span>
         </>
 
-        <button className="sortByButton">
+        <button className="sortByButton" onClick={onMouseEnterSort}>
           <img src={sortIcon} alt="sortIcon" className="sortIcon" />
           <span className="sortText">Sort By</span>
         </button>
@@ -111,7 +130,10 @@ function BookmarkPage({
                   <img src={menuBookmark} alt="" />
                 </button>
                 {openCardId.includes(item.id) && (
-                  <OptionsPopup optionRef={optionRef} />
+                  <OptionsPopup
+                    optionRef={optionRef}
+                    isArchived={item.isArchived}
+                  />
                 )}
               </div>
 
