@@ -7,7 +7,7 @@ import archive from "../../assets/Images/icon-archive.svg";
 import unarchive from "../../assets/Images/icon-unarchive.svg";
 import "../optionsPopup/optionPopup.scss";
 
-function OptionsPopup({ isArchived }) {
+function OptionsPopup({ isArchived, openModalPop, itemId }) {
   return (
     <div className={isArchived ? "opActive" : "optionPopupMainContainer"}>
       <span className="optionContents">
@@ -39,7 +39,12 @@ function OptionsPopup({ isArchived }) {
       ) : (
         <span className="optionContents">
           <img src={edit} alt="" />
-          <p className="optionContentsText">Edit</p>
+          <p
+            className="optionContentsText"
+            onClick={() => openModalPop(true, true, itemId)}
+          >
+            Edit
+          </p>
         </span>
       )}
 

@@ -20,6 +20,7 @@ function BookmarkPage({
   openCardId,
   optionRef,
   sortCount,
+  openModalPop,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
   const showSearch = input.length > 0;
@@ -133,6 +134,8 @@ function BookmarkPage({
                   <OptionsPopup
                     optionRef={optionRef}
                     isArchived={item.isArchived}
+                    openModalPop={openModalPop}
+                    itemId={item.id}
                   />
                 )}
               </div>

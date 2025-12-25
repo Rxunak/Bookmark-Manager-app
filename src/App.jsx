@@ -24,6 +24,7 @@ function App() {
   const [openCards, setOpenCardId] = useState([]);
   const [displaySort, setDisplaySort] = useState(false);
   const [sortCount, setSortCount] = useState(0);
+  const [isEdit, setIsEdit] = useState(false);
 
   let menuRef = useRef();
 
@@ -79,8 +80,10 @@ function App() {
     setInput(e);
   };
 
-  const openModalPop = (val) => {
+  const openModalPop = (val, isEdit, id) => {
     setOpenModal(val);
+    setIsEdit(isEdit);
+    onMouseEnterOption(id);
   };
 
   const closeModalPop = (val) => {
@@ -178,6 +181,7 @@ function App() {
             setToggleData={setToggleData}
             onMouseEnterOption={onMouseEnterOption}
             onMouseEnterSort={onMouseEnterSort}
+            openModalPop={openModalPop}
             toggleButton={toggle}
             bkData={data}
             filterData={filteredData}
@@ -190,7 +194,11 @@ function App() {
         </main>
 
         {openModal && (
-          <Modal closeModalPop={closeModalPop} handleSubmit={handleSubmit} />
+          <Modal
+            closeModalPop={closeModalPop}
+            handleSubmit={handleSubmit}
+            isEdit={isEdit}
+          />
         )}
 
         {displayProfile && <ProfileCard menuRef={menuRef} />}

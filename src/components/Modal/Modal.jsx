@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../Modal/modal.scss";
 import closeIcon from "../../assets/Images/icon-close.svg";
 
-function Modal({ closeModalPop, handleSubmit }) {
+function Modal({ closeModalPop, handleSubmit, isEdit }) {
+  console.log(isEdit);
   const initialValues = {
     title: "",
     description: "",
@@ -75,10 +76,13 @@ function Modal({ closeModalPop, handleSubmit }) {
     <div className="modal">
       <div className="mainModal">
         <div className="formHeader">
-          <h1 className="formTitle">Add a bookmark</h1>
+          <h1 className="formTitle">
+            {isEdit ? "Edit bookmark" : "Add bookmark"}
+          </h1>
           <span className="formInfo">
-            Save a link with details to keep your collection organised. We
-            extract the favicon automatically from the URL.{" "}
+            {isEdit
+              ? "Update your saved link details - change the title, description, URL or tags anytime"
+              : "Save a link with details to keep your collection organised. We extract the favicon automatically from the URL"}
           </span>
         </div>
 
@@ -180,7 +184,7 @@ function Modal({ closeModalPop, handleSubmit }) {
                 Cancel
               </button>
               <button type="submit" className="formAddBookmark">
-                Add Bookmark
+                {isEdit ? "Save Bookmark" : "Add Bookmark"}
               </button>
             </div>
           </form>

@@ -26,7 +26,7 @@ function HeaderSearchBar({
           <section className="addBookmark">
             <button
               className="bookmarkButton"
-              onClick={() => openModalPop(true)}
+              onClick={() => openModalPop(true, false)}
             >
               <img src={addIcon} alt="" className="addIcon" /> Add Bookmark
             </button>
