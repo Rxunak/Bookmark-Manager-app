@@ -20,11 +20,9 @@ function App() {
     return getItem("Bookmark") || [];
   });
   const [displayProfile, setDisplayProfile] = useState(false);
-  const [displayOptions, setDisplayOptions] = useState(false);
-  const [currentCardId, setCurrentCardId] = useState("");
+  const [openCards, setOpenCardId] = useState([]);
 
   let menuRef = useRef();
-  let optionRef = useRef();
 
   useEffect(() => {
     const getData = () => {
@@ -107,12 +105,12 @@ function App() {
   };
 
   const onMouseEnterOption = (id) => {
-    if (currentCardId === id) {
-      setDisplayOptions(false);
-      setCurrentCardId(null);
+    if (openCards.includes(id)) {
+      setOpenCardId((prevOpenCards) =>
+        prevOpenCards.filter((cardId) => cardId !== id)
+      );
     } else {
-      setCurrentCardId(id);
-      setDisplayOptions(true);
+      setOpenCardId((prevOpenCards) => [...prevOpenCards, id]);
     }
   };
 
@@ -135,28 +133,6 @@ function App() {
     };
   }, [menuRef]);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (optionRef) {
-        if (
-          !optionRef?.current?.contains(e?.target) &&
-          !e.target.closest(".articleBookmark")
-        ) {
-          setDisplayOptions(false);
-        }
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  }, [optionRef]);
-
-  useEffect(() => {
-    console.log(displayOptions);
-  });
   return (
     <>
       <div className="container">
@@ -191,9 +167,7 @@ function App() {
             checkedList={checkedList}
             isChecked={checked}
             input={input}
-            displayOptions={displayOptions}
-            currentCardId={currentCardId}
-            optionRef={optionRef}
+            openCardId={openCards}
           />
         </main>
 

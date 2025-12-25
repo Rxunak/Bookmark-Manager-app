@@ -152,6 +152,11 @@
         cursor: pointer;
     }
 
+    .articleBookmarkActive {
+        @extend .articleBookmark;
+        outline: 2px solid $neutral-800;
+    }
+
 }
 
 .articleBody {

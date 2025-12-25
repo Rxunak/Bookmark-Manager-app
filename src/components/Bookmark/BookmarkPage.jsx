@@ -16,8 +16,7 @@ function BookmarkPage({
   checkedList,
   input,
   onMouseEnterOption,
-  displayOptions,
-  currentCardId,
+  openCardId,
   optionRef,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
@@ -85,7 +84,7 @@ function BookmarkPage({
 
       <div className="articles">
         {formFilteredData.map((item, index) => (
-          <div key={index} className={`gridArticles articleCard${index + 1}`}>
+          <div key={item.id} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">
               <div className="articleHeader">
                 <img
@@ -99,16 +98,19 @@ function BookmarkPage({
                 </span>
 
                 <button
-                  className="articleBookmark"
+                  className={
+                    openCardId.includes(item.id)
+                      ? "articleBookmarkActive"
+                      : "articleBookmark"
+                  }
                   onClick={(e) => {
                     e.stopPropagation();
-                    console.log("Button clicked:", item.id);
                     onMouseEnterOption(item.id);
                   }}
                 >
                   <img src={menuBookmark} alt="" />
                 </button>
-                {currentCardId === item.id && displayOptions && (
+                {openCardId.includes(item.id) && (
                   <OptionsPopup optionRef={optionRef} />
                 )}
               </div>
@@ -149,9 +151,6 @@ function BookmarkPage({
                 )}
               </div>
             </div>
-            {/* <div className="test">
-              {currentCardId === item.id && displayOptions && <OptionsPopup />}
-            </div> */}
           </div>
         ))}
       </div>

@@ -6,9 +6,9 @@ import edit from "../../assets/Images/icon-edit.svg";
 import archive from "../../assets/Images/icon-archive.svg";
 import "../optionsPopup/optionPopup.scss";
 
-function OptionsPopup({ optionRef }) {
+function OptionsPopup() {
   return (
-    <div className="optionPopupMainContainer" ref={optionRef}>
+    <div className="optionPopupMainContainer">
       <span className="optionContents">
         <img src={visit} alt="" />
         <p className="optionContentsText">Visit</p>
