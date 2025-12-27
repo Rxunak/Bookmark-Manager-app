@@ -8,6 +8,7 @@ import { getRandomPastDate } from "./constants";
 import { setItem, getItem } from "./utils/localStorage";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import SortPopup from "./components/sortPopup/SortPopup";
+import PopupModals from "./components/otherPopupModals/PopupModals";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -25,6 +26,10 @@ function App() {
   const [displaySort, setDisplaySort] = useState(false);
   const [sortCount, setSortCount] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
+  const [isEditIndex, setIsEditIndex] = useState(0);
+  const [showActionModal, setShowActionModal] = useState(false);
+  const [headerText, setHeaderText] = useState("");
+  const [actionItemId, setActionItemId] = useState("");
 
   let menuRef = useRef();
 
@@ -84,6 +89,7 @@ function App() {
     setOpenModal(val);
     setIsEdit(isEdit);
     onMouseEnterOption(id);
+    setIsEditIndex(id);
   };
 
   const closeModalPop = (val) => {
@@ -100,6 +106,26 @@ function App() {
     };
 
     setAddBookmark((prev) => [...prev, newBookmark]);
+  };
+
+  const updateExistingData = (id, input) => {
+    const oldData = data.find((bookmark) => bookmark.id === id);
+    const newData = { ...oldData, ...input };
+
+    const newArray = data.map((bookmark) =>
+      bookmark.id === id ? newData : bookmark
+    );
+    setData(newArray);
+
+    const userBookmarks = getItem("Bookmark") || [];
+    const old = userBookmarks.find((bk) => bk?.id === id);
+    const newD = { ...old, ...input };
+
+    const newArrayLocalstorage = userBookmarks.map((bookmark) =>
+      bookmark.id === id ? newD : bookmark
+    );
+
+    setItem("Bookmark", newArrayLocalstorage);
   };
 
   useEffect(() => {
@@ -121,7 +147,6 @@ function App() {
   };
 
   const onMouseEnterSort = () => {
-    console.log(displaySort);
     setDisplaySort(!displaySort);
   };
 
@@ -150,6 +175,37 @@ function App() {
 
   const handleSortReset = () => {
     setSortCount(0);
+  };
+
+  const openActionModal = (value, headerInfo, itemId) => {
+    setShowActionModal(value);
+    setHeaderText(headerInfo);
+    setActionItemId(itemId);
+  };
+
+  const setAction = (buttonText) => {
+    const oldInput = data.find((input) => input.id === actionItemId);
+
+    let newInput;
+
+    if (buttonText === "Archive" || buttonText === "Unarchive") {
+      newInput = { ...oldInput, isArchived: !oldInput.isArchived };
+    }
+
+    if (buttonText === "Pin" || buttonText === "Unpin") {
+      newInput = { ...oldInput, pinned: !oldInput.pinned };
+    }
+
+    if (buttonText === "Delete") {
+      newInput = data.filter((item) => item.id !== actionItemId);
+    }
+
+    const newInputArray = data.map((item) =>
+      item.id === actionItemId ? newInput : item
+    );
+
+    setData(newInputArray);
+    openActionModal(false);
   };
 
   return (
@@ -190,6 +246,7 @@ function App() {
             input={input}
             openCardId={openCards}
             sortCount={sortCount}
+            openActionModal={openActionModal}
           />
         </main>
 
@@ -198,6 +255,9 @@ function App() {
             closeModalPop={closeModalPop}
             handleSubmit={handleSubmit}
             isEdit={isEdit}
+            filterData={data}
+            isEditIndex={isEditIndex}
+            updateExistingData={updateExistingData}
           />
         )}
 
@@ -208,6 +268,14 @@ function App() {
             updateSortCount={updateSortCount}
             handleSortReset={handleSortReset}
             sortCount={sortCount}
+          />
+        )}
+
+        {showActionModal && (
+          <PopupModals
+            openActionModal={openActionModal}
+            header={headerText}
+            setAction={setAction}
           />
         )}
       </div>

@@ -21,6 +21,7 @@ function BookmarkPage({
   optionRef,
   sortCount,
   openModalPop,
+  openActionModal,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
   const showSearch = input.length > 0;
@@ -34,7 +35,13 @@ function BookmarkPage({
     let filteredData = [...bkData];
 
     if (input.length > 0) {
-      filteredData = filteredData.filter((item) => item.title.includes(input));
+      filteredData = filteredData.filter((item) =>
+        item?.title?.includes(input)
+      );
+    }
+
+    if (toggleButton === 1) {
+      filteredData = filteredData.filter((item) => item.isArchived === false);
     }
 
     if (toggleButton === 2) {
@@ -43,7 +50,7 @@ function BookmarkPage({
 
     if (checkedList.length > 0) {
       filteredData = filteredData.filter((item) =>
-        item.tags.some((r) => checkedList.includes(r))
+        item?.tags?.some((r) => checkedList.includes(r))
       );
     }
 
@@ -104,7 +111,7 @@ function BookmarkPage({
 
       <div className="articles">
         {formFilteredData.map((item, index) => (
-          <div key={item.id} className={`gridArticles articleCard${index + 1}`}>
+          <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">
               <div className="articleHeader">
                 <img
@@ -136,7 +143,13 @@ function BookmarkPage({
                     isArchived={item.isArchived}
                     openModalPop={openModalPop}
                     itemId={item.id}
+                    openActionModal={openActionModal}
+                    isPinned={item.pinned}
                   />
+                )}
+
+                {item.isArchived === true && (
+                  <div className="isArchived">Archived</div>
                 )}
               </div>
 
@@ -145,7 +158,7 @@ function BookmarkPage({
                   <p className="articleBodyText">{item.description}</p>
                 </div>
                 <div className="articleBodyTags">
-                  {item.tags.map((tag, index) => (
+                  {item?.tags?.map((tag, index) => (
                     <span className="tagOne" key={index}>
                       {tag}
                     </span>
@@ -153,6 +166,7 @@ function BookmarkPage({
                 </div>
               </div>
               <div className="articleFooter">
+                <div></div>
                 <span className="footerIconContainer special">
                   <img src={eye} alt="" className="footerIcon" />
                   <span className="footerText">{item.visitCount}</span>

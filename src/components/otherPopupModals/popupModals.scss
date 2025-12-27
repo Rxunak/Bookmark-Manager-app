@@ -1,0 +1,93 @@
+@import '../../colors.scss';
+
+.modalMainContainer {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .modalMainPage {
+        height: auto;
+        width: 450px;
+        position: relative;
+        top: 30%;
+        left: 33%;
+        background-color: $neutral-0;
+        border-radius: 15px;
+        padding: 1rem;
+        display: flex;
+        gap: 28px;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        .actionModalInfo {
+            height: auto;
+
+            .actionModalInfoHeader {
+                font-size: 1.8rem;
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            .actionModalInfoText {
+                font-size: 15px;
+                color: $neutral-800;
+            }
+        }
+
+        .actionModalButton {
+            display: flex;
+            gap: 15px;
+            height: auto;
+            justify-content: end;
+
+            .actionCancelButton {
+                height: 45px;
+                width: 100px;
+                border-radius: 7px;
+                border: 2px solid $neutral-010;
+                background: none;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .actionButton {
+                height: 45px;
+                width: auto;
+                border-radius: 7px;
+                background-color: $neutral-800-dark;
+                color: $neutral-0;
+                font-size: 15px;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+                padding-left: 1rem;
+                padding-right: 1rem
+            }
+
+            .actionButtonDelete {
+                @extend .actionButton;
+                background-color: $red-800;
+            }
+        }
+
+        .closeIconImageAction {
+            position: absolute;
+            left: 28rem;
+            cursor: pointer;
+
+            .closeImageAction {
+                height: 23px;
+                width: 23px;
+            }
+        }
+    }
+}

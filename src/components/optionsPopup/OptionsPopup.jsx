@@ -7,7 +7,13 @@ import archive from "../../assets/Images/icon-archive.svg";
 import unarchive from "../../assets/Images/icon-unarchive.svg";
 import "../optionsPopup/optionPopup.scss";
 
-function OptionsPopup({ isArchived, openModalPop, itemId }) {
+function OptionsPopup({
+  isArchived,
+  openModalPop,
+  itemId,
+  openActionModal,
+  isPinned,
+}) {
   return (
     <div className={isArchived ? "opActive" : "optionPopupMainContainer"}>
       <span className="optionContents">
@@ -22,19 +28,40 @@ function OptionsPopup({ isArchived, openModalPop, itemId }) {
       {isArchived ? (
         <span className="optionContents">
           <img src={unarchive} alt="" />
-          <p className="optionContentsText">Unarchive</p>
+          <p
+            className="optionContentsText"
+            onClick={() => openActionModal(true, "Unarchive bookmark", itemId)}
+          >
+            Unarchive
+          </p>
         </span>
       ) : (
         <span className="optionContents">
           <img src={unpin} alt="" />
-          <p className="optionContentsText">Unpin</p>
+          <p
+            className="optionContentsText"
+            onClick={() =>
+              openActionModal(
+                true,
+                `${isPinned ? "Unpin bookmark" : "Pin bookmark"}`,
+                itemId
+              )
+            }
+          >
+            {isPinned ? "Unpin" : "Pin"}
+          </p>
         </span>
       )}
 
       {isArchived ? (
         <span className="optionContents">
           <img src={edit} alt="" />
-          <p className="optionContentsText">Delete Permanently</p>
+          <p
+            className="optionContentsText"
+            onClick={() => openActionModal(true, "Delete bookmark", itemId)}
+          >
+            Delete Permanently
+          </p>
         </span>
       ) : (
         <span className="optionContents">
@@ -53,7 +80,12 @@ function OptionsPopup({ isArchived, openModalPop, itemId }) {
       ) : (
         <span className="optionContents">
           <img src={archive} alt="" />
-          <p className="optionContentsText">Archive</p>
+          <p
+            className="optionContentsText"
+            onClick={() => openActionModal(true, "Archive bookmark", itemId)}
+          >
+            Archive
+          </p>
         </span>
       )}
     </div>

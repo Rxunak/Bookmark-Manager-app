@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../Modal/modal.scss";
 import closeIcon from "../../assets/Images/icon-close.svg";
 
-function Modal({ closeModalPop, handleSubmit, isEdit }) {
-  console.log(isEdit);
+function Modal({
+  closeModalPop,
+  handleSubmit,
+  isEdit,
+  filterData,
+  isEditIndex,
+  updateExistingData,
+}) {
   const initialValues = {
     title: "",
     description: "",
@@ -11,10 +17,20 @@ function Modal({ closeModalPop, handleSubmit, isEdit }) {
     tags: [],
     tag: "",
   };
+
   const [input, setInput] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [textareaLength, setTextareaLength] = useState(0);
+
+  filterData.filter((item) => {
+    if (item.id === isEditIndex) {
+      initialValues.title = item.title;
+      initialValues.description = item.description;
+      initialValues.url = item.url;
+      initialValues.tags = item.tags;
+    }
+  });
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -64,13 +80,18 @@ function Modal({ closeModalPop, handleSubmit, isEdit }) {
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+    if (Object.keys(formErrors).length === 0 && isSubmit && isEdit) {
+      updateExistingData(isEditIndex, input);
+      setInput(initialValues);
+      closeModalPop(false);
+      setIsSubmit(false);
+    } else if (Object.keys(formErrors).length === 0 && isSubmit && !isEdit) {
       handleSubmit(input);
       setInput(initialValues);
       closeModalPop(false);
       setIsSubmit(false);
     }
-  }, [formErrors, isSubmit]);
+  }, [formErrors, isSubmit, isEditIndex, input]);
 
   return (
     <div className="modal">
@@ -183,9 +204,22 @@ function Modal({ closeModalPop, handleSubmit, isEdit }) {
               >
                 Cancel
               </button>
-              <button type="submit" className="formAddBookmark">
-                {isEdit ? "Save Bookmark" : "Add Bookmark"}
-              </button>
+
+              {isEdit ? (
+                <>
+                  {" "}
+                  <button className="formAddBookmark" type="submit">
+                    {"Save Bookmark"}
+                  </button>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <button type="submit" className="formAddBookmark">
+                    {"Add Bookmark"}
+                  </button>
+                </>
+              )}
             </div>
           </form>
         </div>
