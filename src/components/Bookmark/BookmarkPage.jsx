@@ -69,6 +69,7 @@ function BookmarkPage({
 
     if (sortCount === 3) {
       filteredData.sort((a, b) => b.visitCount - a.visitCount);
+      console.log("hello");
     }
 
     setFormFilteredData(filteredData);
