@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../Bookmark/bookmarkPage.scss";
 import sortIcon from "../../assets/Images/icon-sort.svg";
 import menuBookmark from "../../assets/Images/icon-menu-bookmark.svg";
@@ -8,6 +8,7 @@ import calender from "../../assets/Images/icon-created.svg";
 import pin from "../../assets/Images/icon-pin.svg";
 import { getDate } from "../../constants";
 import OptionsPopup from "../optionsPopup/OptionsPopup";
+import SortPopup from "../sortPopup/SortPopup";
 
 function BookmarkPage({
   toggleButton,
@@ -22,6 +23,10 @@ function BookmarkPage({
   sortCount,
   openModalPop,
   openActionModal,
+  displaySort,
+  updateSortCount,
+  handleSortReset,
+  sortRef,
 }) {
   const showTagFilter = checkedList.length > 0 && input.length === 0;
   const showSearch = input.length > 0;
@@ -30,6 +35,30 @@ function BookmarkPage({
   const titleText = toggleButton == 1 ? "All Bookmarks" : "Archived Bookmarks";
 
   const [formFilteredData, setFormFilteredData] = useState([]);
+
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef();
+
+  useEffect(() => {
+    const listenToScroll = () => {
+      const container = containerRef.current;
+      if (container) {
+        const scrollPosition = container.scrollTop;
+
+        if (scrollPosition > 20) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    const container = containerRef.current;
+    if (container && displaySort) {
+      container.addEventListener("scroll", listenToScroll);
+      return () => container.removeEventListener("scroll", listenToScroll);
+    }
+  }, [displaySort]);
 
   useEffect(() => {
     let filteredData = [...bkData];
@@ -76,7 +105,7 @@ function BookmarkPage({
   }, [toggleButton, bkData, filterData, checkedList, input, sortCount]);
 
   return (
-    <div className="bookmarkMainContainer">
+    <div className="bookmarkMainContainer" ref={containerRef}>
       <div className="bookmarkHeader ">
         <>
           {showTitle && (
@@ -108,6 +137,16 @@ function BookmarkPage({
           <img src={sortIcon} alt="sortIcon" className="sortIcon" />
           <span className="sortText">Sort By</span>
         </button>
+
+        {displaySort && isVisible && (
+          <SortPopup
+            updateSortCount={updateSortCount}
+            handleSortReset={handleSortReset}
+            sortCount={sortCount}
+            onMouseEnterSort={onMouseEnterSort}
+            sortRef={sortRef}
+          />
+        )}
       </div>
 
       <div className="articles">

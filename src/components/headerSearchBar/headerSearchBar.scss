@@ -20,10 +20,21 @@
     background-position: 10px 13px;
     background-size: 23px;
     border: 3px solid $neutral-100;
+    cursor: pointer;
+    font-size: 18px;
+    color: $neutral-800;
+
+    &:hover {
+        background-color: $neutral-100;
+    }
+
+    &:focus {
+        outline: 2px solid $neutral-800
+    }
 
     &::placeholder {
-        font-size: 16px;
-        color: $neutral-800-dark;
+        font-size: 18px;
+        color: $neutral-800;
     }
 }
 
@@ -36,21 +47,35 @@
 
 }
 
-.bookmarkButton {
-    height: 50px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: $neutral-800-dark;
-    color: $neutral-0;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-weight: 300;
-    cursor: pointer;
-    border: none;
+.addBookmark {
+
+
+    .bookmarkButton {
+        height: 50px;
+        width: 200px;
+        border-radius: 10px;
+        background-color: $neutral-800-dark;
+        color: $neutral-0;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-weight: 300;
+        cursor: pointer;
+        border: none;
+    }
+
 }
+
+.addBookmarkActive {
+    @extend .addBookmark;
+    outline: 2px solid $neutral-800-dark;
+    border-radius: 10px;
+    padding: 1.5px;
+}
+
+
 
 .addIcon {
     filter: brightness(0) invert(1);
@@ -68,7 +93,7 @@
 
 .profileBorder {
     @extend .profile;
-    border: 2px solid $neutral-500-dark;
+    border: 2px solid $neutral-800-dark;
     border-radius: 50%;
     padding: 2px;
 

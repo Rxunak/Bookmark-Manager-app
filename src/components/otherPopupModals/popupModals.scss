@@ -57,6 +57,10 @@
                 font-size: 15px;
                 font-weight: 600;
                 cursor: pointer;
+
+                &:hover {
+                    background-color: $neutral-100;
+                }
             }
 
             .actionButton {
@@ -83,6 +87,11 @@
             position: absolute;
             left: 28rem;
             cursor: pointer;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $neutral-100;
+            }
 
             .closeImageAction {
                 height: 23px;

@@ -26,66 +26,56 @@ function OptionsPopup({
       </span>
 
       {isArchived ? (
-        <span className="optionContents">
+        <span
+          className="optionContents"
+          onClick={() => openActionModal(true, "Unarchive bookmark", itemId)}
+        >
           <img src={unarchive} alt="" />
-          <p
-            className="optionContentsText"
-            onClick={() => openActionModal(true, "Unarchive bookmark", itemId)}
-          >
-            Unarchive
-          </p>
+          <p className="optionContentsText">Unarchive</p>
         </span>
       ) : (
-        <span className="optionContents">
+        <span
+          className="optionContents"
+          onClick={() =>
+            openActionModal(
+              true,
+              `${isPinned ? "Unpin bookmark" : "Pin bookmark"}`,
+              itemId
+            )
+          }
+        >
           <img src={unpin} alt="" />
-          <p
-            className="optionContentsText"
-            onClick={() =>
-              openActionModal(
-                true,
-                `${isPinned ? "Unpin bookmark" : "Pin bookmark"}`,
-                itemId
-              )
-            }
-          >
-            {isPinned ? "Unpin" : "Pin"}
-          </p>
+          <p className="optionContentsText">{isPinned ? "Unpin" : "Pin"}</p>
         </span>
       )}
 
       {isArchived ? (
-        <span className="optionContents">
+        <span
+          className="optionContents"
+          onClick={() => openActionModal(true, "Delete bookmark", itemId)}
+        >
           <img src={edit} alt="" />
-          <p
-            className="optionContentsText"
-            onClick={() => openActionModal(true, "Delete bookmark", itemId)}
-          >
-            Delete Permanently
-          </p>
+          <p className="optionContentsText">Delete Permanently</p>
         </span>
       ) : (
-        <span className="optionContents">
+        <span
+          className="optionContents"
+          onClick={() => openModalPop(true, true, itemId)}
+        >
           <img src={edit} alt="" />
-          <p
-            className="optionContentsText"
-            onClick={() => openModalPop(true, true, itemId)}
-          >
-            Edit
-          </p>
+          <p className="optionContentsText">Edit</p>
         </span>
       )}
 
       {isArchived ? (
         ""
       ) : (
-        <span className="optionContents">
+        <span
+          className="optionContents"
+          onClick={() => openActionModal(true, "Archive bookmark", itemId)}
+        >
           <img src={archive} alt="" />
-          <p
-            className="optionContentsText"
-            onClick={() => openActionModal(true, "Archive bookmark", itemId)}
-          >
-            Archive
-          </p>
+          <p className="optionContentsText">Archive</p>
         </span>
       )}
     </div>

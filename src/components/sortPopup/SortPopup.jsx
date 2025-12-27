@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../sortPopup/sortPopup.scss";
 import check from "../../assets/Images/icon-check.svg";
 
-function SortPopup({ sortCount, updateSortCount, handleSortReset }) {
+function SortPopup({ sortCount, updateSortCount, handleSortReset, sortRef }) {
   console.log(sortCount);
 
   const [enableButton, setAnableButton] = useState(true);
@@ -16,7 +16,7 @@ function SortPopup({ sortCount, updateSortCount, handleSortReset }) {
   }, [sortCount]);
 
   return (
-    <div className="sortMainContainer">
+    <div className="sortMainContainer" ref={sortRef}>
       <div className="sortInfo">
         <span className="sortInfoContainer">
           <p className="sortInfoText" onClick={() => updateSortCount(1)}>

@@ -9,6 +9,7 @@ function HeaderSearchBar({
   openModalPop,
   onMouseEnter,
   displayProfile,
+  openModal,
 }) {
   return (
     <>
@@ -16,14 +17,14 @@ function HeaderSearchBar({
         <section className="srachBarContainer">
           <input
             type="text"
-            placeholder="Search by title..."
+            placeholder="Search"
             className="searchBar"
             value={input}
             onChange={(e) => handleInput(e.target.value)}
           />
         </section>
         <div className="profileContainer">
-          <section className="addBookmark">
+          <section className={openModal ? "addBookmarkActive" : "addBookmark"}>
             <button
               className="bookmarkButton"
               onClick={() => openModalPop(true, false)}

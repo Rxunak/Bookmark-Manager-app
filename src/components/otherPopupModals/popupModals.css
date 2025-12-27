@@ -52,6 +52,9 @@
   font-weight: 600;
   cursor: pointer;
 }
+.modalMainContainer .modalMainPage .actionModalButton .actionCancelButton:hover {
+  background-color: #e8f0ef;
+}
 .modalMainContainer .modalMainPage .actionModalButton .actionButton, .modalMainContainer .modalMainPage .actionModalButton .actionButtonDelete {
   height: 45px;
   width: auto;
@@ -72,6 +75,10 @@
   position: absolute;
   left: 28rem;
   cursor: pointer;
+  border-radius: 5px;
+}
+.modalMainContainer .modalMainPage .closeIconImageAction:hover {
+  background-color: #e8f0ef;
 }
 .modalMainContainer .modalMainPage .closeIconImageAction .closeImageAction {
   height: 23px;

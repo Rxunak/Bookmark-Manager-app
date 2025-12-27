@@ -2,38 +2,37 @@
   height: 100%;
   overflow: scroll;
 }
-
-.bookmarkHeader {
+.bookmarkMainContainer .bookmarkHeader {
   height: 70px;
   display: flex;
   justify-content: space-between;
   padding: 0px 30px 0px 30px;
   align-items: center;
 }
-.bookmarkHeader .bookmarkTitle, .bookmarkHeader .searchInputShow, .bookmarkHeader .bookmarkShow {
+.bookmarkMainContainer .bookmarkHeader .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .searchInputShow, .bookmarkMainContainer .bookmarkHeader .bookmarkShow {
   color: #001f1f;
   font-size: 26px;
   font-weight: 600;
 }
-.bookmarkHeader .bookmarkTitleHide {
+.bookmarkMainContainer .bookmarkHeader .bookmarkTitleHide {
   display: none;
 }
-.bookmarkHeader .bookmarkShowHide {
+.bookmarkMainContainer .bookmarkHeader .bookmarkShowHide {
   display: none;
 }
-.bookmarkHeader .searchInputShowHide {
+.bookmarkMainContainer .bookmarkHeader .searchInputShowHide {
   display: none;
 }
-.bookmarkHeader .inputText {
+.bookmarkMainContainer .bookmarkHeader .inputText {
   color: #065a41;
 }
-.bookmarkHeader .tag-item {
+.bookmarkMainContainer .bookmarkHeader .tag-item {
   color: #065a41;
 }
-.bookmarkHeader .test {
+.bookmarkMainContainer .bookmarkHeader .test {
   z-index: 1;
 }
-.bookmarkHeader .sortByButton {
+.bookmarkMainContainer .bookmarkHeader .sortByButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,38 +44,37 @@
   background-color: #ffffff;
   cursor: pointer;
 }
-.bookmarkHeader .sortByButton .sortIcon {
+.bookmarkMainContainer .bookmarkHeader .sortByButton .sortIcon {
   width: 21px;
 }
-.bookmarkHeader .sortByButton .sortText {
+.bookmarkMainContainer .bookmarkHeader .sortByButton .sortText {
   font-size: 16px;
   font-weight: 500;
 }
-
-.articles {
+.bookmarkMainContainer .bookmarkHeader .sortByButton:hover {
+  background-color: transparent;
+}
+.bookmarkMainContainer .articles {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 40px;
   padding-bottom: 50px;
 }
-
-.gridArticles {
+.bookmarkMainContainer .gridArticles {
   height: 320px;
   width: 360px;
   border-radius: 10px;
   background-color: #ffffff;
 }
-
-.mainArticle {
+.bookmarkMainContainer .mainArticle {
   height: 320px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   position: relative;
 }
-
-.articleHeader {
+.bookmarkMainContainer .articleHeader {
   border-bottom: 2px solid #e8f0ef;
   height: 90px;
   display: flex;
@@ -85,22 +83,22 @@
   margin-left: 20px;
   margin-right: 20px;
 }
-.articleHeader .articleHeaderImage {
+.bookmarkMainContainer .articleHeader .articleHeaderImage {
   width: 45px;
   outline: 1.5px solid #e8f0ef;
   border-radius: 8px;
   margin-right: 15px;
 }
-.articleHeader .articleHeaderText {
+.bookmarkMainContainer .articleHeader .articleHeaderText {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 3px;
 }
-.articleHeader .articleHeaderTextSecondary {
+.bookmarkMainContainer .articleHeader .articleHeaderTextSecondary {
   font-size: 12px;
   color: #4c5c59;
 }
-.articleHeader .articleBookmark, .articleHeader .articleBookmarkActive {
+.bookmarkMainContainer .articleHeader .articleBookmark, .bookmarkMainContainer .articleHeader .articleBookmarkActive {
   margin: auto;
   margin-right: 0px;
   background: none;
@@ -114,10 +112,13 @@
   align-items: center;
   cursor: pointer;
 }
-.articleHeader .articleBookmarkActive {
+.bookmarkMainContainer .articleHeader .articleBookmark:hover, .bookmarkMainContainer .articleHeader .articleBookmarkActive:hover {
+  background-color: #e8f0ef;
+}
+.bookmarkMainContainer .articleHeader .articleBookmarkActive {
   outline: 2px solid #4c5c59;
 }
-.articleHeader .isArchived {
+.bookmarkMainContainer .articleHeader .isArchived {
   position: absolute;
   top: 5.5rem;
   left: 18rem;
@@ -126,8 +127,7 @@
   padding: 2px;
   border-radius: 5px;
 }
-
-.articleBody {
+.bookmarkMainContainer .articleBody {
   margin-top: 15px;
   margin-left: 20px;
   margin-right: 20px;
@@ -136,28 +136,27 @@
   gap: 10px;
   height: 150px;
 }
-.articleBody .articleTextBodyScroll {
+.bookmarkMainContainer .articleBody .articleTextBodyScroll {
   height: 100px;
   overflow: scroll;
 }
-.articleBody .articleBodyText {
+.bookmarkMainContainer .articleBody .articleBodyText {
   color: #4c5c59;
   font-size: 15px;
   margin-bottom: 7px;
 }
-.articleBody .articleBodyTags {
+.bookmarkMainContainer .articleBody .articleBodyTags {
   display: flex;
   gap: 10px;
 }
-.articleBody .tagOne {
+.bookmarkMainContainer .articleBody .tagOne {
   font-size: 12px;
   background-color: #e8f0ef;
   padding: 6px;
   border-radius: 5px;
   color: #4c5c59;
 }
-
-.articleFooter {
+.bookmarkMainContainer .articleFooter {
   display: flex;
   flex-grow: 1;
   border-top: 2px solid #e8f0ef;
@@ -169,24 +168,24 @@
   height: 20px;
   align-items: center;
 }
-.articleFooter .footerPin {
+.bookmarkMainContainer .articleFooter .footerPin {
   margin: auto;
   margin-top: 12px;
   margin-right: 20px;
   width: 17px;
 }
-.articleFooter .footerIconContainer {
+.bookmarkMainContainer .articleFooter .footerIconContainer {
   display: flex;
   gap: 7px;
   align-items: center;
 }
-.articleFooter .footerIcon {
+.bookmarkMainContainer .articleFooter .footerIcon {
   width: 14px;
 }
-.articleFooter .footerText {
+.bookmarkMainContainer .articleFooter .footerText {
   font-size: 13px;
   color: #001f1f;
 }
-.articleFooter .special {
+.bookmarkMainContainer .articleFooter .special {
   padding-left: 20px;
 }/*# sourceMappingURL=bookmarkPage.css.map */

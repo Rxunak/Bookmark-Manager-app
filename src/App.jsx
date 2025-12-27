@@ -30,8 +30,10 @@ function App() {
   const [showActionModal, setShowActionModal] = useState(false);
   const [headerText, setHeaderText] = useState("");
   const [actionItemId, setActionItemId] = useState("");
+  const [height, setHeight] = useState(0);
 
   let menuRef = useRef();
+  let sortRef = useRef();
 
   useEffect(() => {
     const getData = () => {
@@ -160,6 +162,15 @@ function App() {
           setDisplayProfile(false);
         }
       }
+
+      if (sortRef) {
+        if (
+          !sortRef?.current?.contains(e?.target) &&
+          !e.target.classList.contains("sortText")
+        ) {
+          setDisplaySort(false);
+        }
+      }
     };
 
     document.addEventListener("mousedown", handler);
@@ -167,7 +178,7 @@ function App() {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  }, [menuRef]);
+  }, [menuRef, sortRef]);
 
   const updateSortCount = (id) => {
     setSortCount(id);
@@ -230,6 +241,7 @@ function App() {
             openModalPop={openModalPop}
             onMouseEnter={onMouseEnter}
             displayProfile={displayProfile}
+            openModal={openModal}
           />
         </header>
         <main className="grid gridThree">
@@ -247,6 +259,10 @@ function App() {
             openCardId={openCards}
             sortCount={sortCount}
             openActionModal={openActionModal}
+            displaySort={displaySort}
+            updateSortCount={updateSortCount}
+            handleSortReset={handleSortReset}
+            sortRef={sortRef}
           />
         </main>
 
@@ -262,14 +278,6 @@ function App() {
         )}
 
         {displayProfile && <ProfileCard menuRef={menuRef} />}
-
-        {displaySort && (
-          <SortPopup
-            updateSortCount={updateSortCount}
-            handleSortReset={handleSortReset}
-            sortCount={sortCount}
-          />
-        )}
 
         {showActionModal && (
           <PopupModals

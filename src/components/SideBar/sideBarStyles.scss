@@ -28,6 +28,10 @@
   border-radius: 5px;
   padding-left: 10px;
 
+  &:hover {
+    background-color: $neutral-100;
+  }
+
   .homeIcon {
     width: 21px;
   }
@@ -42,7 +46,8 @@
 
 .homeIconContainerActive {
   @extend .homeIconContainer;
-  background-color: $neutral-100
+  background-color: $neutral-100;
+  outline: 2px solid $neutral-800
 }
 
 .archiveIconContainer {
@@ -60,7 +65,8 @@
 
 .archiveIconContainerActive {
   @extend .archiveIconContainer;
-  background-color: $neutral-100
+  background-color: $neutral-100;
+  outline: 2px solid $neutral-800
 }
 
 .tagsHeader {
@@ -122,26 +128,31 @@ input[type="checkbox"] {
   border-radius: 3px;
   cursor: pointer;
   outline: 2px solid $neutral-500;
+
+  &:hover {
+    background-color: $neutral-100;
+  }
 }
 
 input[type="checkbox"]::after {
   content: "";
   display: none;
-  width: 17px;
-  height: 17px;
-  background-image: url("/Images/icon-check.svg");
+  width: 15px;
+  height: 15px;
+  background-image: url("/Users/raunakhome/Desktop/my-react-app/src/assets/Images/icons8-done-24.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 
 input[type="checkbox"]:checked {
-  background-color: $neutral-400;
+  background-color: $neutral-800-dark;
+  outline: 2px solid $neutral-800-dark;
 }
 
 input[type="checkbox"]:checked::after {
@@ -160,13 +171,15 @@ input[type="checkbox"]:checked::after {
   justify-content: space-between;
   align-items: center;
   height: 20px;
+  margin-bottom: 0.6rem;
 }
 
 .resetButton {
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 2px solid #D9D9D9;
   margin-bottom: 10px;
   font-size: 14px;
+  color: $neutral-800;
 }

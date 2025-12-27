@@ -26,6 +26,9 @@
   border-radius: 5px;
   padding-left: 10px;
 }
+.homeIconContainer:hover, .archiveIconContainer:hover, .archiveIconContainerActive:hover, .homeIconContainerActive:hover {
+  background-color: #e8f0ef;
+}
 .homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainerActive .homeIcon, .archiveIconContainer .archiveIcon, .archiveIconContainerActive .archiveIcon, .homeIconContainerActive .homeIcon {
   width: 21px;
 }
@@ -38,6 +41,7 @@
 
 .homeIconContainerActive {
   background-color: #e8f0ef;
+  outline: 2px solid #4c5c59;
 }
 
 .archiveIconContainer, .archiveIconContainerActive {
@@ -45,6 +49,7 @@
 }
 .archiveIconContainerActive {
   background-color: #e8f0ef;
+  outline: 2px solid #4c5c59;
 }
 
 .tagsHeader {
@@ -101,24 +106,28 @@ input[type=checkbox] {
   cursor: pointer;
   outline: 2px solid #8b8492;
 }
+input[type=checkbox]:hover {
+  background-color: #e8f0ef;
+}
 
 input[type=checkbox]::after {
   content: "";
   display: none;
-  width: 17px;
-  height: 17px;
-  background-image: url("/Images/icon-check.svg");
+  width: 15px;
+  height: 15px;
+  background-image: url("/Users/raunakhome/Desktop/my-react-app/src/assets/Images/icons8-done-24.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 input[type=checkbox]:checked {
-  background-color: #cdcfcc;
+  background-color: #001f1f;
+  outline: 2px solid #001f1f;
 }
 
 input[type=checkbox]:checked::after {
@@ -137,13 +146,15 @@ input[type=checkbox]:checked::after {
   justify-content: space-between;
   align-items: center;
   height: 20px;
+  margin-bottom: 0.6rem;
 }
 
 .resetButton {
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 2px solid #D9D9D9;
   margin-bottom: 10px;
   font-size: 14px;
+  color: #4c5c59;
 }/*# sourceMappingURL=sideBarStyles.css.map */

@@ -8,7 +8,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   border: 2px solid #c0cfcc;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,6 +19,14 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 30px;
+  padding: 0.5rem;
+}
+.optionPopupMainContainer .optionContents:hover, .opActive .optionContents:hover {
+  outline: 2px solid #4c5c59;
+  background-color: #e8f0ef;
+  border-radius: 5px;
+  height: 30px;
 }
 .optionPopupMainContainer .optionContents .optionContentsText, .opActive .optionContents .optionContentsText {
   color: #4c5c59;

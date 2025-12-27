@@ -117,6 +117,9 @@
   font-weight: 600;
   cursor: pointer;
 }
+.modal .mainModal .formControls .cancelButton:hover {
+  background-color: #e8f0ef;
+}
 .modal .mainModal .formControls .formAddBookmark {
   height: 45px;
   width: 160px;
@@ -140,6 +143,9 @@
   width: 30px;
   border-radius: 10px;
   cursor: pointer;
+}
+.modal .mainModal .closeIconImage:hover {
+  background-color: #e8f0ef;
 }
 .modal .mainModal .closeIconImage .closeImage {
   height: 23px;
