@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../otherPopupModals/popupModals.scss";
 import closeIcon from "../../assets/Images/icon-close.svg";
 
-function PopupModals({ openActionModal, header, setAction }) {
+function PopupModals({ openActionModal, header, setAction, notify }) {
   const actionText = header?.slice(0, header?.indexOf(" "));
 
   const [isDelete, setIsDelete] = useState(false);
@@ -32,7 +32,32 @@ function PopupModals({ openActionModal, header, setAction }) {
           </button>
           <button
             className={isDelete ? "actionButtonDelete" : "actionButton"}
-            onClick={() => setAction(actionButtonText)}
+            onClick={() => {
+              setAction(actionButtonText);
+              notify(
+                (() => {
+                  switch (actionButtonText) {
+                    case "Archive":
+                      return "Bookmark archived succesfully";
+                      break;
+                    case "Unarchive":
+                      return "Bookmark unarchived succesfully";
+                      break;
+                    case "Pin":
+                      return "Bookmark pinned succesfully";
+                      break;
+                    case "Unpin":
+                      return "Bookmark unpinned succesfully";
+                      break;
+                    case "Delete":
+                      return "Bookmark Deleted succesfully";
+                      break;
+                    default:
+                      break;
+                  }
+                })()
+              );
+            }}
           >
             {isDelete ? actionButtonText + " Permanently" : actionButtonText}
           </button>

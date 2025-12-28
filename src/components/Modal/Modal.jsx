@@ -9,6 +9,7 @@ function Modal({
   filterData,
   isEditIndex,
   updateExistingData,
+  notify,
 }) {
   const initialValues = {
     title: "",
@@ -208,14 +209,22 @@ function Modal({
               {isEdit ? (
                 <>
                   {" "}
-                  <button className="formAddBookmark" type="submit">
+                  <button
+                    className="formAddBookmark"
+                    type="submit"
+                    onClick={() => notify("Bookmark succesfully edited.")}
+                  >
                     {"Save Bookmark"}
                   </button>
                 </>
               ) : (
                 <>
                   {" "}
-                  <button type="submit" className="formAddBookmark">
+                  <button
+                    type="submit"
+                    className="formAddBookmark"
+                    onClick={() => notify("Bookmark added succesfully.")}
+                  >
                     {"Add Bookmark"}
                   </button>
                 </>

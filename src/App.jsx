@@ -7,8 +7,8 @@ import Modal from "./components/Modal/Modal";
 import { getRandomPastDate } from "./constants";
 import { setItem, getItem } from "./utils/localStorage";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
-import SortPopup from "./components/sortPopup/SortPopup";
 import PopupModals from "./components/otherPopupModals/PopupModals";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -30,7 +30,14 @@ function App() {
   const [showActionModal, setShowActionModal] = useState(false);
   const [headerText, setHeaderText] = useState("");
   const [actionItemId, setActionItemId] = useState("");
-  const [height, setHeight] = useState(0);
+
+  const notify = (val) => {
+    if (val === "Bookmark Deleted succesfully") {
+      toast.error(val);
+    } else {
+      toast.success(val);
+    }
+  };
 
   let menuRef = useRef();
   let sortRef = useRef();
@@ -192,6 +199,7 @@ function App() {
     setShowActionModal(value);
     setHeaderText(headerInfo);
     setActionItemId(itemId);
+    onMouseEnterOption(itemId);
   };
 
   const setAction = (buttonText) => {
@@ -274,16 +282,20 @@ function App() {
             filterData={data}
             isEditIndex={isEditIndex}
             updateExistingData={updateExistingData}
+            notify={notify}
           />
         )}
 
         {displayProfile && <ProfileCard menuRef={menuRef} />}
+
+        <ToastContainer />
 
         {showActionModal && (
           <PopupModals
             openActionModal={openActionModal}
             header={headerText}
             setAction={setAction}
+            notify={notify}
           />
         )}
       </div>

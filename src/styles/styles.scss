@@ -22,7 +22,6 @@ body {
 }
 
 .gridTwo {
-  // outline: 2px solid black;
   height: 85px;
   grid-column: 2 / span 1;
   background-color: $neutral-0;
@@ -33,5 +32,4 @@ body {
   height: 772px;
   width: 100%;
   grid-column: 2 / span 1;
-  // outline: 2px solid black;
 }
