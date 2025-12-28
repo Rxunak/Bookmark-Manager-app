@@ -10,6 +10,7 @@ function HeaderSearchBar({
   onMouseEnter,
   displayProfile,
   openModal,
+  toggle,
 }) {
   return (
     <>
@@ -17,7 +18,7 @@ function HeaderSearchBar({
         <section className="srachBarContainer">
           <input
             type="text"
-            placeholder="Search"
+            placeholder={toggle === 1 ? "Search in Home" : "Search in Archive"}
             className="searchBar"
             value={input}
             onChange={(e) => handleInput(e.target.value)}

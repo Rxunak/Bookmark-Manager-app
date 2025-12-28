@@ -250,6 +250,7 @@ function App() {
             onMouseEnter={onMouseEnter}
             displayProfile={displayProfile}
             openModal={openModal}
+            toggle={toggle}
           />
         </header>
         <main className="grid gridThree">
