@@ -4,19 +4,21 @@
 }
 
 .sideBarMainContainer {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0rem 1rem 0rem 1rem;
   gap: 1.9rem;
   background-color: #ffffff;
+  height: 100%;
 }
-
-.logo {
+.sideBarMainContainer .imageContainerHome {
+  padding-top: 1rem;
+}
+.sideBarMainContainer .imageContainerHome .logo {
   width: 250px;
+  max-width: 100%;
 }
-
-.homeIconContainer, .archiveIconContainer, .archiveIconContainerActive, .homeIconContainerActive {
+.sideBarMainContainer .activate .homeIconContainer, .sideBarMainContainer .activate .archiveIconContainer, .sideBarMainContainer .activate .archiveIconContainerActive, .sideBarMainContainer .activate .homeIconContainerActive {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -26,75 +28,72 @@
   border-radius: 5px;
   padding-left: 10px;
 }
-.homeIconContainer:hover, .archiveIconContainer:hover, .archiveIconContainerActive:hover, .homeIconContainerActive:hover {
+.sideBarMainContainer .activate .homeIconContainer:hover, .sideBarMainContainer .activate .archiveIconContainer:hover, .sideBarMainContainer .activate .archiveIconContainerActive:hover, .sideBarMainContainer .activate .homeIconContainerActive:hover {
   background-color: #e8f0ef;
 }
-.homeIconContainer .homeIcon, .archiveIconContainer .homeIcon, .archiveIconContainerActive .homeIcon, .archiveIconContainer .archiveIcon, .archiveIconContainerActive .archiveIcon, .homeIconContainerActive .homeIcon {
+.sideBarMainContainer .activate .homeIconContainer .homeIcon, .sideBarMainContainer .activate .archiveIconContainer .homeIcon, .sideBarMainContainer .activate .archiveIconContainerActive .homeIcon, .sideBarMainContainer .activate .archiveIconContainer .archiveIcon, .sideBarMainContainer .activate .archiveIconContainerActive .archiveIcon, .sideBarMainContainer .activate .homeIconContainerActive .homeIcon {
   width: 21px;
 }
-.homeIconContainer .homeIconText, .archiveIconContainer .homeIconText, .archiveIconContainerActive .homeIconText, .archiveIconContainer .archiveIconText, .archiveIconContainerActive .archiveIconText, .homeIconContainerActive .homeIconText {
+.sideBarMainContainer .activate .homeIconContainer .homeIconText, .sideBarMainContainer .activate .archiveIconContainer .homeIconText, .sideBarMainContainer .activate .archiveIconContainerActive .homeIconText, .sideBarMainContainer .activate .archiveIconContainer .archiveIconText, .sideBarMainContainer .activate .archiveIconContainerActive .archiveIconText, .sideBarMainContainer .activate .homeIconContainerActive .homeIconText {
   margin-top: 2px;
   font-weight: 400;
   font-size: 18px;
   color: #001f1f;
 }
-
-.homeIconContainerActive {
+.sideBarMainContainer .activate .homeIconContainerActive {
   background-color: #e8f0ef;
   outline: 2px solid #4c5c59;
 }
-
-.archiveIconContainer, .archiveIconContainerActive {
+.sideBarMainContainer .activate .archiveIconContainer, .sideBarMainContainer .activate .archiveIconContainerActive {
   margin-bottom: 0;
 }
-.archiveIconContainerActive {
+.sideBarMainContainer .activate .archiveIconContainerActive {
   background-color: #e8f0ef;
   outline: 2px solid #4c5c59;
 }
-
-.tagsHeader {
+.sideBarMainContainer .tagsNav {
+  height: 40rem;
+}
+.sideBarMainContainer .tagsNav .tagheaderCon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 0.6rem;
+}
+.sideBarMainContainer .tagsNav .tagheaderCon .tagsHeader {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 10px;
   color: #001913;
 }
-
-.tagsNav {
-  flex-grow: 1;
+.sideBarMainContainer .tagsNav .tagheaderCon .resetButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #D9D9D9;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #4c5c59;
 }
-
-.ulTags {
+.sideBarMainContainer .tagsNav .tagsMainContainer {
+  overflow: scroll;
+  height: 38rem;
+  padding: 2px 10px 2px 2px;
+  width: 100%;
+}
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.ulTags .liTags {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags {
   list-style: none;
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.ulTags .tagsLabel {
-  font-size: 17px;
-  font-weight: 400;
-  color: #001f1f;
-}
-.ulTags .tagsCount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  background-color: #e8f0ef;
-}
-.ulTags .tagsCountText {
-  font-size: 14px;
-  color: #001f1f;
-}
-
-input[type=checkbox] {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags input[type=checkbox] {
   position: relative;
   -moz-appearance: none;
        appearance: none;
@@ -106,16 +105,15 @@ input[type=checkbox] {
   cursor: pointer;
   outline: 2px solid #8b8492;
 }
-input[type=checkbox]:hover {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags input[type=checkbox]:hover {
   background-color: #e8f0ef;
 }
-
-input[type=checkbox]::after {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags input[type=checkbox]::after {
   content: "";
   display: none;
   width: 15px;
   height: 15px;
-  background-image: url("/Users/raunakhome/Desktop/my-react-app/src/assets/Images/icons8-done-24.png");
+  background-image: url("../../assets/Images/icons8-done-24.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -124,37 +122,29 @@ input[type=checkbox]::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-input[type=checkbox]:checked {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags input[type=checkbox]:checked {
   background-color: #001f1f;
   outline: 2px solid #001f1f;
 }
-
-input[type=checkbox]:checked::after {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags input[type=checkbox]:checked::after {
   display: block;
 }
-
-.tagsMainContainer {
-  overflow: scroll;
-  height: 620px;
-  padding: 2px 10px 2px 2px;
-  width: 270px;
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags .tagsLabel {
+  font-size: 17px;
+  font-weight: 400;
+  color: #001f1f;
 }
-
-.tagheaderCon {
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags .tagsCount {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 20px;
-  margin-bottom: 0.6rem;
+  margin-left: auto;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: #e8f0ef;
 }
-
-.resetButton {
-  cursor: pointer;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #D9D9D9;
-  margin-bottom: 10px;
+.sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags .tagsCount .tagsCountText {
   font-size: 14px;
-  color: #4c5c59;
+  color: #001f1f;
 }/*# sourceMappingURL=sideBarStyles.css.map */

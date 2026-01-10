@@ -206,7 +206,6 @@ function BookmarkPage({
                 </div>
               </div>
               <div className="articleFooter">
-                <div></div>
                 <span className="footerIconContainer special">
                   <img src={eye} alt="" className="footerIcon" />
                   <span className="footerText">{item.visitCount}</span>

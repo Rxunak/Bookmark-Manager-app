@@ -35,11 +35,11 @@ function SideBar({
 
   return (
     <div className="sideBarMainContainer">
-      <div>
+      <div className="imageContainerHome">
         <img src={bookMarkImage} alt="homeIcon" className="logo" />
       </div>
 
-      <div>
+      <div className="activate">
         <a
           className={`${
             currentToggle === 1

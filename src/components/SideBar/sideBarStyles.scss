@@ -6,180 +6,186 @@
 }
 
 .sideBarMainContainer {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0rem 1rem 0rem 1rem;
   gap: 1.9rem;
   background-color: $neutral-0;
-}
+  height: 100%;
 
-.logo {
-  width: 250px;
-}
+  .imageContainerHome {
+    padding-top: 1rem;
 
-.homeIconContainer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  height: 35px;
-  border-radius: 5px;
-  padding-left: 10px;
+    .logo {
+      width: 250px;
+      max-width: 100%;
+    }
 
-  &:hover {
-    background-color: $neutral-100;
   }
 
-  .homeIcon {
-    width: 21px;
+  .activate {
+    .homeIconContainer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      height: 35px;
+      border-radius: 5px;
+      padding-left: 10px;
+
+      &:hover {
+        background-color: $neutral-100;
+      }
+
+      .homeIcon {
+        width: 21px;
+      }
+
+      .homeIconText {
+        margin-top: 2px;
+        font-weight: 400;
+        font-size: 18px;
+        color: $neutral-800-dark;
+      }
+    }
+
+    .homeIconContainerActive {
+      @extend .homeIconContainer;
+      background-color: $neutral-100;
+      outline: 2px solid $neutral-800;
+    }
+
+    .archiveIconContainer {
+      @extend .homeIconContainer;
+      margin-bottom: 0;
+
+      .archiveIcon {
+        @extend .homeIcon;
+      }
+
+      .archiveIconText {
+        @extend .homeIconText;
+      }
+    }
+
+    .archiveIconContainerActive {
+      @extend .archiveIconContainer;
+      background-color: $neutral-100;
+      outline: 2px solid $neutral-800;
+    }
+
   }
 
-  .homeIconText {
-    margin-top: 2px;
-    font-weight: 400;
-    font-size: 18px;
-    color: $neutral-800-dark;
+  .tagsNav {
+    // flex-grow: 1;
+    height: 40rem;
+
+    .tagheaderCon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 20px;
+      margin-bottom: 0.6rem;
+
+      .tagsHeader {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: $neutral-900;
+      }
+
+      .resetButton {
+        cursor: pointer;
+        background: none;
+        border: none;
+        border-bottom: 2px solid #D9D9D9;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: $neutral-800;
+      }
+    }
+
+    .tagsMainContainer {
+      overflow: scroll;
+      height: 38rem;
+      padding: 2px 10px 2px 2px;
+      width: 100%;
+
+      .ulTags {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .liTags {
+          list-style: none;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          input[type="checkbox"] {
+            position: relative;
+            appearance: none;
+            -webkit-appearance: none;
+            height: 15px;
+            width: 15px;
+            background-color: $neutral-0;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 2px solid $neutral-500;
+
+            &:hover {
+              background-color: $neutral-100;
+            }
+
+            &::after {
+              content: "";
+              display: none;
+              width: 15px;
+              height: 15px;
+              background-image: url("../../assets/Images/icons8-done-24.png");
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            &:checked {
+              background-color: $neutral-800-dark;
+              outline: 2px solid $neutral-800-dark;
+
+              &::after {
+                display: block;
+              }
+            }
+          }
+
+          .tagsLabel {
+            font-size: 17px;
+            font-weight: 400;
+            color: $neutral-800-dark;
+          }
+
+          .tagsCount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-color: $neutral-100;
+
+            .tagsCountText {
+              font-size: 14px;
+              color: $neutral-800-dark;
+            }
+          }
+        }
+      }
+    }
   }
-}
-
-.homeIconContainerActive {
-  @extend .homeIconContainer;
-  background-color: $neutral-100;
-  outline: 2px solid $neutral-800
-}
-
-.archiveIconContainer {
-  @extend .homeIconContainer;
-  margin-bottom: 0;
-
-  .archiveIcon {
-    @extend .homeIcon;
-  }
-
-  .archiveIconText {
-    @extend .homeIconText;
-  }
-}
-
-.archiveIconContainerActive {
-  @extend .archiveIconContainer;
-  background-color: $neutral-100;
-  outline: 2px solid $neutral-800
-}
-
-.tagsHeader {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: $neutral-900;
-}
-
-.tagsNav {
-  flex-grow: 1;
-}
-
-.ulTags {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-
-  .liTags {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .tagsLabel {
-    font-size: 17px;
-    font-weight: 400;
-    color: $neutral-800-dark;
-  }
-
-  .tagsCount {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-color: $neutral-100;
-  }
-
-  .tagsCountText {
-    font-size: 14px;
-    color: $neutral-800-dark;
-  }
-
-}
-
-
-input[type="checkbox"] {
-  position: relative;
-  appearance: none;
-  -webkit-appearance: none;
-  height: 15px;
-  width: 15px;
-  background-color: $neutral-0;
-  border-radius: 3px;
-  cursor: pointer;
-  outline: 2px solid $neutral-500;
-
-  &:hover {
-    background-color: $neutral-100;
-  }
-}
-
-input[type="checkbox"]::after {
-  content: "";
-  display: none;
-  width: 15px;
-  height: 15px;
-  background-image: url("/Users/raunakhome/Desktop/my-react-app/src/assets/Images/icons8-done-24.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-input[type="checkbox"]:checked {
-  background-color: $neutral-800-dark;
-  outline: 2px solid $neutral-800-dark;
-}
-
-input[type="checkbox"]:checked::after {
-  display: block;
-}
-
-.tagsMainContainer {
-  overflow: scroll;
-  height: 620px;
-  padding: 2px 10px 2px 2px;
-  width: 270px;
-}
-
-.tagheaderCon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 20px;
-  margin-bottom: 0.6rem;
-}
-
-.resetButton {
-  cursor: pointer;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #D9D9D9;
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: $neutral-800;
 }

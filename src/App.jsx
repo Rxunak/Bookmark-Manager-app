@@ -111,6 +111,8 @@ function App() {
       favicon: "favicon-flexbox-zombies.png",
       createdAt: new Date().toISOString(),
       lastVisited: getRandomPastDate(),
+      pinned: false,
+      isArchived: false,
       ...newBookmarkInformation,
     };
 
@@ -230,7 +232,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <aside className="grid gridOne">
+        <aside className="grid gridOne" style={{ gridArea: "sidebar" }}>
           <SideBar
             updateToggle={updateToggle}
             handleSelect={handleSelect}
@@ -241,7 +243,7 @@ function App() {
             isChecked={checked}
           />
         </aside>
-        <header className="grid gridTwo">
+        <header className="grid gridTwo" style={{ gridArea: "header" }}>
           <HeaderSearchBar
             bkData={data}
             input={input}
@@ -253,7 +255,7 @@ function App() {
             toggle={toggle}
           />
         </header>
-        <main className="grid gridThree">
+        <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
           <BookmarkPage
             setToggleData={setToggleData}
             onMouseEnterOption={onMouseEnterOption}

@@ -3,7 +3,6 @@
 .modalMainContainer {
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -11,13 +10,14 @@
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .modalMainPage {
         height: auto;
         width: 450px;
         position: relative;
-        top: 30%;
-        left: 33%;
         background-color: $neutral-0;
         border-radius: 15px;
         padding: 1rem;

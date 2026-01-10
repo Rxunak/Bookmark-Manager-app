@@ -1,32 +1,13 @@
-body {
-  height: 100vh;
-  background-color: #e8f0ef;
-}
-
 .container {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 2px;
-  row-gap: 0px;
+  grid-template-columns: 22rem 1fr;
+  grid-template-rows: 6rem 1fr;
+  grid-template-areas: "sidebar header" "sidebar mainPage";
   height: 100vh;
 }
-
-.gridOne {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  grid-row: 1/span 2;
-  outline: none;
+.container .gridTwo {
+  outline: 2px solid #c0cfcc;
 }
-
-.gridTwo {
-  height: 85px;
-  grid-column: 2/span 1;
-  background-color: #ffffff;
-}
-
-.gridThree {
-  height: 772px;
-  width: 100%;
-  grid-column: 2/span 1;
+.container .gridThree {
+  outline: 2px solid #c0cfcc;
 }/*# sourceMappingURL=styles.css.map */
