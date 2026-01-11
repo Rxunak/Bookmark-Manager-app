@@ -23,6 +23,10 @@
 
   }
 
+  .closeIconSidebar {
+    display: none;
+  }
+
   .activate {
     .homeIconContainer {
       display: flex;
@@ -186,6 +190,21 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .sideBarMainContainer {
+    width: 80%;
+
+    .closeIconSidebar {
+      display: block;
+      width: 30px;
+      position: absolute;
+      left: 19rem;
+      cursor: pointer;
+      top: 1.3rem;
     }
   }
 }

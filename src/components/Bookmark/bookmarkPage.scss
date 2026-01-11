@@ -256,3 +256,34 @@
 
 
 }
+
+@media only screen and (max-width: 425px) {
+
+    .bookmarkMainContainer {
+        padding: 0;
+
+        .bookmarkHeader {
+            justify-content: center;
+            gap: 70px;
+
+            .bookmarkTitle {
+                font-size: 17px;
+            }
+        }
+
+        .gridArticles {
+            width: 350px;
+        }
+
+        .articles {
+            padding: 0;
+            max-height: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .articlesTwoCards {
+            justify-content: center;
+        }
+    }
+
+}

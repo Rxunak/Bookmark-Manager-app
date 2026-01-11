@@ -4,6 +4,7 @@ import homeIcon from "../../assets/Images/icon-home.svg";
 import archiveIcon from "../../assets/Images/icon-archive.svg";
 import { tagsArray } from "../../constants";
 import "../SideBar/sideBarStyles.scss";
+import closeIcon from "../../assets/Images/icon-close.svg";
 
 function SideBar({
   updateToggle,
@@ -12,6 +13,7 @@ function SideBar({
   handleSelect,
   checkedList,
   handleReset,
+  showSidebar,
 }) {
   const [tagData, setTagData] = useState(tagsArray);
 
@@ -35,6 +37,12 @@ function SideBar({
 
   return (
     <div className="sideBarMainContainer">
+      <img
+        src={closeIcon}
+        alt=""
+        onClick={showSidebar}
+        className="closeIconSidebar"
+      />
       <div className="imageContainerHome">
         <img src={bookMarkImage} alt="homeIcon" className="logo" />
       </div>

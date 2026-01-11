@@ -192,4 +192,27 @@
 .bookmarkMainContainer .gridArticles .mainArticle .articleFooter .footerText {
   font-size: 13px;
   color: #001f1f;
+}
+@media only screen and (max-width: 425px) {
+  .bookmarkMainContainer {
+    padding: 0;
+  }
+  .bookmarkMainContainer .bookmarkHeader {
+    justify-content: center;
+    gap: 70px;
+  }
+  .bookmarkMainContainer .bookmarkHeader .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .bookmarkShow, .bookmarkMainContainer .bookmarkHeader .searchInputShow {
+    font-size: 17px;
+  }
+  .bookmarkMainContainer .gridArticles {
+    width: 350px;
+  }
+  .bookmarkMainContainer .articles, .bookmarkMainContainer .articlesTwoCards {
+    padding: 0;
+    max-height: 100%;
+    margin-bottom: 1rem;
+  }
+  .bookmarkMainContainer .articlesTwoCards {
+    justify-content: center;
+  }
 }/*# sourceMappingURL=bookmarkPage.css.map */

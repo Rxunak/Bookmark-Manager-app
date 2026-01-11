@@ -247,6 +247,7 @@ function App() {
               bkData={data}
               checkedList={checkedList}
               isChecked={checked}
+              showSidebar={showSidebar}
             />
           </aside>
         )}
@@ -264,7 +265,7 @@ function App() {
           />
         </header>
         <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
-          {/* <BookmarkPage
+          <BookmarkPage
             setToggleData={setToggleData}
             onMouseEnterOption={onMouseEnterOption}
             onMouseEnterSort={onMouseEnterSort}
@@ -282,7 +283,7 @@ function App() {
             updateSortCount={updateSortCount}
             handleSortReset={handleSortReset}
             sortRef={sortRef}
-          /> */}
+          />
         </main>
 
         {openModal && (

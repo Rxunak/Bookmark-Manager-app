@@ -18,6 +18,9 @@
   width: 250px;
   max-width: 100%;
 }
+.sideBarMainContainer .closeIconSidebar {
+  display: none;
+}
 .sideBarMainContainer .activate .homeIconContainer, .sideBarMainContainer .activate .archiveIconContainer, .sideBarMainContainer .activate .archiveIconContainerActive, .sideBarMainContainer .activate .homeIconContainerActive {
   display: flex;
   align-items: center;
@@ -147,4 +150,18 @@
 .sideBarMainContainer .tagsNav .tagsMainContainer .ulTags .liTags .tagsCount .tagsCountText {
   font-size: 14px;
   color: #001f1f;
+}
+
+@media only screen and (max-width: 425px) {
+  .sideBarMainContainer {
+    width: 80%;
+  }
+  .sideBarMainContainer .closeIconSidebar {
+    display: block;
+    width: 30px;
+    position: absolute;
+    left: 19rem;
+    cursor: pointer;
+    top: 1.3rem;
+  }
 }/*# sourceMappingURL=sideBarStyles.css.map */
