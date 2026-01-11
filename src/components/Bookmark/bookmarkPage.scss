@@ -14,7 +14,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0rem 01rem 0rem 0.5rem;
+        padding: 0rem 1rem 0rem 0.5rem;
 
         .bookmarkTitle {
             color: $neutral-800-dark;
@@ -85,11 +85,13 @@
 
     .articles {
         display: flex;
+        // grid-template-columns: repeat(auto-fit, 330px);
         gap: 2.5em;
         max-height: 42rem;
         overflow: scroll;
         justify-content: flex-start;
         flex-wrap: wrap;
+        // justify-content: center;
         padding-left: 0.5rem;
 
     }

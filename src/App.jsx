@@ -30,6 +30,7 @@ function App() {
   const [showActionModal, setShowActionModal] = useState(false);
   const [headerText, setHeaderText] = useState("");
   const [actionItemId, setActionItemId] = useState("");
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const notify = (val) => {
     if (val === "Bookmark Deleted succesfully") {
@@ -229,20 +230,26 @@ function App() {
     openActionModal(false);
   };
 
+  const showSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
   return (
     <>
       <div className="container">
-        <aside className="grid gridOne" style={{ gridArea: "sidebar" }}>
-          <SideBar
-            updateToggle={updateToggle}
-            handleSelect={handleSelect}
-            handleReset={handleReset}
-            currentToggle={toggle}
-            bkData={data}
-            checkedList={checkedList}
-            isChecked={checked}
-          />
-        </aside>
+        {isSidebarVisible && (
+          <aside className="grid gridOne" style={{ gridArea: "sidebar" }}>
+            <SideBar
+              updateToggle={updateToggle}
+              handleSelect={handleSelect}
+              handleReset={handleReset}
+              currentToggle={toggle}
+              bkData={data}
+              checkedList={checkedList}
+              isChecked={checked}
+            />
+          </aside>
+        )}
         <header className="grid gridTwo" style={{ gridArea: "header" }}>
           <HeaderSearchBar
             bkData={data}
@@ -253,6 +260,7 @@ function App() {
             displayProfile={displayProfile}
             openModal={openModal}
             toggle={toggle}
+            showSidebar={showSidebar}
           />
         </header>
         <main className="grid gridThree" style={{ gridArea: "mainPage" }}>

@@ -1,9 +1,12 @@
 .container {
   display: grid;
-  grid-template-columns: 22rem 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: 6rem 1fr;
   grid-template-areas: "sidebar header" "sidebar mainPage";
   height: 100vh;
+}
+.container .gridOne {
+  width: 22rem;
 }
 .container .gridTwo {
   outline: 2px solid #c0cfcc;

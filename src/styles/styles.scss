@@ -2,12 +2,16 @@
 
 .container {
   display: grid;
-  grid-template-columns: 22rem 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: 6rem 1fr;
   grid-template-areas:
     "sidebar header"
     "sidebar mainPage";
   height: 100vh;
+
+  .gridOne {
+    width: 22rem;
+  }
 
   .gridTwo {
     outline: 2px solid #c0cfcc;
@@ -17,3 +21,9 @@
     outline: 2px solid #c0cfcc;
   }
 }
+
+// @media only screen and (max-width: 425px) {
+//   .container {
+//     background-color: aqua;
+//   }
+// }

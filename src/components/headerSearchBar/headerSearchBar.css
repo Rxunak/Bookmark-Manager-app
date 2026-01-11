@@ -6,8 +6,23 @@
   height: 100%;
   width: auto;
 }
-
-.searchBar {
+.headerMainContainer .headerHamburgerContainer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.headerMainContainer .headerHamburgerContainer .hamburgerButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: 3px solid #e8f0ef;
+  background: none;
+  cursor: pointer;
+}
+.headerMainContainer .headerHamburgerContainer .hamburgerButton:hover {
+  background-color: #e8f0ef;
+}
+.headerMainContainer .searchBar {
   height: 50px;
   width: 350px;
   border-radius: 10px;
@@ -21,30 +36,28 @@
   font-size: 18px;
   color: #4c5c59;
 }
-.searchBar:hover {
+.headerMainContainer .searchBar:hover {
   background-color: #e8f0ef;
 }
-.searchBar:focus {
+.headerMainContainer .searchBar:focus {
   outline: 2px solid #4c5c59;
 }
-.searchBar::-moz-placeholder {
+.headerMainContainer .searchBar::-moz-placeholder {
   font-size: 18px;
   color: #4c5c59;
 }
-.searchBar::placeholder {
+.headerMainContainer .searchBar::placeholder {
   font-size: 18px;
   color: #4c5c59;
 }
-
-.profileContainer {
+.headerMainContainer .profileContainer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   width: 260px;
   align-items: center;
 }
-
-.addBookmark .bookmarkButton, .addBookmarkActive .bookmarkButton {
+.headerMainContainer .addBookmark .bookmarkButton, .headerMainContainer .addBookmarkActive .bookmarkButton {
   height: 50px;
   width: 200px;
   border-radius: 10px;
@@ -59,27 +72,23 @@
   cursor: pointer;
   border: none;
 }
-
-.addBookmarkActive {
+.headerMainContainer .addBookmarkActive {
   outline: 2px solid #001f1f;
   border-radius: 10px;
   padding: 1.5px;
 }
-
-.addIcon {
+.headerMainContainer .addIcon {
   filter: brightness(0) invert(1);
 }
-
-.profile, .profileBorder {
+.headerMainContainer .profile, .headerMainContainer .profileBorder {
   display: flex;
   justify-content: center;
   cursor: pointer;
 }
-.profile .profileImage, .profileBorder .profileImage {
+.headerMainContainer .profile .profileImage, .headerMainContainer .profileBorder .profileImage {
   width: 45px;
 }
-
-.profileBorder {
+.headerMainContainer .profileBorder {
   border: 2px solid #001f1f;
   border-radius: 50%;
   padding: 2px;
