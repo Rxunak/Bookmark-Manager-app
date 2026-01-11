@@ -149,7 +149,11 @@ function BookmarkPage({
         )}
       </div>
 
-      <div className="articles">
+      <div
+        className={
+          formFilteredData.length <= 3 ? "articlesTwoCards" : "articles"
+        }
+      >
         {formFilteredData.map((item, index) => (
           <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">

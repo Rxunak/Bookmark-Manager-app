@@ -12,7 +12,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1rem 0rem 0.5rem;
 }
 .bookmarkMainContainer .bookmarkHeader .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .searchInputShow, .bookmarkMainContainer .bookmarkHeader .bookmarkShow {
   color: #001f1f;
@@ -59,14 +58,19 @@
 .bookmarkMainContainer .bookmarkHeader .sortByButton:hover {
   background-color: transparent;
 }
-.bookmarkMainContainer .articles {
+.bookmarkMainContainer .articles, .bookmarkMainContainer .articlesTwoCards {
   display: flex;
   gap: 2.5em;
   max-height: 42rem;
   overflow: scroll;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  padding-left: 0.5rem;
+  justify-content: center;
+  scrollbar-color: #4c5c59 #e8f0ef;
+  padding-right: 20px;
+  width: 100%;
+}
+.bookmarkMainContainer .articlesTwoCards {
+  justify-content: flex-start;
 }
 .bookmarkMainContainer .gridArticles {
   border-radius: 10px;

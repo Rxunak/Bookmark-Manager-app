@@ -21,6 +21,13 @@
             background: none;
             cursor: pointer;
 
+            .hamburgerImage {
+                max-width: 100%;
+                height: auto;
+                height: 1.5rem;
+                width: 1.5rem;
+            }
+
             &:hover {
                 background-color: $neutral-100;
             }

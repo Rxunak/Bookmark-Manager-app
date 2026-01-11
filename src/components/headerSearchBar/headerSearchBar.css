@@ -19,6 +19,12 @@
   background: none;
   cursor: pointer;
 }
+.headerMainContainer .headerHamburgerContainer .hamburgerButton .hamburgerImage {
+  max-width: 100%;
+  height: auto;
+  height: 1.5rem;
+  width: 1.5rem;
+}
 .headerMainContainer .headerHamburgerContainer .hamburgerButton:hover {
   background-color: #e8f0ef;
 }
