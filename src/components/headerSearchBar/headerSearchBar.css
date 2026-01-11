@@ -28,7 +28,7 @@
 .headerMainContainer .headerHamburgerContainer .hamburgerButton:hover {
   background-color: #e8f0ef;
 }
-.headerMainContainer .searchBar {
+.headerMainContainer .headerHamburgerContainer .searchBar {
   height: 50px;
   width: 350px;
   border-radius: 10px;
@@ -42,17 +42,17 @@
   font-size: 18px;
   color: #4c5c59;
 }
-.headerMainContainer .searchBar:hover {
+.headerMainContainer .headerHamburgerContainer .searchBar:hover {
   background-color: #e8f0ef;
 }
-.headerMainContainer .searchBar:focus {
+.headerMainContainer .headerHamburgerContainer .searchBar:focus {
   outline: 2px solid #4c5c59;
 }
-.headerMainContainer .searchBar::-moz-placeholder {
+.headerMainContainer .headerHamburgerContainer .searchBar::-moz-placeholder {
   font-size: 18px;
   color: #4c5c59;
 }
-.headerMainContainer .searchBar::placeholder {
+.headerMainContainer .headerHamburgerContainer .searchBar::placeholder {
   font-size: 18px;
   color: #4c5c59;
 }
@@ -60,10 +60,10 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  width: 260px;
+  max-width: 260px;
   align-items: center;
 }
-.headerMainContainer .addBookmark .bookmarkButton, .headerMainContainer .addBookmarkActive .bookmarkButton {
+.headerMainContainer .profileContainer .addBookmark .bookmarkButton, .headerMainContainer .profileContainer .addBookmarkActive .bookmarkButton {
   height: 50px;
   width: 200px;
   border-radius: 10px;
@@ -78,24 +78,67 @@
   cursor: pointer;
   border: none;
 }
-.headerMainContainer .addBookmarkActive {
+.headerMainContainer .profileContainer .addBookmarkActive {
   outline: 2px solid #001f1f;
   border-radius: 10px;
   padding: 1.5px;
 }
-.headerMainContainer .addIcon {
+.headerMainContainer .profileContainer .addIcon {
   filter: brightness(0) invert(1);
 }
-.headerMainContainer .profile, .headerMainContainer .profileBorder {
+.headerMainContainer .profileContainer .profile, .headerMainContainer .profileContainer .profileBorder {
   display: flex;
   justify-content: center;
   cursor: pointer;
 }
-.headerMainContainer .profile .profileImage, .headerMainContainer .profileBorder .profileImage {
+.headerMainContainer .profileContainer .profile .profileImage, .headerMainContainer .profileContainer .profileBorder .profileImage {
   width: 45px;
 }
-.headerMainContainer .profileBorder {
+.headerMainContainer .profileContainer .profileBorder {
   border: 2px solid #001f1f;
   border-radius: 50%;
   padding: 2px;
+}
+
+@media only screen and (max-width: 425px) {
+  .headerMainContainer {
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+    justify-content: center;
+  }
+  .headerMainContainer .headerHamburgerContainer {
+    gap: 10px;
+  }
+  .headerMainContainer .headerHamburgerContainer .hamburgerButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .headerMainContainer .headerHamburgerContainer .searchBar {
+    width: 150px;
+    height: 36px;
+    background-position: 12px 9px;
+    background-size: 20px;
+    font-size: 13px;
+  }
+  .headerMainContainer .headerHamburgerContainer .searchBar::-moz-placeholder {
+    font-size: 13px;
+  }
+  .headerMainContainer .headerHamburgerContainer .searchBar::placeholder {
+    font-size: 13px;
+  }
+  .headerMainContainer .profileContainer {
+    justify-content: flex-start;
+  }
+  .headerMainContainer .profileContainer .addBookmark .bookmarkButton, .headerMainContainer .profileContainer .addBookmarkActive .bookmarkButton {
+    width: 40px;
+    height: 40px;
+  }
+  .headerMainContainer .profileContainer .addBookmark .bookmarkButton .addBTextM, .headerMainContainer .profileContainer .addBookmarkActive .bookmarkButton .addBTextM {
+    display: none;
+  }
+  .headerMainContainer .profileContainer .profile .profileImage, .headerMainContainer .profileContainer .profileBorder .profileImage {
+    width: 42px;
+  }
 }/*# sourceMappingURL=headerSearchBar.css.map */

@@ -22,8 +22,23 @@
   }
 }
 
-// @media only screen and (max-width: 425px) {
-//   .container {
-//     background-color: aqua;
-//   }
-// }
+@media only screen and (max-width: 425px) {
+
+
+  .container {
+    // outline: 2px solid black;
+    // margin: 1rem;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr;
+    grid-template-areas:
+      "header"
+      "mainPage";
+
+
+    .gridTwo {
+
+      // outline: 2px solid red;
+    }
+  }
+}

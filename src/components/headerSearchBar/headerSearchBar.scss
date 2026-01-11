@@ -32,90 +32,150 @@
                 background-color: $neutral-100;
             }
         }
-    }
 
-    .searchBar {
-        height: 50px;
-        width: 350px;
-        border-radius: 10px;
-        padding-left: 41px;
-        background-image: url('/Images/icon-search.svg');
-        background-repeat: no-repeat;
-        background-position: 10px 13px;
-        background-size: 23px;
-        border: 3px solid $neutral-100;
-        cursor: pointer;
-        font-size: 18px;
-        color: $neutral-800;
-
-        &:hover {
-            background-color: $neutral-100;
-        }
-
-        &:focus {
-            outline: 2px solid $neutral-800
-        }
-
-        &::placeholder {
+        .searchBar {
+            height: 50px;
+            width: 350px;
+            border-radius: 10px;
+            padding-left: 41px;
+            background-image: url('/Images/icon-search.svg');
+            background-repeat: no-repeat;
+            background-position: 10px 13px;
+            background-size: 23px;
+            border: 3px solid $neutral-100;
+            cursor: pointer;
             font-size: 18px;
             color: $neutral-800;
+
+            &:hover {
+                background-color: $neutral-100;
+            }
+
+            &:focus {
+                outline: 2px solid $neutral-800
+            }
+
+            &::placeholder {
+                font-size: 18px;
+                color: $neutral-800;
+            }
         }
     }
+
+
 
     .profileContainer {
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        width: 260px;
+        max-width: 260px;
         align-items: center;
 
-    }
+        .addBookmark {
+            .bookmarkButton {
+                height: 50px;
+                width: 200px;
+                border-radius: 10px;
+                background-color: $neutral-800-dark;
+                color: $neutral-0;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                font-weight: 300;
+                cursor: pointer;
+                border: none;
+            }
+        }
 
-    .addBookmark {
-        .bookmarkButton {
-            height: 50px;
-            width: 200px;
+        .addBookmarkActive {
+            @extend .addBookmark;
+            outline: 2px solid $neutral-800-dark;
             border-radius: 10px;
-            background-color: $neutral-800-dark;
-            color: $neutral-0;
-            font-size: 18px;
+            padding: 1.5px;
+        }
+
+
+
+        .addIcon {
+            filter: brightness(0) invert(1);
+        }
+
+        .profile {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-weight: 300;
             cursor: pointer;
-            border: none;
+
+            .profileImage {
+                width: 45px;
+            }
         }
+
+        .profileBorder {
+            @extend .profile;
+            border: 2px solid $neutral-800-dark;
+            border-radius: 50%;
+            padding: 2px;
+        }
+
     }
 
-    .addBookmarkActive {
-        @extend .addBookmark;
-        outline: 2px solid $neutral-800-dark;
-        border-radius: 10px;
-        padding: 1.5px;
-    }
 
+}
 
-
-    .addIcon {
-        filter: brightness(0) invert(1);
-    }
-
-    .profile {
-        display: flex;
+@media only screen and (max-width: 425px) {
+    .headerMainContainer {
+        width: 100%;
+        padding: 0;
+        gap: 10px;
         justify-content: center;
-        cursor: pointer;
 
-        .profileImage {
-            width: 45px;
+        .headerHamburgerContainer {
+            gap: 10px;
+
+            .hamburgerButton {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+            }
+
+            .searchBar {
+                width: 150px;
+                height: 36px;
+                background-position: 12px 9px;
+                background-size: 20px;
+                font-size: 13px;
+
+                &::placeholder {
+                    font-size: 13px;
+                }
+            }
         }
-    }
 
-    .profileBorder {
-        @extend .profile;
-        border: 2px solid $neutral-800-dark;
-        border-radius: 50%;
-        padding: 2px;
+        .profileContainer {
+            justify-content: flex-start;
+
+            .addBookmark {
+                .bookmarkButton {
+                    width: 40px;
+                    height: 40px;
+
+                    .addBTextM {
+                        display: none;
+                    }
+                }
+            }
+
+            .profile {
+                .profileImage {
+                    width: 42px;
+                }
+            }
+
+
+
+
+        }
     }
 }

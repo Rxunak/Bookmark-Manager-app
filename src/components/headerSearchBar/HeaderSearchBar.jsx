@@ -15,48 +15,45 @@ function HeaderSearchBar({
   showSidebar,
 }) {
   return (
-    <>
-      <div className="headerMainContainer">
-        <div className="headerHamburgerContainer">
-          <button onClick={showSidebar} className="hamburgerButton">
-            <img src={hamburgIcon} alt="" className="hamburgerImage" />
-          </button>
+    <div className="headerMainContainer">
+      <div className="headerHamburgerContainer">
+        <button onClick={showSidebar} className="hamburgerButton">
+          <img src={hamburgIcon} alt="" className="hamburgerImage" />
+        </button>
 
-          <div className="srachBarContainer">
-            <input
-              type="text"
-              placeholder={
-                toggle === 1 ? "Search in Home" : "Search in Archive"
-              }
-              className="searchBar"
-              value={input}
-              onChange={(e) => handleInput(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <div className="profileContainer">
-          <section className={openModal ? "addBookmarkActive" : "addBookmark"}>
-            <button
-              className="bookmarkButton"
-              onClick={() => openModalPop(true, false)}
-            >
-              <img src={addIcon} alt="" className="addIcon" /> Add Bookmark
-            </button>
-          </section>
-          <section
-            className={`${displayProfile ? "profileBorder" : "profile"}`}
-          >
-            <img
-              src={profileImage}
-              alt="profileImage"
-              className="profileImage"
-              onClick={onMouseEnter}
-            />
-          </section>
+        <div className="srachBarContainer">
+          <input
+            type="text"
+            placeholder={
+              toggle === 1 ? "Search in Home..." : "Search in Archive..."
+            }
+            className="searchBar"
+            value={input}
+            onChange={(e) => handleInput(e.target.value)}
+          />
         </div>
       </div>
-    </>
+
+      <div className="profileContainer">
+        <section className={openModal ? "addBookmarkActive" : "addBookmark"}>
+          <button
+            className="bookmarkButton"
+            onClick={() => openModalPop(true, false)}
+          >
+            <img src={addIcon} alt="" className="addIcon" />{" "}
+            <span className="addBText addBTextM">Add Bookmark</span>
+          </button>
+        </section>
+        <section className={`${displayProfile ? "profileBorder" : "profile"}`}>
+          <img
+            src={profileImage}
+            alt="profileImage"
+            className="profileImage"
+            onClick={onMouseEnter}
+          />
+        </section>
+      </div>
+    </div>
   );
 }
 
