@@ -1,7 +1,7 @@
 .optionPopupMainContainer, .opActive {
   position: absolute;
-  top: 5rem;
-  left: 7rem;
+  top: 3.5rem;
+  right: 0;
   background-color: white;
   height: 200px;
   width: 200px;

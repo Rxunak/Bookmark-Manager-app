@@ -194,16 +194,37 @@
   }
 }
 
+//Mobiles
 @media only screen and (max-width: 432px) {
   .sideBarMainContainer {
     width: 80%;
     min-height: fit-content;
+    position: relative;
 
     .closeIconSidebar {
       display: block;
       width: 30px;
       position: absolute;
-      left: 19rem;
+      // left: 19rem;
+      right: 1rem;
+      cursor: pointer;
+      top: 1.3rem;
+    }
+  }
+}
+
+//Tablets
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .sideBarMainContainer {
+    width: 22rem;
+    min-height: fit-content;
+    position: relative;
+
+    .closeIconSidebar {
+      display: block;
+      width: 30px;
+      position: absolute;
+      right: 1rem;
       cursor: pointer;
       top: 1.3rem;
     }

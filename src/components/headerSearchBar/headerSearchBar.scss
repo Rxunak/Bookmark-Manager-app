@@ -128,7 +128,6 @@
 @media only screen and (max-width: 432px) {
     .headerMainContainer {
         padding: 0;
-        // gap: 10px;
         justify-content: space-evenly;
 
         .headerHamburgerContainer {
@@ -171,6 +170,17 @@
                 .profileImage {
                     width: 42px;
                 }
+            }
+        }
+    }
+}
+
+//Tablets
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .headerMainContainer {
+        .headerHamburgerContainer {
+            .searchBar {
+                width: 100%;
             }
         }
     }

@@ -140,4 +140,9 @@
   .headerMainContainer .profileContainer .profile .profileImage, .headerMainContainer .profileContainer .profileBorder .profileImage {
     width: 42px;
   }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .headerMainContainer .headerHamburgerContainer .searchBar {
+    width: 100%;
+  }
 }/*# sourceMappingURL=headerSearchBar.css.map */
