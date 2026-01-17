@@ -3,6 +3,7 @@ import "../headerSearchBar/headerSearchBar.scss";
 import profileImage from "../../assets/Images/image-avatar.webp";
 import addIcon from "../../assets/Images/icon-add.svg";
 import hamburgIcon from "../../assets/Images/icon-menu-hamburger.svg";
+import ProfileCard from "../ProfileCard/ProfileCard";
 
 function HeaderSearchBar({
   handleInput,
@@ -13,6 +14,7 @@ function HeaderSearchBar({
   openModal,
   toggle,
   showSidebar,
+  menuRef,
 }) {
   return (
     <div className="headerMainContainer">
@@ -53,6 +55,8 @@ function HeaderSearchBar({
           />
         </section>
       </div>
+
+      {displayProfile && <ProfileCard menuRef={menuRef} />}
     </div>
   );
 }

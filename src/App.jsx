@@ -262,6 +262,7 @@ function App() {
             openModal={openModal}
             toggle={toggle}
             showSidebar={showSidebar}
+            menuRef={menuRef}
           />
         </header>
         <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
@@ -298,7 +299,7 @@ function App() {
           />
         )}
 
-        {displayProfile && <ProfileCard menuRef={menuRef} />}
+        {/* {displayProfile && <ProfileCard menuRef={menuRef} />} */}
 
         <ToastContainer />
 

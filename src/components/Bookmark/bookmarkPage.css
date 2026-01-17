@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .bookmarkMainContainer .bookmarkHeader .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .searchInputShow, .bookmarkMainContainer .bookmarkHeader .bookmarkShow {
   color: #001f1f;
@@ -193,19 +194,25 @@
   font-size: 13px;
   color: #001f1f;
 }
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 432px) {
   .bookmarkMainContainer {
     padding: 0;
   }
   .bookmarkMainContainer .bookmarkHeader {
-    justify-content: center;
-    gap: 70px;
+    justify-content: space-between;
   }
-  .bookmarkMainContainer .bookmarkHeader .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .bookmarkShow, .bookmarkMainContainer .bookmarkHeader .searchInputShow {
-    font-size: 17px;
+  .bookmarkMainContainer .bookmarkHeader .headCon {
+    width: 11rem;
+    padding-left: 1.3rem;
+  }
+  .bookmarkMainContainer .bookmarkHeader .headCon .bookmarkTitle, .bookmarkMainContainer .bookmarkHeader .headCon .bookmarkShow, .bookmarkMainContainer .bookmarkHeader .headCon .searchInputShow {
+    font-size: 19px;
+  }
+  .bookmarkMainContainer .bookmarkHeader .sortByButtonDiv {
+    padding-right: 1.3rem;
   }
   .bookmarkMainContainer .gridArticles {
-    width: 350px;
+    width: 90%;
   }
   .bookmarkMainContainer .articles, .bookmarkMainContainer .articlesTwoCards {
     padding: 0;

@@ -14,6 +14,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
 
         .bookmarkTitle {
             color: $neutral-800-dark;
@@ -257,22 +258,29 @@
 
 }
 
-@media only screen and (max-width: 425px) {
-
+@media only screen and (max-width: 432px) {
     .bookmarkMainContainer {
         padding: 0;
 
         .bookmarkHeader {
-            justify-content: center;
-            gap: 70px;
+            justify-content: space-between;
 
-            .bookmarkTitle {
-                font-size: 17px;
+            .headCon {
+                width: 11rem;
+                padding-left: 1.3rem;
+
+                .bookmarkTitle {
+                    font-size: 19px;
+                }
+            }
+
+            .sortByButtonDiv {
+                padding-right: 1.3rem;
             }
         }
 
         .gridArticles {
-            width: 350px;
+            width: 90%;
         }
 
         .articles {

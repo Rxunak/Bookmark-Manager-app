@@ -1,8 +1,8 @@
 .sortMainContainer {
   background-color: white;
-  position: fixed;
-  top: 9.5rem;
-  left: 78.6rem;
+  position: absolute;
+  top: 4.5rem;
+  right: 0;
   height: 180px;
   width: 220px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -46,4 +46,11 @@
 .sortMainContainer .sortResetButton .sortInfoContainerButtonActive {
   background-color: #001f1f;
   color: white;
+}
+
+@media only screen and (max-width: 432px) {
+  .sortMainContainer {
+    right: 1rem;
+    top: 4rem;
+  }
 }/*# sourceMappingURL=sortPopup.css.map */

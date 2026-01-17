@@ -35,8 +35,8 @@ function BookmarkPage({
   const titleText = toggleButton == 1 ? "All Bookmarks" : "Archived Bookmarks";
 
   const [formFilteredData, setFormFilteredData] = useState([]);
-
   const [isVisible, setIsVisible] = useState(true);
+  const [trunctedTag, setTrunctedTag] = useState("");
   const containerRef = useRef();
 
   useEffect(() => {
@@ -104,10 +104,20 @@ function BookmarkPage({
     setFormFilteredData(filteredData);
   }, [toggleButton, bkData, filterData, checkedList, input, sortCount]);
 
+  // const stringTrunct = () => {
+  //   if (checkedList && checkedList.length > 11) {
+  //     setTrunctedTag(checkedList.substring(0, 11) + "...");
+  //   }
+  // };
+
+  // stringTrunct();
+
+  console.log(checkedList.join(", "));
+
   return (
     <div className="bookmarkMainContainer" ref={containerRef}>
       <div className="bookmarkHeader ">
-        <>
+        <div className="headCon">
           {showTitle && (
             <span
               className={showTagFilter ? "bookmarkTitleHide" : "bookmarkTitle"}
@@ -118,12 +128,9 @@ function BookmarkPage({
 
           <span className={showTagFilter ? "bookmarkShow" : "bookmarkShowHide"}>
             Bookmarks tagged:{" "}
-            {checkedList.map((item, index) => (
-              <span key={index}>
-                <span className="tag-item">{item}</span>
-                {index < checkedList.length - 1 && ", "}
-              </span>
-            ))}
+            <span className="tag-item">
+              {checkedList.slice(0, 2) + " + " + checkedList.slice(2).length}
+            </span>
           </span>
 
           <span
@@ -131,12 +138,14 @@ function BookmarkPage({
           >
             Results for: <span className="inputText">{`"${input}"`}</span>
           </span>
-        </>
+        </div>
 
-        <button className="sortByButton" onClick={onMouseEnterSort}>
-          <img src={sortIcon} alt="sortIcon" className="sortIcon" />
-          <span className="sortText">Sort By</span>
-        </button>
+        <div className="sortByButtonDiv">
+          <button className="sortByButton" onClick={onMouseEnterSort}>
+            <img src={sortIcon} alt="sortIcon" className="sortIcon" />
+            <span className="sortText">Sort By</span>
+          </button>
+        </div>
 
         {displaySort && isVisible && (
           <SortPopup

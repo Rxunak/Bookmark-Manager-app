@@ -4,14 +4,16 @@
     height: auto;
     width: 290px;
     position: absolute;
-    left: 75rem;
-    top: 4.5rem;
+    // left: 75rem;
+    top: 5rem;
+    right: 0;
     background-color: $neutral-0;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     border: 2px solid $neutral-010;
+    z-index: 1;
 
 
     .profileC {
@@ -20,12 +22,12 @@
         display: flex;
         align-items: center;
         border-bottom: 2px solid $neutral-010;
-        padding-left: 1rem;
         gap: 10px;
 
         .profileCardImage {
             width: 50px;
             height: 50px;
+            margin-left: 1rem;
         }
 
         .profileInfoCard {
@@ -129,12 +131,23 @@
         width: 100%;
         display: flex;
         align-items: center;
+        justify-content: start;
         gap: 10px;
-        padding-left: 1rem;
+        // padding-left: 1rem;
 
         .logoutText {
             font-size: 18px;
             color: $neutral-800;
         }
+
+        .logoutIcon {
+            margin-left: 1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 432px) {
+    .profileCardMain {
+        top: 3.9rem;
     }
 }

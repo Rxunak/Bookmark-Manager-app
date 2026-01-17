@@ -96,15 +96,13 @@
 .modal .mainModal .formContainer .modalForm .formLabelContainer .wordCount {
   font-size: 14px;
   color: #4c5c59;
-  margin-left: 430px;
-  height: 15px;
-  width: 67px;
+  width: 100%;
   text-align: end;
 }
 .modal .mainModal .formControls {
   height: 80px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-start;
   align-items: end;
   gap: 20px;
   align-items: center;
@@ -138,7 +136,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 31.5rem;
+  right: 1rem;
   bottom: 42rem;
   border: 2px solid #c0cfcc;
   height: 30px;

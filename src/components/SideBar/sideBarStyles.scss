@@ -194,9 +194,10 @@
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 432px) {
   .sideBarMainContainer {
     width: 80%;
+    min-height: fit-content;
 
     .closeIconSidebar {
       display: block;
