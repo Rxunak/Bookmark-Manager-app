@@ -65,7 +65,7 @@ function BookmarkPage({
 
     if (input.length > 0) {
       filteredData = filteredData.filter((item) =>
-        item?.title?.includes(input)
+        item?.title?.includes(input),
       );
     }
 
@@ -79,7 +79,7 @@ function BookmarkPage({
 
     if (checkedList.length > 0) {
       filteredData = filteredData.filter((item) =>
-        item?.tags?.some((r) => checkedList.includes(r))
+        item?.tags?.some((r) => checkedList.includes(r)),
       );
     }
 

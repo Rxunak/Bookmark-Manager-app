@@ -84,190 +84,183 @@
     }
 
     .articles {
-        display: flex;
-        gap: 2.5em;
-        max-height: 42rem;
+        max-height: 100%;
         overflow: scroll;
-        flex-wrap: wrap;
-        justify-content: center;
         scrollbar-color: $neutral-800 $neutral-100;
-        // padding-right: 20px;
         width: 100%;
+        margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        justify-content: space-evenly;
+        gap: 20px;
+
+
+        .gridArticles {
+            border-radius: 10px;
+            background-color: $neutral-0;
+
+
+
+            .mainArticle {
+                height: 280px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                position: relative;
+
+                .articleHeader {
+                    border-bottom: 2px solid $neutral-100;
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                    flex-grow: 1;
+                    margin-left: 10px;
+                    margin-right: 10px;
+
+                    .articleHeaderImage {
+                        width: 45px;
+                        outline: 1.5px solid $neutral-100;
+                        border-radius: 8px;
+                        margin-right: 15px;
+                    }
+
+                    .articleHeaderText {
+                        font-size: 22px;
+                        font-weight: 600;
+                        margin-bottom: 3px;
+                    }
+
+                    .articleHeaderTextSecondary {
+                        font-size: 12px;
+                        color: $neutral-800;
+                    }
+
+
+                    .articleBookmark {
+                        margin: auto;
+                        margin-right: 0px;
+                        background: none;
+                        outline: 2px solid $neutral-100;
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 10px;
+                        border: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: $neutral-100
+                        }
+                    }
+
+                    .articleBookmarkActive {
+                        @extend .articleBookmark;
+                        outline: 2px solid $neutral-800;
+                    }
+
+                    .isArchived {
+                        position: absolute;
+                        top: 3.5rem;
+                        left: 17rem;
+                        background-color: $neutral-100;
+                        font-size: 10px;
+                        padding: 2px;
+                        border-radius: 5px;
+                    }
+
+                }
+
+                .articleBody {
+                    margin-top: 15px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    height: 120px;
+
+
+                    .articleTextBodyScroll {
+                        height: 100px;
+                        overflow: scroll;
+                    }
+
+                    .articleBodyText {
+                        color: $neutral-800;
+                        font-size: 15px;
+                        margin-bottom: 7px;
+                    }
+
+                    .articleBodyTags {
+                        display: flex;
+                        gap: 10px
+                    }
+
+                    .tagOne {
+                        font-size: 12px;
+                        background-color: $neutral-100;
+                        padding: 6px;
+                        border-radius: 5px;
+                        color: $neutral-800;
+
+                    }
+                }
+
+                .articleFooter {
+                    display: flex;
+                    // flex-grow: 1;
+                    border-top: 2px solid $neutral-100;
+                    gap: 20px;
+                    margin-top: 20px;
+                    margin-left: 10px;
+                    height: 50px;
+                    align-items: center;
+
+                    .footerPin {
+                        margin: auto;
+                        margin-top: 12px;
+                        margin-right: 20px;
+                        width: 17px;
+                    }
+
+                    .footerIconContainer {
+                        display: flex;
+                        gap: 7px;
+                        align-items: center;
+                        // margin-top: 15px;
+                    }
+
+                    .footerIcon {
+                        width: 14px;
+                    }
+
+                    .footerText {
+                        font-size: 13px;
+                        color: $neutral-800-dark;
+                    }
+                }
+            }
+        }
     }
 
     .articlesTwoCards {
         @extend .articles;
         justify-content: flex-start;
     }
-
-
-
-    .gridArticles {
-        border-radius: 10px;
-        background-color: $neutral-0;
-        width: 330px;
-
-        .mainArticle {
-            height: 280px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            position: relative;
-
-            .articleHeader {
-                border-bottom: 2px solid $neutral-100;
-                height: 20px;
-                display: flex;
-                align-items: center;
-                flex-grow: 1;
-                margin-left: 10px;
-                margin-right: 10px;
-
-                .articleHeaderImage {
-                    width: 45px;
-                    outline: 1.5px solid $neutral-100;
-                    border-radius: 8px;
-                    margin-right: 15px;
-                }
-
-                .articleHeaderText {
-                    font-size: 22px;
-                    font-weight: 600;
-                    margin-bottom: 3px;
-                }
-
-                .articleHeaderTextSecondary {
-                    font-size: 12px;
-                    color: $neutral-800;
-                }
-
-
-                .articleBookmark {
-                    margin: auto;
-                    margin-right: 0px;
-                    background: none;
-                    outline: 2px solid $neutral-100;
-                    height: 30px;
-                    width: 30px;
-                    border-radius: 10px;
-                    border: none;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: $neutral-100
-                    }
-                }
-
-                .articleBookmarkActive {
-                    @extend .articleBookmark;
-                    outline: 2px solid $neutral-800;
-                }
-
-                .isArchived {
-                    position: absolute;
-                    top: 3.5rem;
-                    left: 17rem;
-                    background-color: $neutral-100;
-                    font-size: 10px;
-                    padding: 2px;
-                    border-radius: 5px;
-                }
-
-            }
-
-            .articleBody {
-                margin-top: 15px;
-                margin-left: 10px;
-                margin-right: 10px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                height: 120px;
-
-
-                .articleTextBodyScroll {
-                    height: 100px;
-                    overflow: scroll;
-                }
-
-                .articleBodyText {
-                    color: $neutral-800;
-                    font-size: 15px;
-                    margin-bottom: 7px;
-                }
-
-                .articleBodyTags {
-                    display: flex;
-                    gap: 10px
-                }
-
-                .tagOne {
-                    font-size: 12px;
-                    background-color: $neutral-100;
-                    padding: 6px;
-                    border-radius: 5px;
-                    color: $neutral-800;
-
-                }
-            }
-
-            .articleFooter {
-                display: flex;
-                // flex-grow: 1;
-                border-top: 2px solid $neutral-100;
-                gap: 20px;
-                margin-top: 20px;
-                margin-left: 10px;
-                height: 50px;
-                align-items: center;
-
-                .footerPin {
-                    margin: auto;
-                    margin-top: 12px;
-                    margin-right: 20px;
-                    width: 17px;
-                }
-
-                .footerIconContainer {
-                    display: flex;
-                    gap: 7px;
-                    align-items: center;
-                    // margin-top: 15px;
-                }
-
-                .footerIcon {
-                    width: 14px;
-                }
-
-                .footerText {
-                    font-size: 13px;
-                    color: $neutral-800-dark;
-                }
-
-                .special {
-                    // padding-left: 20px;
-
-                }
-            }
-        }
-    }
-
-
 }
 
 @media only screen and (max-width: 432px) {
     .bookmarkMainContainer {
-        padding: 0;
+        padding: 5px;
 
         .bookmarkHeader {
             justify-content: space-between;
 
             .headCon {
                 width: 11rem;
-                padding-left: 1.3rem;
+                // padding-left: 1.3rem;
 
                 .bookmarkTitle {
                     font-size: 19px;
@@ -275,12 +268,12 @@
             }
 
             .sortByButtonDiv {
-                padding-right: 1.3rem;
+                // padding-right: 1.3rem;
             }
         }
 
         .gridArticles {
-            width: 90%;
+            // width: 90%;
         }
 
         .articles {
@@ -305,7 +298,18 @@
         }
 
         .gridArticles {
-            width: 47%;
+            // width: 47%;
         }
     }
+}
+
+//Laptops
+@media (min-width: 1024px) and (max-width: 1920px) and (orientation: landscape) {
+    // .bookmarkMainContainer {
+    //     // .articles {
+    //     //     outline: 2px solid black;
+    //     //     max-height: 100%;
+    //     //     margin-bottom: 1rem;
+    //     // }
+    // }
 }
