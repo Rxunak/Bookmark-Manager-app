@@ -1,15 +1,28 @@
-const express = require("express");
-const app = express();
-const port = 4000;
-const cors = require("cors");
-const { send } = require("vite");
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import route from "./routes/bookmarkRoute.js";
+import cors from "cors";
 
+const app = express();
+
+app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", cors(), async (req, res) => {
-  res.send("Working");
-});
+dotenv.config();
 
-app.listen(port, () => {
-  console.log(`Listening to port ${port}`);
-});
+const PORT = process.env.PORT || 5000;
+const MONGOURL = process.env.MONGO_URL;
+
+mongoose
+  .connect(MONGOURL)
+  .then(() => {
+    console.log("Mongo DB is connected");
+    app.listen(PORT, () => {
+      console.log("Server is running");
+    });
+  })
+  .catch((error) => console.log(error));
+
+app.use("/api/bookmark", route);

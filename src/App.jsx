@@ -32,6 +32,10 @@ function App() {
   const [actionItemId, setActionItemId] = useState("");
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
+  useEffect(() => {
+    console.log("opencard called", openCards);
+  });
+
   const notify = (val) => {
     if (val === "Bookmark Deleted succesfully") {
       toast.error(val);
@@ -45,7 +49,7 @@ function App() {
 
   useEffect(() => {
     const getData = () => {
-      fetch("src/data.json", {
+      fetch("http://localhost:8000/api/bookmark/fetch", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -55,9 +59,9 @@ function App() {
           return response.json();
         })
         .then(function (myJson) {
+          console.log(myJson);
           const userBookmarks = getItem("Bookmark") || [];
-
-          const allBookmarks = [...myJson.bookmarks, ...userBookmarks];
+          const allBookmarks = [...myJson, ...userBookmarks];
           setData(allBookmarks);
           setFilteredData(allBookmarks);
         });
@@ -125,7 +129,7 @@ function App() {
     const newData = { ...oldData, ...input };
 
     const newArray = data.map((bookmark) =>
-      bookmark.id === id ? newData : bookmark
+      bookmark.id === id ? newData : bookmark,
     );
     setData(newArray);
 
@@ -134,7 +138,7 @@ function App() {
     const newD = { ...old, ...input };
 
     const newArrayLocalstorage = userBookmarks.map((bookmark) =>
-      bookmark.id === id ? newD : bookmark
+      bookmark.id === id ? newD : bookmark,
     );
 
     setItem("Bookmark", newArrayLocalstorage);
@@ -149,9 +153,10 @@ function App() {
   };
 
   const onMouseEnterOption = (id) => {
+    // debugger;
     if (openCards.includes(id)) {
       setOpenCardId((prevOpenCards) =>
-        prevOpenCards.filter((cardId) => cardId !== id)
+        prevOpenCards.filter((cardId) => cardId !== id),
       );
     } else {
       setOpenCardId((prevOpenCards) => [...prevOpenCards, id]);
@@ -223,7 +228,7 @@ function App() {
     }
 
     const newInputArray = data.map((item) =>
-      item.id === actionItemId ? newInput : item
+      item.id === actionItemId ? newInput : item,
     );
 
     setData(newInputArray);
