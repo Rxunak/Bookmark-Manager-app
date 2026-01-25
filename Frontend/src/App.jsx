@@ -120,25 +120,16 @@ function App() {
     const oldData = data.find((bookmark) => bookmark.id === id);
     const newData = { ...oldData, ...input };
 
-    const newArray = data.map((bookmark) =>
-      bookmark.id === id ? newData : bookmark,
-    );
-    setData(newArray);
-
-    const userBookmarks = getItem("Bookmark") || [];
-    const old = userBookmarks.find((bk) => bk?.id === id);
-    const newD = { ...old, ...input };
-
-    const newArrayLocalstorage = userBookmarks.map((bookmark) =>
-      bookmark.id === id ? newD : bookmark,
-    );
-
-    setItem("Bookmark", newArrayLocalstorage);
+    fetch(`http://localhost:8000/api/bookmark/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    })
+      .then((res) => res.json())
+      .then(() => getData());
   };
-
-  // useEffect(() => {
-  //   setItem("Bookmark", addBookmark);
-  // }, [addBookmark]);
 
   const onMouseEnter = () => {
     setDisplayProfile(!displayProfile);

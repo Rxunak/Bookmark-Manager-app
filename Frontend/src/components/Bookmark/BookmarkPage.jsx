@@ -104,10 +104,6 @@ function BookmarkPage({
     setFormFilteredData(filteredData);
   }, [toggleButton, bkData, filterData, checkedList, input, sortCount]);
 
-  useEffect(() => {
-    console.log("FormFilteredDat", formFilteredData);
-  });
-
   return (
     <div className="bookmarkMainContainer" ref={containerRef}>
       <div className="bookmarkHeader ">

@@ -32,3 +32,21 @@ export const fetch = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const update = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const bookmarkExist = await Bookmark.findOne({ _id: id });
+
+    if (!bookmarkExist) {
+      return res.status(404).json({ message: "User Not Found." });
+    }
+
+    const updateBookmark = await Bookmark.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updateBookmark);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
