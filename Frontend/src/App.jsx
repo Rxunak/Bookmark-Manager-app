@@ -199,14 +199,43 @@ function App() {
 
     if (buttonText === "Archive" || buttonText === "Unarchive") {
       newInput = { ...oldInput, isArchived: !oldInput.isArchived };
+
+      fetch(`http://localhost:8000/api/bookmark/update/${actionItemId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newInput),
+      })
+        .then((res) => res.json())
+        .then(() => getData());
     }
 
     if (buttonText === "Pin" || buttonText === "Unpin") {
       newInput = { ...oldInput, pinned: !oldInput.pinned };
+
+      fetch(`http://localhost:8000/api/bookmark/pin/${actionItemId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newInput),
+      })
+        .then((res) => res.json())
+        .then(() => getData());
     }
 
     if (buttonText === "Delete") {
       newInput = data.filter((item) => item.id !== actionItemId);
+
+      fetch(`http://localhost:8000/api/bookmark/delete/${actionItemId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then(() => getData());
     }
 
     const newInputArray = data.map((item) =>
