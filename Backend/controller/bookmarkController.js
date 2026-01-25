@@ -14,7 +14,6 @@ export const createBookmark = async (req, res) => {
     console.log(savedBookmark);
     res.status(200).json(savedBookmark);
   } catch (error) {
-    // console.log(error);
     console.log("error", error);
     res.status(500).json({ error: "Internal server error" });
   }
@@ -33,7 +32,7 @@ export const fetch = async (req, res) => {
   }
 };
 
-export const update = async (req, res) => {
+export const updateBookmark = async (req, res) => {
   try {
     const id = req.params.id;
     const bookmarkExist = await Bookmark.findOne({ _id: id });
@@ -46,6 +45,22 @@ export const update = async (req, res) => {
       new: true,
     });
     res.status(200).json(updateBookmark);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const deleteBookmark = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const bookmarkExist = await Bookmark.findOne({ _id: id });
+
+    if (!bookmarkExist) {
+      return res.status(404).json({ message: "User Not Found." });
+    }
+
+    await Bookmark.findByIdAndDelete(id);
+    res.status(200).json({ message: "User Deleted Succesfully" });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
