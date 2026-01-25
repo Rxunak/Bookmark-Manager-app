@@ -157,11 +157,7 @@ function BookmarkPage({
           <div key={index} className={`gridArticles articleCard${index + 1}`}>
             <div className="mainArticle">
               <div className="articleHeader">
-                <img
-                  src={`/Images/${item.favicon}`}
-                  alt=""
-                  className="articleHeaderImage"
-                />
+                <img src={item.favicon} alt="" className="articleHeaderImage" />
                 <span>
                   <h1 className="articleHeaderText">{item.title}</h1>
                   <span className="articleHeaderTextSecondary">{item.url}</span>

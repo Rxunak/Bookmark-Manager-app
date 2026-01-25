@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const randomNumber = Math.floor(Math.random() * 10) + 1;
+
 const bookmarkSchema = new mongoose.Schema(
   {
     title: {
@@ -35,7 +37,7 @@ const bookmarkSchema = new mongoose.Schema(
     },
     visitCount: {
       type: Number,
-      default: 0,
+      default: randomNumber,
     },
     lastVisited: {
       type: Date,
