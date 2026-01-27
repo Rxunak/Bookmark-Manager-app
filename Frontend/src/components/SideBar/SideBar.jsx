@@ -5,6 +5,7 @@ import archiveIcon from "../../assets/Images/icon-archive.svg";
 import { tagsArray } from "../../constants";
 import "./sideBarStyles.scss";
 import closeIcon from "../../assets/Images/icon-close.svg";
+import { Link } from "react-router-dom";
 
 function SideBar({
   updateToggle,
@@ -57,7 +58,9 @@ function SideBar({
           onClick={() => updateToggle(1)}
         >
           <img src={homeIcon} alt="homeIcon" className="homeIcon" />
-          <span className="homeIconText">Home</span>
+          <span className="homeIconText">
+            <Link to="/">Home</Link>
+          </span>
         </a>
         <a
           className={`${
@@ -68,7 +71,9 @@ function SideBar({
           onClick={() => updateToggle(2)}
         >
           <img src={archiveIcon} alt="archiveIcon" className="archiveIcon" />
-          <span className="archiveIconText">Archived</span>
+          <span className="archiveIconText">
+            <Link to="/archive">Archived</Link>
+          </span>
         </a>
       </div>
 

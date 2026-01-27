@@ -9,6 +9,7 @@ import { setItem, getItem } from "./utils/localStorage";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import PopupModals from "./components/otherPopupModals/PopupModals";
 import { ToastContainer, toast } from "react-toastify";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -250,6 +251,26 @@ function App() {
     setIsSidebarVisible(!isSidebarVisible);
   };
 
+  const bookmarkProps = {
+    setToggleData,
+    onMouseEnterOption,
+    onMouseEnterSort,
+    openModalPop,
+    toggleButton: toggle,
+    bkData: data,
+    filterData: filteredData,
+    checkedList,
+    isChecked: checked,
+    input,
+    openCardId: openCards,
+    sortCount,
+    openActionModal,
+    displaySort,
+    updateSortCount,
+    handleSortReset,
+    sortRef,
+  };
+
   return (
     <>
       <div className="container">
@@ -282,25 +303,18 @@ function App() {
           />
         </header>
         <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
-          <BookmarkPage
-            setToggleData={setToggleData}
-            onMouseEnterOption={onMouseEnterOption}
-            onMouseEnterSort={onMouseEnterSort}
-            openModalPop={openModalPop}
-            toggleButton={toggle}
-            bkData={data}
-            filterData={filteredData}
-            checkedList={checkedList}
-            isChecked={checked}
-            input={input}
-            openCardId={openCards}
-            sortCount={sortCount}
-            openActionModal={openActionModal}
-            displaySort={displaySort}
-            updateSortCount={updateSortCount}
-            handleSortReset={handleSortReset}
-            sortRef={sortRef}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={<BookmarkPage {...bookmarkProps} toggleButton={1} />}
+            ></Route>
+
+            <Route
+              path="/archive"
+              element={<BookmarkPage {...bookmarkProps} toggleButton={2} />}
+            ></Route>
+            <Route></Route>
+          </Routes>
         </main>
 
         {openModal && (
