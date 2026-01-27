@@ -72,7 +72,7 @@ function SideBar({
         >
           <img src={archiveIcon} alt="archiveIcon" className="archiveIcon" />
           <span className="archiveIconText">
-            <Link to="/archive">Archived</Link>
+            <Link to="/archive">Archive</Link>
           </span>
         </a>
       </div>

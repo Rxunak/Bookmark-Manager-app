@@ -9,7 +9,9 @@ import { setItem, getItem } from "./utils/localStorage";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import PopupModals from "./components/otherPopupModals/PopupModals";
 import { ToastContainer, toast } from "react-toastify";
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
+import Login from "./components/LoginPage/Login";
+import Register from "./components/RegisterPage/Register";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -273,75 +275,88 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        {isSidebarVisible && (
-          <aside className="grid gridOne" style={{ gridArea: "sidebar" }}>
-            <SideBar
-              updateToggle={updateToggle}
-              handleSelect={handleSelect}
-              handleReset={handleReset}
-              currentToggle={toggle}
-              bkData={data}
-              checkedList={checkedList}
-              isChecked={checked}
-              showSidebar={showSidebar}
-            />
-          </aside>
-        )}
-        <header className="grid gridTwo" style={{ gridArea: "header" }}>
-          <HeaderSearchBar
-            bkData={data}
-            input={input}
-            handleInput={handleInput}
-            openModalPop={openModalPop}
-            onMouseEnter={onMouseEnter}
-            displayProfile={displayProfile}
-            openModal={openModal}
-            toggle={toggle}
-            showSidebar={showSidebar}
-            menuRef={menuRef}
-          />
-        </header>
-        <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
-          <Routes>
-            <Route
-              path="/"
-              element={<BookmarkPage {...bookmarkProps} toggleButton={1} />}
-            ></Route>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/*"
+          element={
+            <div className="container">
+              {isSidebarVisible && (
+                <aside className="grid gridOne" style={{ gridArea: "sidebar" }}>
+                  <SideBar
+                    updateToggle={updateToggle}
+                    handleSelect={handleSelect}
+                    handleReset={handleReset}
+                    currentToggle={toggle}
+                    bkData={data}
+                    checkedList={checkedList}
+                    isChecked={checked}
+                    showSidebar={showSidebar}
+                  />
+                </aside>
+              )}
+              <header className="grid gridTwo" style={{ gridArea: "header" }}>
+                <HeaderSearchBar
+                  bkData={data}
+                  input={input}
+                  handleInput={handleInput}
+                  openModalPop={openModalPop}
+                  onMouseEnter={onMouseEnter}
+                  displayProfile={displayProfile}
+                  openModal={openModal}
+                  toggle={toggle}
+                  showSidebar={showSidebar}
+                  menuRef={menuRef}
+                />
+              </header>
+              <main className="grid gridThree" style={{ gridArea: "mainPage" }}>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <BookmarkPage {...bookmarkProps} toggleButton={1} />
+                    }
+                  ></Route>
 
-            <Route
-              path="/archive"
-              element={<BookmarkPage {...bookmarkProps} toggleButton={2} />}
-            ></Route>
-            <Route></Route>
-          </Routes>
-        </main>
+                  <Route
+                    path="/archive"
+                    element={
+                      <BookmarkPage {...bookmarkProps} toggleButton={2} />
+                    }
+                  ></Route>
+                  <Route></Route>
+                </Routes>
+              </main>
 
-        {openModal && (
-          <Modal
-            closeModalPop={closeModalPop}
-            handleSubmit={handleSubmit}
-            isEdit={isEdit}
-            filterData={data}
-            isEditIndex={isEditIndex}
-            updateExistingData={updateExistingData}
-            notify={notify}
-          />
-        )}
+              {openModal && (
+                <Modal
+                  closeModalPop={closeModalPop}
+                  handleSubmit={handleSubmit}
+                  isEdit={isEdit}
+                  filterData={data}
+                  isEditIndex={isEditIndex}
+                  updateExistingData={updateExistingData}
+                  notify={notify}
+                />
+              )}
 
-        {/* {displayProfile && <ProfileCard menuRef={menuRef} />} */}
+              {/* {displayProfile && <ProfileCard menuRef={menuRef} />} */}
 
-        <ToastContainer />
+              <ToastContainer />
 
-        {showActionModal && (
-          <PopupModals
-            openActionModal={openActionModal}
-            header={headerText}
-            setAction={setAction}
-            notify={notify}
-          />
-        )}
-      </div>
+              {showActionModal && (
+                <PopupModals
+                  openActionModal={openActionModal}
+                  header={headerText}
+                  setAction={setAction}
+                  notify={notify}
+                />
+              )}
+            </div>
+          }
+        />
+      </Routes>
     </>
   );
 }
