@@ -1,0 +1,99 @@
+@import '../../colors.scss';
+
+.registerMainContainer {
+    background-color: $neutral-100;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .registerContainer {
+        width: 25rem;
+        height: auto;
+        border-radius: 10px;
+        background-color: $neutral-0;
+        padding: 2rem;
+
+        .registerInfoContainer {
+            margin-bottom: 2rem;
+
+            .registerHeaderIcon {
+                width: 18rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .registerHeading {
+                font-size: 1.8rem;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            .registerPara {
+                color: $neutral-800;
+            }
+        }
+
+        .registerForm {
+            height: auto;
+
+            .formFieldContainer {
+
+                .formFields {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin-bottom: 15px;
+
+                    .registerLabel {
+                        font-weight: 500;
+                        font-size: 16px;
+
+                        .registerArticks {
+                            color: $neutral-400-dark;
+                        }
+                    }
+                }
+
+                .formInput {
+                    height: 2.8rem;
+                    border-radius: 8px;
+                    border: 2px solid $neutral-010;
+                    font-size: 18px;
+                    padding-left: 10px;
+
+                    &:focus {
+                        border: 2px solid $neutral-400-dark;
+                        outline: none;
+                    }
+                }
+            }
+
+            .formButtonContainer {
+                margin-bottom: 2rem;
+                margin-top: 1rem;
+
+                .registerSubmit {
+                    width: 100%;
+                    height: 2.8rem;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    color: $neutral-0;
+                    background-color: $neutral-600-dark;
+                    font-size: 16px;
+                }
+            }
+
+            .registerFooterText {
+                text-align: center;
+                color: $neutral-800;
+                font-size: 16px;
+
+                .registerLogin {
+                    color: black;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
