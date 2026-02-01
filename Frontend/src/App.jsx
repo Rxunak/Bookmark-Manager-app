@@ -12,6 +12,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { Route, Router, Routes } from "react-router-dom";
 import Login from "./components/LoginPage/Login";
 import Register from "./components/RegisterPage/Register";
+import ForgotPassword from "./components/FogotPassword/ForgotPassword";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
 
 function App() {
   const [toggle, setToggle] = useState(1);
@@ -278,6 +280,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgotPass" element={<ForgotPassword />} />
+        <Route path="/reset" element={<ResetPassword />} />
         <Route
           path="/*"
           element={

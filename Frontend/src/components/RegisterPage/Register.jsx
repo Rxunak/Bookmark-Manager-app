@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "../RegisterPage/register.scss";
 
@@ -10,12 +10,46 @@ function Register() {
   };
 
   const [input, setInput] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
     setInput((values) => ({ ...values, [name]: value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validateForm(input));
+    setIsSubmit(true);
+  };
+
+  const validateForm = (values) => {
+    const errors = {};
+
+    const urlRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    if (values.fullName === "") {
+      errors.fullName = "Full name is required";
+    }
+
+    if (values.emailAddress === "") {
+      errors.emailAddress = "URL is required";
+    } else if (
+      values.emailAddress !== "" &&
+      urlRegex.test(values.emailAddress) !== true
+    ) {
+      errors.emailAddress = "URL is incorrect";
+    }
+
+    if (values.password === "") {
+      errors.password = "Password is required";
+    }
+
+    return errors;
   };
   return (
     <div className="registerMainContainer">
@@ -29,7 +63,7 @@ function Register() {
           </p>
         </div>
 
-        <form className="registerForm">
+        <form onSubmit={onSubmit} className="registerForm">
           <div className="formFieldContainer">
             <div className="formFields">
               <label htmlFor="" className="registerLabel">
@@ -41,8 +75,11 @@ function Register() {
                 value={input.fullName}
                 onChange={handleChange}
                 maxLength={30}
-                className="formInput"
+                className={
+                  formErrors.fullName ? "formErrorBorder" : "formInput"
+                }
               />
+              <p className="formErrorText">{formErrors.fullName}</p>
             </div>
             <div className="formFields">
               <label htmlFor="" className="registerLabel">
@@ -54,8 +91,11 @@ function Register() {
                 value={input.emailAddress}
                 onChange={handleChange}
                 maxLength={30}
-                className="formInput"
+                className={
+                  formErrors.emailAddress ? "formErrorBorder" : "formInput"
+                }
               />
+              <p className="formErrorText">{formErrors.emailAddress}</p>
             </div>
             <div className="formFields">
               <label htmlFor="" className="registerLabel">
@@ -67,8 +107,11 @@ function Register() {
                 value={input.password}
                 onChange={handleChange}
                 maxLength={30}
-                className="formInput"
+                className={
+                  formErrors.password ? "formErrorBorder" : "formInput"
+                }
               />
+              <p className="formErrorText">{formErrors.password}</p>
             </div>
             <div className="formButtonContainer">
               <button type="submit" className="registerSubmit">

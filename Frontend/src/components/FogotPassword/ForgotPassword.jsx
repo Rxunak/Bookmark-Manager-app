@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
-import "./login.scss";
+import "./forgot-password.scss";
 
-function Login() {
+function ForgotPassword() {
   const initialValues = {
     emailAddress: "",
-    password: "",
   };
 
   const [input, setInput] = useState(initialValues);
@@ -40,29 +39,26 @@ function Login() {
       errors.emailAddress = "Email address is incorrect";
     }
 
-    if (values.password === "") {
-      errors.password = "Password is required";
-    }
-
     return errors;
   };
 
   return (
-    <div className="loginMainContainer">
-      <div className="loginContainer">
-        <div className="loginInfoContainer">
-          <img src={bookMarkImage} alt="" className="loginHeaderIcon" />
-          <h1 className="loginHeading">Log in to your account</h1>
-          <p className="loginPara">
-            Welcome back! Please enter your details
+    <div className="forgotPasswordMainContainer">
+      <div className="forgotPasswordContainer">
+        <div className="forgotPasswordInfoContainer">
+          <img src={bookMarkImage} alt="" className="forgotPasswordHeaderIcon" />
+          <h1 className="forgotPasswordHeading">Forgot your password?</h1>
+          <p className="forgotPasswordPara">
+            Enter your email address below and we&apos;ll send you a link to reset
+            your password.
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="loginForm">
+        <form onSubmit={onSubmit} className="forgotPasswordForm">
           <div className="formFieldContainer">
             <div className="formFields">
-              <label htmlFor="" className="loginLabel">
-                Email address <span className="loginArticks">*</span>
+              <label htmlFor="" className="forgotPasswordLabel">
+                Email address <span className="forgotPasswordArticks">*</span>
               </label>
               <input
                 type="text"
@@ -76,32 +72,13 @@ function Login() {
               />
               <p className="formErrorText">{formErrors.emailAddress}</p>
             </div>
-            <div className="formFields">
-              <label htmlFor="" className="loginLabel">
-                Password <span className="loginArticks">*</span>
-              </label>
-              <input
-                type="password"
-                name="password"
-                value={input.password}
-                onChange={handleChange}
-                maxLength={30}
-                className={
-                  formErrors.password ? "formErrorBorder" : "formInput"
-                }
-              />
-              <p className="formErrorText">{formErrors.password}</p>
-            </div>
             <div className="formButtonContainer">
-              <button type="submit" className="loginSubmit">
-                Log in
+              <button type="submit" className="forgotPasswordSubmit">
+                Send reset link
               </button>
             </div>
-            <p className="loginFooterText">
-              Forgot password? <span className="loginLogin">Reset It</span>
-              <br />
-              Don&apos;t have an account?{" "}
-              <span className="loginLogin">Sign up</span>
+            <p className="forgotPasswordFooterText">
+              <span className="forgotPasswordLogin">Back to login</span>
             </p>
           </div>
         </form>
@@ -110,4 +87,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPassword;

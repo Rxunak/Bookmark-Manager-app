@@ -1,0 +1,87 @@
+.registerMainContainer {
+  background-color: #e8f0ef;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registerMainContainer .registerContainer {
+  width: 25rem;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+.registerMainContainer .registerContainer .registerInfoContainer {
+  margin-bottom: 2rem;
+}
+.registerMainContainer .registerContainer .registerInfoContainer .registerHeaderIcon {
+  width: 18rem;
+  margin-bottom: 1.5rem;
+}
+.registerMainContainer .registerContainer .registerInfoContainer .registerHeading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.registerMainContainer .registerContainer .registerInfoContainer .registerPara {
+  color: #4c5c59;
+}
+.registerMainContainer .registerContainer .registerForm {
+  height: auto;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formFields .registerLabel {
+  font-weight: 500;
+  font-size: 16px;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formFields .registerLabel .registerArticks {
+  color: #065746;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formFields .formErrorText {
+  color: #c4474c;
+  font-size: 15px;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formInput, .registerMainContainer .registerContainer .registerForm .formFieldContainer .formErrorBorder {
+  height: 2.8rem;
+  border-radius: 8px;
+  border: 2px solid #c0cfcc;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formInput:focus, .registerMainContainer .registerContainer .registerForm .formFieldContainer .formErrorBorder:focus {
+  border: 2px solid #065746;
+  outline: none;
+}
+.registerMainContainer .registerContainer .registerForm .formFieldContainer .formErrorBorder {
+  border: 2px solid #cb0404;
+}
+.registerMainContainer .registerContainer .registerForm .formButtonContainer {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.registerMainContainer .registerContainer .registerForm .formButtonContainer .registerSubmit {
+  width: 100%;
+  height: 2.8rem;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #002e2d;
+  font-size: 16px;
+}
+.registerMainContainer .registerContainer .registerForm .registerFooterText {
+  text-align: center;
+  color: #4c5c59;
+  font-size: 16px;
+}
+.registerMainContainer .registerContainer .registerForm .registerFooterText .registerLogin {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}/*# sourceMappingURL=register.css.map */
