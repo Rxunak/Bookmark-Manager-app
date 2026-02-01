@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "./login.scss";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const initialValues = {
     emailAddress: "",
     password: "",
@@ -77,6 +78,10 @@ function Login() {
     return <Navigate to="/" />;
   }
 
+  const redirectToPage = (pageName) => {
+    navigate(`/${pageName}`);
+  };
+
   return (
     <div className="loginMainContainer">
       <div className="loginContainer">
@@ -126,10 +131,21 @@ function Login() {
               </button>
             </div>
             <p className="loginFooterText">
-              Forgot password? <span className="loginLogin">Reset It</span>
+              Forgot password?{" "}
+              <span
+                className="loginLogin"
+                onClick={() => redirectToPage("reset")}
+              >
+                Reset It
+              </span>
               <br />
               Don&apos;t have an account?{" "}
-              <span className="loginLogin">Sign up</span>
+              <span
+                className="loginLogin"
+                onClick={() => redirectToPage("register")}
+              >
+                Sign up
+              </span>
             </p>
           </div>
         </form>

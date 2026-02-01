@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "./reset-password.scss";
+import { useNavigate } from "react-router-dom";
 
 function ResetPassword() {
+  const navigate = useNavigate();
   const initialValues = {
     newPassword: "",
     confirmPassword: "",
@@ -41,6 +43,10 @@ function ResetPassword() {
     return errors;
   };
 
+  const redirectToPage = (pageName) => {
+    navigate(`/${pageName}`);
+  };
+
   return (
     <div className="resetPasswordMainContainer">
       <div className="resetPasswordContainer">
@@ -48,7 +54,8 @@ function ResetPassword() {
           <img src={bookMarkImage} alt="" className="resetPasswordHeaderIcon" />
           <h1 className="resetPasswordHeading">Reset your password</h1>
           <p className="resetPasswordPara">
-            Enter your new password below. Make sure it&apos;s strong and secure.
+            Enter your new password below. Make sure it&apos;s strong and
+            secure.
           </p>
         </div>
 
@@ -92,7 +99,12 @@ function ResetPassword() {
               </button>
             </div>
             <p className="resetPasswordFooterText">
-              <span className="resetPasswordLogin">Back to login</span>
+              <span
+                className="resetPasswordLogin"
+                onClick={() => redirectToPage("login")}
+              >
+                Back to login
+              </span>
             </p>
           </div>
         </form>
