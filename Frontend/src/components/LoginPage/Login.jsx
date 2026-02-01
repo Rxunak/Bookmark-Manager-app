@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "./login.scss";
+import { Navigate } from "react-router-dom";
 
 function Login() {
   const initialValues = {
@@ -11,6 +12,7 @@ function Login() {
   const [input, setInput] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [toHome, setToHome] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -47,15 +49,41 @@ function Login() {
     return errors;
   };
 
+  const handleLogin = (loginDetails) => {
+    console.log("handleLoginCalled");
+    fetch("http://localhost:8000/api/login/loginUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginDetails),
+    })
+      // .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          setToHome(true);
+        }
+      });
+  };
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      setInput(initialValues);
+      handleLogin(input);
+    }
+  }, [formErrors, isSubmit]);
+
+  if (toHome) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className="loginMainContainer">
       <div className="loginContainer">
         <div className="loginInfoContainer">
           <img src={bookMarkImage} alt="" className="loginHeaderIcon" />
           <h1 className="loginHeading">Log in to your account</h1>
-          <p className="loginPara">
-            Welcome back! Please enter your details
-          </p>
+          <p className="loginPara">Welcome back! Please enter your details</p>
         </div>
 
         <form onSubmit={onSubmit} className="loginForm">
