@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import route from "./routes/bookmarkRoute.js";
 import userRoute from "./routes/registerRoute.js";
+import loginRoute from "./routes/loginRoute.js";
 import cors from "cors";
 
 const app = express();
@@ -29,3 +30,5 @@ mongoose
 app.use("/api/bookmark", route);
 
 app.use("/api/register", userRoute);
+
+app.use("/api/login", loginRoute);

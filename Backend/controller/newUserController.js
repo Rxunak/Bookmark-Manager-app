@@ -1,17 +1,25 @@
 import NewUser from "../model/newUserModel.js";
+import bcrypt from "bcrypt";
 
 export const createUser = async (req, res) => {
-  console.log("Running");
   try {
     const userData = new NewUser(req.body);
-    const { fullName } = userData;
+    const { fullName, emailAddress, password } = userData;
+    const saltRounds = 10;
 
     const userExist = await NewUser.findOne({ fullName });
     if (userExist) {
       return res.status(400).json({ message: "User already exists." });
     }
 
-    const savedUser = await userData.save();
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const savedUser = new NewUser({
+      fullName,
+      emailAddress,
+      password: hashedPassword,
+    });
+    await savedUser.save();
     res.status(200).json(savedUser);
   } catch (error) {
     console.log(error);
