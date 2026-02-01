@@ -14,6 +14,7 @@ function Login() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [toHome, setToHome] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -50,21 +51,22 @@ function Login() {
     return errors;
   };
 
-  const handleLogin = (loginDetails) => {
+  const handleLogin = async (loginDetails) => {
     console.log("handleLoginCalled");
-    fetch("http://localhost:8000/api/login/loginUser", {
+    const res = await fetch("http://localhost:8000/api/login/loginUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(loginDetails),
-    })
-      // .then((res) => res.json())
-      .then((res) => {
-        if (res.status === 200) {
-          setToHome(true);
-        }
-      });
+    });
+
+    const data = await res.json();
+    setLoginError(data.message);
+
+    if (res.ok) {
+      setToHome(true);
+    }
   };
 
   useEffect(() => {
@@ -89,6 +91,10 @@ function Login() {
           <img src={bookMarkImage} alt="" className="loginHeaderIcon" />
           <h1 className="loginHeading">Log in to your account</h1>
           <p className="loginPara">Welcome back! Please enter your details</p>
+        </div>
+
+        <div className="loginErrorContainer">
+          <span className="loginError">{loginError}</span>
         </div>
 
         <form onSubmit={onSubmit} className="loginForm">

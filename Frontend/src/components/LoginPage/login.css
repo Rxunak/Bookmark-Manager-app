@@ -1,1 +1,121 @@
-/*# sourceMappingURL=login.css.map */
+.loginMainContainer {
+  background-color: #e8f0ef;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginMainContainer .loginContainer {
+  width: 25rem;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+.loginMainContainer .loginContainer .loginInfoContainer {
+  margin-bottom: 1rem;
+}
+.loginMainContainer .loginContainer .loginInfoContainer .loginHeaderIcon {
+  width: 18rem;
+  margin-bottom: 1.5rem;
+}
+.loginMainContainer .loginContainer .loginInfoContainer .loginHeading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.loginMainContainer .loginContainer .loginInfoContainer .loginPara {
+  color: #4c5c59;
+}
+.loginMainContainer .loginContainer .loginForm {
+  height: auto;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formFields .loginLabel {
+  font-weight: 500;
+  font-size: 16px;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formFields .loginLabel .loginArticks {
+  color: #065746;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formFields .formErrorText {
+  color: #c4474c;
+  font-size: 15px;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formInput, .loginMainContainer .loginContainer .loginForm .formFieldContainer .formErrorBorder {
+  height: 2.8rem;
+  border-radius: 8px;
+  border: 2px solid #c0cfcc;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formInput:focus, .loginMainContainer .loginContainer .loginForm .formFieldContainer .formErrorBorder:focus {
+  border: 2px solid #065746;
+  outline: none;
+}
+.loginMainContainer .loginContainer .loginForm .formFieldContainer .formErrorBorder {
+  border: 2px solid #cb0404;
+}
+.loginMainContainer .loginContainer .loginForm .formButtonContainer {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.loginMainContainer .loginContainer .loginForm .formButtonContainer .loginSubmit {
+  width: 100%;
+  height: 2.8rem;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #002e2d;
+  font-size: 16px;
+}
+.loginMainContainer .loginContainer .loginForm .loginFooterText {
+  text-align: center;
+  color: #4c5c59;
+  font-size: 16px;
+}
+.loginMainContainer .loginContainer .loginForm .loginFooterText .loginLogin {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.loginMainContainer .loginContainer .loginErrorContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.loginMainContainer .loginContainer .loginErrorContainer .loginError {
+  color: #cb0404;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 432px) {
+  .loginMainContainer {
+    padding: 1.5rem 1rem;
+  }
+  .loginMainContainer .loginContainer {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .loginMainContainer .loginContainer .loginInfoContainer .loginHeaderIcon {
+    width: 12rem;
+  }
+  .loginMainContainer .loginContainer .loginInfoContainer .loginHeading {
+    font-size: 1.5rem;
+  }
+  .loginMainContainer .loginContainer .loginForm .formFieldContainer .formInput, .loginMainContainer .loginContainer .loginForm .formFieldContainer .formErrorBorder {
+    height: 2.5rem;
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .loginMainContainer .loginContainer {
+    width: 70%;
+  }
+}/*# sourceMappingURL=login.css.map */

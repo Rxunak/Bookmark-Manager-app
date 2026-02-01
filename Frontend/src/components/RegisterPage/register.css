@@ -12,8 +12,17 @@
   background-color: #ffffff;
   padding: 2rem;
 }
+.registerMainContainer .registerContainer .registerErrorContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.registerMainContainer .registerContainer .registerErrorContainer .registerError {
+  color: #cb0404;
+  font-weight: 600;
+}
 .registerMainContainer .registerContainer .registerInfoContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .registerMainContainer .registerContainer .registerInfoContainer .registerHeaderIcon {
   width: 18rem;
@@ -84,4 +93,29 @@
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 432px) {
+  .registerMainContainer {
+    padding: 1.5rem 1rem;
+  }
+  .registerMainContainer .registerContainer {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .registerMainContainer .registerContainer .registerInfoContainer .registerHeaderIcon {
+    width: 12rem;
+  }
+  .registerMainContainer .registerContainer .registerInfoContainer .registerHeading {
+    font-size: 1.5rem;
+  }
+  .registerMainContainer .registerContainer .registerForm .formFieldContainer .formInput, .registerMainContainer .registerContainer .registerForm .formFieldContainer .formErrorBorder {
+    height: 2.5rem;
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .registerMainContainer .registerContainer {
+    width: 70%;
+  }
 }/*# sourceMappingURL=register.css.map */

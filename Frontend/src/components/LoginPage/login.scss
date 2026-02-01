@@ -15,7 +15,7 @@
         padding: 2rem;
 
         .loginInfoContainer {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
 
             .loginHeaderIcon {
                 width: 18rem;
@@ -106,6 +106,19 @@
                 }
             }
         }
+
+        .loginErrorContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+
+            .loginError {
+                color: $red-800;
+                font-weight: 600;
+            }
+        }
+
+
     }
 }
 

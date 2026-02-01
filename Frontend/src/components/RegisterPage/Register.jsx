@@ -14,6 +14,7 @@ function Register() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [toLogin, setToLogin] = useState(false);
+  const [registerError, setregisterError] = useState("");
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -62,7 +63,11 @@ function Register() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUserInfo),
-    }).then((res) => res.json());
+    }).then((res) => {
+      if (!res.ok) {
+        setregisterError("Look's like you already have an account");
+      }
+    });
   };
 
   useEffect(() => {
@@ -86,6 +91,10 @@ function Register() {
             Join us and start saving your favorite links - organised, searchable
             and always within reach.
           </p>
+        </div>
+
+        <div className="registerErrorContainer">
+          <span className="registerError">{registerError}</span>
         </div>
 
         <form onSubmit={onSubmit} className="registerForm">

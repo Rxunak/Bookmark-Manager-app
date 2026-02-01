@@ -12,7 +12,7 @@ export const loginUser = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    res.sendStatus(200);
+    res.status(200).json({ message: "Login Succesful" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Error logging in" });

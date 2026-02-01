@@ -14,8 +14,19 @@
         background-color: $neutral-0;
         padding: 2rem;
 
+        .registerErrorContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+
+            .registerError {
+                color: $red-800;
+                font-weight: 600;
+            }
+        }
+
         .registerInfoContainer {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
 
             .registerHeaderIcon {
                 width: 18rem;
