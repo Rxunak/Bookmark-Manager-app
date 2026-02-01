@@ -92,7 +92,7 @@ function Modal({
       closeModalPop(false);
       setIsSubmit(false);
     }
-  }, [formErrors, isSubmit, isEditIndex, input]);
+  }, [formErrors, isSubmit, isEditIndex, input]); //check
 
   return (
     <div className="modal">

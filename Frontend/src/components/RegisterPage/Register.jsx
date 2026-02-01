@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "../RegisterPage/register.scss";
 
@@ -12,6 +13,7 @@ function Register() {
   const [input, setInput] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [toLogin, setToLogin] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -51,6 +53,29 @@ function Register() {
 
     return errors;
   };
+
+  const handleSubmit = (newUserInfo) => {
+    console.log(JSON.stringify(newUserInfo));
+    fetch("http://localhost:8000/api/register/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserInfo),
+    }).then((res) => res.json());
+  };
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      setInput(initialValues);
+      handleSubmit(input);
+    }
+  }, [formErrors, isSubmit]);
+
+  if (toLogin) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div className="registerMainContainer">
       <div className="registerContainer">
@@ -120,7 +145,9 @@ function Register() {
             </div>
             <p className="registerFooterText">
               Already have an account?{" "}
-              <span className="registerLogin">Log in</span>
+              <span className="registerLogin" onClick={() => setToLogin(true)}>
+                Log in
+              </span>
             </p>
           </div>
         </form>

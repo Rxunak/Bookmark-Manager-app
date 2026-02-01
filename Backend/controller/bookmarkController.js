@@ -11,7 +11,6 @@ export const createBookmark = async (req, res) => {
     }
 
     const savedBookmark = await bookmarkData.save();
-    console.log(savedBookmark);
     res.status(200).json(savedBookmark);
   } catch (error) {
     console.log("error", error);
