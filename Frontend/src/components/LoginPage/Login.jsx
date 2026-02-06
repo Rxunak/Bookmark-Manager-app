@@ -52,7 +52,6 @@ function Login() {
   };
 
   const handleLogin = async (loginDetails) => {
-    console.log("handleLoginCalled");
     const res = await fetch("http://localhost:8000/api/login/loginUser", {
       method: "POST",
       headers: {
@@ -62,12 +61,15 @@ function Login() {
     });
 
     const data = await res.json();
+    localStorage.setItem("jwtToken", data.token);
     setLoginError(data.message);
 
     if (res.ok) {
       setToHome(true);
     }
   };
+
+  console.log("gotToken", localStorage.getItem("jwtToken"));
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {

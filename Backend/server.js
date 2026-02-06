@@ -5,7 +5,9 @@ import dotenv from "dotenv";
 import route from "./routes/bookmarkRoute.js";
 import userRoute from "./routes/registerRoute.js";
 import loginRoute from "./routes/loginRoute.js";
+import protectedRoute from "./routes/protectedRoutes.js";
 import cors from "cors";
+import jwt from "jsonwebtoken";
 
 const app = express();
 
@@ -32,3 +34,5 @@ app.use("/api/bookmark", route);
 app.use("/api/register", userRoute);
 
 app.use("/api/login", loginRoute);
+
+app.use("/api/protected", protectedRoute);

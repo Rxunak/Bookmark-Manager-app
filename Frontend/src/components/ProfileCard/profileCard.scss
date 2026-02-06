@@ -134,10 +134,12 @@
         justify-content: start;
         gap: 10px;
         // padding-left: 1rem;
+        cursor: pointer;
 
         .logoutText {
             font-size: 18px;
             color: $neutral-800;
+
         }
 
         .logoutIcon {

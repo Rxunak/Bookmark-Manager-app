@@ -5,9 +5,19 @@ import theme from "../../assets/Images/icon-theme.svg";
 import lightTheme from "../../assets/Images/icon-light-theme.svg";
 import darkTheme from "../../assets/Images/icon-dark-theme.svg";
 import logout from "../../assets/Images/icon-logout.svg";
+import { useNavigate } from "react-router-dom";
 
 function ProfileCard({ menuRef }) {
   const [isThemeActive, setIsThemeActive] = useState(1);
+  const navigate = useNavigate();
+
+  console.log(localStorage.getItem("jwtToken"));
+
+  const logoutUser = () => {
+    console.log("working");
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="profileCardMain" ref={menuRef}>
       <div className="profileC">
@@ -62,7 +72,9 @@ function ProfileCard({ menuRef }) {
       </div>
       <div className="logout">
         <img src={logout} alt="" className="logoutIcon" />
-        <span className="logoutText">Logout</span>
+        <span className="logoutText" onClick={logoutUser}>
+          Logout
+        </span>
       </div>
     </div>
   );

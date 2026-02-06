@@ -106,6 +106,7 @@
   align-items: center;
   justify-content: start;
   gap: 10px;
+  cursor: pointer;
 }
 .profileCardMain .logout .logoutText {
   font-size: 18px;
