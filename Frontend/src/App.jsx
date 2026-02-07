@@ -54,6 +54,10 @@ function App() {
   let sortRef = useRef();
 
   const validateSession = async () => {
+    const publicPaths = ["/login", "/register", "/forgotPass", "/reset"];
+    if (publicPaths.includes(location.pathname)) {
+      return false;
+    }
     if (!getToken()) {
       navigate("/login");
       return false;
