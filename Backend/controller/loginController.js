@@ -17,7 +17,7 @@ export const loginUser = async (req, res) => {
       return res.status(500).json({ message: "Server misconfiguration" });
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "1h",
+      expiresIn: "1hr",
     });
 
     res.status(200).json({ msg: "user logged in", token });

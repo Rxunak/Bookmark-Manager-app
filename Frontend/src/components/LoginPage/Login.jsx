@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "./login.scss";
 import { Navigate, useNavigate } from "react-router-dom";
+import { login } from "../../api/authApi";
+import { setToken } from "../../api/client";
 
 function Login() {
   const navigate = useNavigate();
@@ -52,24 +54,17 @@ function Login() {
   };
 
   const handleLogin = async (loginDetails) => {
-    const res = await fetch("http://localhost:8000/api/login/loginUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginDetails),
-    });
-
-    const data = await res.json();
-    localStorage.setItem("jwtToken", data.token);
-    setLoginError(data.message);
-
-    if (res.ok) {
+    try {
+      const data = await login(loginDetails);
+      if (data?.token) {
+        setToken(data.token);
+      }
+      setLoginError(data?.message || "");
       setToHome(true);
+    } catch (error) {
+      setLoginError(error?.message || "Login failed");
     }
   };
-
-  console.log("gotToken", localStorage.getItem("jwtToken"));
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {

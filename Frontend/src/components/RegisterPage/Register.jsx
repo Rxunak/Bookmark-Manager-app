@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import bookMarkImage from "../../assets/Images/logo-light-theme.svg";
 import "../RegisterPage/register.scss";
+import { register } from "../../api/authApi";
 
 function Register() {
   const initialValues = {
@@ -56,17 +57,8 @@ function Register() {
   };
 
   const handleSubmit = (newUserInfo) => {
-    console.log(JSON.stringify(newUserInfo));
-    fetch("http://localhost:8000/api/register/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserInfo),
-    }).then((res) => {
-      if (!res.ok) {
-        setregisterError("Look's like you already have an account");
-      }
+    register(newUserInfo).catch(() => {
+      setregisterError("Look's like you already have an account");
     });
   };
 

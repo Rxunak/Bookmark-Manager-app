@@ -4,18 +4,26 @@ import SideBar from "./components/SideBar/SideBar";
 import HeaderSearchBar from "./components/headerSearchBar/HeaderSearchBar";
 import BookmarkPage from "./components/Bookmark/BookmarkPage";
 import Modal from "./components/Modal/Modal";
-import { getRandomPastDate } from "./constants";
-import { setItem, getItem } from "./utils/localStorage";
-import ProfileCard from "./components/ProfileCard/ProfileCard";
 import PopupModals from "./components/otherPopupModals/PopupModals";
 import { ToastContainer, toast } from "react-toastify";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Login from "./components/LoginPage/Login";
 import Register from "./components/RegisterPage/Register";
 import ForgotPassword from "./components/FogotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import { clearToken, getToken } from "./api/client";
+import { verifyToken } from "./api/authApi";
+import {
+  createBookmark,
+  deleteBookmark,
+  fetchBookmarks,
+  pinBookmark,
+  updateBookmark,
+} from "./api/bookmarkApi";
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [toggle, setToggle] = useState(1);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -23,9 +31,6 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [input, setInput] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [addBookmark, setAddBookmark] = useState(() => {
-    return getItem("Bookmark") || [];
-  });
   const [displayProfile, setDisplayProfile] = useState(false);
   const [openCards, setOpenCardId] = useState([]);
   const [displaySort, setDisplaySort] = useState(false);
@@ -48,26 +53,40 @@ function App() {
   let menuRef = useRef();
   let sortRef = useRef();
 
-  const getData = () => {
-    fetch("http://localhost:8000/api/bookmark/fetch", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log("json", myJson);
-        setData(myJson);
-        setFilteredData(myJson);
-      });
+  const validateSession = async () => {
+    if (!getToken()) {
+      navigate("/login");
+      return false;
+    }
+
+    try {
+      await verifyToken();
+      return true;
+    } catch (error) {
+      if (error?.status === 401) {
+        clearToken();
+      }
+      navigate("/login");
+      return false;
+    }
+  };
+
+  const getData = async () => {
+    const bookmarks = await fetchBookmarks();
+    setData(bookmarks);
+    setFilteredData(bookmarks);
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    const init = async () => {
+      const ok = await validateSession();
+      if (ok) {
+        await getData();
+      }
+    };
+
+    init();
+  }, [location.pathname]);
 
   const updateToggle = (id) => {
     setToggle(id);
@@ -110,30 +129,14 @@ function App() {
   };
 
   const handleSubmit = (newBookmarkInformation) => {
-    fetch("http://localhost:8000/api/bookmark/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBookmarkInformation),
-    })
-      .then((res) => res.json())
-      .then(() => getData());
+    createBookmark(newBookmarkInformation).then(() => getData());
   };
 
   const updateExistingData = (id, input) => {
     const oldData = data.find((bookmark) => bookmark.id === id);
     const newData = { ...oldData, ...input };
 
-    fetch(`http://localhost:8000/api/bookmark/update/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((res) => res.json())
-      .then(() => getData());
+    updateBookmark(id, newData).then(() => getData());
   };
 
   const onMouseEnter = () => {
@@ -205,42 +208,19 @@ function App() {
     if (buttonText === "Archive" || buttonText === "Unarchive") {
       newInput = { ...oldInput, isArchived: !oldInput.isArchived };
 
-      fetch(`http://localhost:8000/api/bookmark/update/${actionItemId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newInput),
-      })
-        .then((res) => res.json())
-        .then(() => getData());
+      updateBookmark(actionItemId, newInput).then(() => getData());
     }
 
     if (buttonText === "Pin" || buttonText === "Unpin") {
       newInput = { ...oldInput, pinned: !oldInput.pinned };
 
-      fetch(`http://localhost:8000/api/bookmark/pin/${actionItemId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newInput),
-      })
-        .then((res) => res.json())
-        .then(() => getData());
+      pinBookmark(actionItemId, newInput).then(() => getData());
     }
 
     if (buttonText === "Delete") {
       newInput = data.filter((item) => item.id !== actionItemId);
 
-      fetch(`http://localhost:8000/api/bookmark/delete/${actionItemId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then(() => getData());
+      deleteBookmark(actionItemId).then(() => getData());
     }
 
     const newInputArray = data.map((item) =>
