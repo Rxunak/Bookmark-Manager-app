@@ -1,7 +1,8 @@
 @import '../../colors.scss';
 
 .bookmarkMainContainer {
-    height: 100%;
+    height: calc(100vh - 6rem);
+    height: calc(100dvh - 6rem);
     overflow: scroll;
     display: flex;
     flex-direction: column;
@@ -248,11 +249,14 @@
     .articlesTwoCards {
         @extend .articles;
         justify-content: flex-start;
+        grid-template-columns: repeat(auto-fit, 330px);
     }
 }
 
 @media only screen and (max-width: 432px) {
     .bookmarkMainContainer {
+        height: calc(100vh - 4rem);
+        height: calc(100dvh - 4rem);
         padding: 5px;
 
         .bookmarkHeader {
@@ -292,6 +296,8 @@
 //Tablets
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .bookmarkMainContainer {
+        height: calc(100vh - 6rem);
+        height: calc(100dvh - 6rem);
         .articles {
             max-height: 100%;
             margin-bottom: 1rem;

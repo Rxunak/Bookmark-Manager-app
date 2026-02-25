@@ -9,8 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Login from "./components/LoginPage/Login";
 import Register from "./components/RegisterPage/Register";
-import ForgotPassword from "./components/FogotPassword/ForgotPassword";
-import ResetPassword from "./components/ResetPassword/ResetPassword";
 import { clearToken, getToken } from "./api/client";
 import { verifyToken } from "./api/authApi";
 import {
@@ -54,7 +52,7 @@ function App() {
   let sortRef = useRef();
 
   const validateSession = async () => {
-    const publicPaths = ["/login", "/register", "/forgotPass", "/reset"];
+    const publicPaths = ["/login", "/register"];
     if (publicPaths.includes(location.pathname)) {
       return false;
     }
@@ -264,8 +262,6 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forgotPass" element={<ForgotPassword />} />
-        <Route path="/reset" element={<ResetPassword />} />
         <Route
           path="/*"
           element={

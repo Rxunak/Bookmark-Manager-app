@@ -78,8 +78,9 @@ function BookmarkPage({
     }
 
     if (checkedList.length > 0) {
+      const normalizedCheckedList = checkedList.map((tag) => tag.toLowerCase());
       filteredData = filteredData.filter((item) =>
-        item?.tags?.some((r) => checkedList.includes(r)),
+        item?.tags?.some((r) => normalizedCheckedList.includes(r.toLowerCase())),
       );
     }
 
@@ -119,7 +120,8 @@ function BookmarkPage({
           <span className={showTagFilter ? "bookmarkShow" : "bookmarkShowHide"}>
             Bookmarks tagged:{" "}
             <span className="tag-item">
-              {checkedList.slice(0, 2) + " + " + checkedList.slice(2).length}
+              {checkedList.slice(0, 2).join(", ")}
+              {checkedList.length > 2 ? ` + ${checkedList.length - 2}` : ""}
             </span>
           </span>
 

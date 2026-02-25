@@ -25,8 +25,9 @@ function SideBar({
 
     bkData.forEach((item) => {
       if (item?.tags) {
+        const normalizedTags = item.tags.map((tag) => tag.toLowerCase());
         newTagData.forEach((tag) => {
-          if (item.tags.includes(tag.value)) {
+          if (normalizedTags.includes(tag.value.toLowerCase())) {
             tag.tagNumber++;
           }
         });
@@ -49,7 +50,8 @@ function SideBar({
       </div>
 
       <div className="activate">
-        <a
+        <Link
+          to="/"
           className={`${
             currentToggle === 1
               ? "homeIconContainerActive"
@@ -58,11 +60,10 @@ function SideBar({
           onClick={() => updateToggle(1)}
         >
           <img src={homeIcon} alt="homeIcon" className="homeIcon" />
-          <span className="homeIconText">
-            <Link to="/">Home</Link>
-          </span>
-        </a>
-        <a
+          <span className="homeIconText">Home</span>
+        </Link>
+        <Link
+          to="/archive"
           className={`${
             currentToggle === 2
               ? "archiveIconContainerActive"
@@ -71,10 +72,8 @@ function SideBar({
           onClick={() => updateToggle(2)}
         >
           <img src={archiveIcon} alt="archiveIcon" className="archiveIcon" />
-          <span className="archiveIconText">
-            <Link to="/archive">Archive</Link>
-          </span>
-        </a>
+          <span className="archiveIconText">Archive</span>
+        </Link>
       </div>
 
       <div className="tagsNav">

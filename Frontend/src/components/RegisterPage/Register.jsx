@@ -57,9 +57,14 @@ function Register() {
   };
 
   const handleSubmit = (newUserInfo) => {
-    register(newUserInfo).catch(() => {
-      setregisterError("Look's like you already have an account");
-    });
+    setregisterError("");
+    register(newUserInfo)
+      .then(() => {
+        setToLogin(true);
+      })
+      .catch(() => {
+        setregisterError("Look's like you already have an account");
+      });
   };
 
   useEffect(() => {

@@ -134,14 +134,6 @@ function Login() {
               </button>
             </div>
             <p className="loginFooterText">
-              Forgot password?{" "}
-              <span
-                className="loginLogin"
-                onClick={() => redirectToPage("reset")}
-              >
-                Reset It
-              </span>
-              <br />
               Don&apos;t have an account?{" "}
               <span
                 className="loginLogin"
